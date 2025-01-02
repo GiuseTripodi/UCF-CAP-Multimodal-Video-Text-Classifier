@@ -62,7 +62,7 @@ def plot_embeddings(embeddings, labels, method='pca'):
 # Main function
 if __name__ == '__main__':
     # Paths
-    model_path = '/Users/user/PycharmProjects/frozen-in-time/trainer/spacetime_transformer_ucf101.pth'
+    model_path = '/data/models/spacetime_transformer_ucf101.pth'
     csv_test_file = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv'
 
     # Data transformation

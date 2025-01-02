@@ -57,6 +57,6 @@ for epoch in range(num_epochs):
     print(f"Epoch {epoch+1}, Loss: {running_loss/len(dataloader)}")
 
 # Save the model's state dictionary
-save_path = 'spacetime_transformer_ucf101.pth'
+save_path = '../data/models/spacetime_transformer_ucf101.pth'
 torch.save(model.state_dict(), save_path)
 print(f"Model saved to {save_path}")
