@@ -7,13 +7,15 @@
 module load libs/cuda
 
 echo "Job is using $NGPUS GPU(s) with ID(s) $CUDA_VISIBLE_DEVICES and $NSLOTS CPU core(s)"
+
+
 source /mnt/iusers01/mace01/t08341gt/env_phd/bin/activate
 
 # Default values arg parameters
 DEFAULT_DATA="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/UcfCap/train_dataset.csv"
-DEFAULT_LOG='/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/logs'
-DEFAULT_SAVE='/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/models'
-DEFAULT_NAME='test'
+DEFAULT_LOG="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/logs"
+DEFAULT_SAVE="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/models"
+DEFAULT_NAME="test"
 
 # Usage function to display help
 usage() {
