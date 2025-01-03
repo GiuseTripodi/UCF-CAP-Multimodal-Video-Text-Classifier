@@ -50,6 +50,7 @@ def training(data, save, name):
     logger.info(f"Total Trainable Parameters: {total_params}")
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    logger.info(f"Device model: {device}")
     model = model.to(device)
 
     criterion = nn.CrossEntropyLoss()
