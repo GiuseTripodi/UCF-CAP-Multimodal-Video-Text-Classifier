@@ -7,6 +7,9 @@ from model.video_transformer import *
 from data_loader.ucf_cap_dataset import *
 import logging
 from logger import setup_logging
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 
 # Configure and create a logger
 logger = logging.getLogger('train')
