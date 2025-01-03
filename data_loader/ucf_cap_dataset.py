@@ -9,17 +9,20 @@ import glob
 import torch
 from PIL import Image
 from sklearn.preprocessing import LabelEncoder
-
-
+from torchvision import transforms
+from torch.utils.data import Dataset, DataLoader
+import os
+import glob
+from PIL import Image
 import os
 import re
 import csv
 from sklearn.model_selection import train_test_split
 
-def create_csv_splits():
+def create_csv_splits(home_path):
     # Paths to the UCF101 dataset
-    data_dir = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/YouTubeClips'  # Replace with your UCF101 frames directory
-    output_dir = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/'  # Directory to save CSV files
+    data_dir = f'{home_path}/data/UcfCap/YouTubeClips'  # Replace with your UCF101 frames directory
+    output_dir = f'{home_path}/data/UcfCap/'  # Directory to save CSV files
 
     # Get the list of class names (folder names in the dataset)
     videos_folder_frame = sorted(os.listdir(data_dir))
@@ -51,12 +54,6 @@ def create_csv_splits():
     write_csv(train_entries[:16], 'train_dataset.csv')
     write_csv(val_entries[:4], 'val_dataset.csv')
     write_csv(test_entries[:4], 'test_dataset.csv')
-
-from torchvision import transforms
-from torch.utils.data import Dataset, DataLoader
-import os
-import glob
-from PIL import Image
 
 class UCF101Dataset(Dataset):
     def __init__(self, csv_file, transform=None, num_frames=8):
@@ -104,7 +101,11 @@ class UCF101Dataset(Dataset):
 
 if __name__ == '__main__':
     # Run the function
-    create_csv_splits()
+    #home_path_local = '/Users/user/PycharmProjects/frozen-in-time'
+    home_path_clus = '/mnt/iusers01/mace01/t08341gt/UCF_cap_mh'
+    create_csv_splits(home_path_clus)
+
+    '''
 
     transform = transforms.Compose([
         transforms.Resize((224, 224)),
@@ -116,3 +117,4 @@ if __name__ == '__main__':
 
     dataset = UCF101Dataset(csv_file, transform=transform)
     dataloader = DataLoader(dataset, batch_size=16, shuffle=True)
+    '''
