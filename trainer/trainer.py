@@ -3,7 +3,7 @@ import torch
 from torch import nn
 from tqdm.auto import tqdm
 
-from base import BaseTrainer
+from base.base_trainer import BaseTrainer
 from model.model import sim_matrix
 from utils import inf_loop
 
@@ -36,8 +36,10 @@ class Trainer(BaseTrainer):
         self.lr_scheduler = lr_scheduler
         self.visualizer = visualizer
         self.val_chunking = True
-        self.batch_size = self.data_loader[0].batch_size
-        self.total_batch_sum = sum(x.batch_size for x in self.data_loader)
+        #self.batch_size = self.data_loader[0].batch_size
+        self.batch_size = self.data_loader.batch_size
+        #self.total_batch_sum = sum(x.batch_size for x in self.data_loader)
+        self.total_batch_sum = sum(len(x) for x in self.data_loader)
         self.tokenizer = tokenizer
         self.max_samples_per_epoch = max_samples_per_epoch
 

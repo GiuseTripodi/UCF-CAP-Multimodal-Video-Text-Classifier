@@ -90,6 +90,8 @@ if __name__ == '__main__':
     parser.add_argument('--save', default=None, help='Path where to save the trained models')
     parser.add_argument('--name', default=None, help='Name of the experiments, way of saving the model ')
     parser.add_argument('--log', default=None, help="Path to where the logs are saved")
+    parser.add_argument('-c', '--config', default=None, type=str,
+                      help='config file path (default: None)')
     args = parser.parse_args()
 
     setup_logging(args.log)
