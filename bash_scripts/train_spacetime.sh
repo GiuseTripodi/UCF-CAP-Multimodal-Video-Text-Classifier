@@ -55,4 +55,4 @@ while [ "$#" -gt 0 ]; do
 done
 
 # Run the Python script with the provided or default arguments
-#python3 /mnt/iusers01/mace01/t08341gt/UCF_cap_mh/bash_scripts/train_spacetime.sh  --data="$DATA" --save="$SAVE" --log="$LOG" --name="$NAME"
+python3 /mnt/iusers01/mace01/t08341gt/UCF_cap_mhtrainer/training_st.py  --data="$DATA" --save="$SAVE" --log="$LOG" --name="$NAME"
