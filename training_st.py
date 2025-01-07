@@ -37,7 +37,7 @@ def training(data, save, name):
         img_size=224,         # Resize frames to 224x224
         num_frames=8,         # Use 8 frames per video
         in_chans=3,           # RGB channels
-        num_classes=10,
+        num_classes=13,
         embed_dim=768,
         depth=12,
         num_heads=12,
