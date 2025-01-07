@@ -29,7 +29,7 @@ def training(data, save, name):
 
     logger.info(f'Dataset loaded from {csv_train_file}')
     dataset = UCF101Dataset(csv_train_file, transform=transform)
-    dataloader = DataLoader(dataset, batch_size=8, shuffle=True)
+    dataloader = DataLoader(dataset, batch_size=4, shuffle=True)
     print('Train dataset: ', [len(x) for x in dataloader], ' samples')
 
 
