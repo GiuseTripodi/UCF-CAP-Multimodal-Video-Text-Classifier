@@ -51,9 +51,9 @@ def create_csv_splits(home_path):
 
     # Write to separate CSV files
     #TODO test with less data
-    write_csv(train_entries[:16], 'train_dataset.csv')
-    write_csv(val_entries[:4], 'val_dataset.csv')
-    write_csv(test_entries[:4], 'test_dataset.csv')
+    write_csv(train_entries, 'train_dataset.csv')
+    write_csv(val_entries, 'val_dataset.csv')
+    write_csv(test_entries, 'test_dataset.csv')
 
 class UCF101Dataset(Dataset):
     def __init__(self, csv_file, transform=None, num_frames=8):
