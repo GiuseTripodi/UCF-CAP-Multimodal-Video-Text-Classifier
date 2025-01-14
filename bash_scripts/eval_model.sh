@@ -55,4 +55,4 @@ while [ "$#" -gt 0 ]; do
 done
 
 # Run the Python script with the provided or default arguments
-python3 /mnt/iusers01/mace01/t08341gt/UCF_cap_mh/eval.py  --data="$DATA" --save="$MODEL_PATH" --log="$LOG" --name="$NAME"
+python3 /mnt/iusers01/mace01/t08341gt/UCF_cap_mh/eval.py  --data="$DATA" --model_path="$MODEL_PATH" --log="$LOG" --name="$NAME"
