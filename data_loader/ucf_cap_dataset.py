@@ -18,6 +18,7 @@ import os
 import re
 import csv
 from sklearn.model_selection import train_test_split
+import numpy as np
 
 def create_csv_splits(home_path):
     # Paths to the UCF101 dataset
@@ -91,7 +92,11 @@ class UCF101Dataset(Dataset):
         if self.transform:
             images = [self.transform(img) for img in images]
 
-        video_tensor = torch.stack(images, dim=0)  # Shape: [num_frames, C, H, W]
+        try:
+            video_tensor = torch.stack(images, dim=0)  # Shape: [num_frames, C, H, W]
+        except:
+            video_tensor = torch.tensor(np.zeros((self.num_frames, 3, 224, 224)), dtype=torch.float32)
+            print(f"Using placeholder volume for: {idx}")
 
         # Convert label to integer using label_encoder
         label_idx = self.label_encoder.transform([label])[0]  # Convert string label to integer index
