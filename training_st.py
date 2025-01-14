@@ -57,7 +57,7 @@ def training(data, save, name):
     optimizer = optim.Adam(model.parameters(), lr=1e-4)
     logger.info(model)
 
-    num_epochs = 5
+    num_epochs = 20
     for epoch in range(num_epochs):
         model.train()
         running_loss = 0.0
