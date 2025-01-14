@@ -60,7 +60,7 @@
         "v2t_metrics"
      ],
     "trainer": {
-        "epochs": 100,
+        "epochs": 1,
         "max_samples_per_epoch": 1000000,
         "save_dir": "/work/maxbain/Libs/frozen-in-time",
         "save_period": 5,

@@ -12,7 +12,7 @@ echo "Job is using $NGPUS GPU(s) with ID(s) $CUDA_VISIBLE_DEVICES and $NSLOTS CP
 source /mnt/iusers01/mace01/t08341gt/env_phd/bin/activate
 
 # Default values arg parameters
-DEFAULT_DATA="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/UcfCap/train_dataset.csv"
+DEFAULT_DATA="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/UcfCap"
 DEFAULT_LOG="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/logs"
 DEFAULT_SAVE="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/models"
 DEFAULT_NAME="test"
@@ -55,4 +55,4 @@ while [ "$#" -gt 0 ]; do
 done
 
 # Run the Python script with the provided or default arguments
-python3 /mnt/iusers01/mace01/t08341gt/UCF_cap_mh/training_st.py  --data="$DATA" --save="$SAVE" --log="$LOG" --name="$NAME"
+python3 /mnt/iusers01/mace01/t08341gt/UCF_cap_mh/train_spacetime.py  --data="$DATA" --save="$SAVE" --log="$LOG" --name="$NAME"
