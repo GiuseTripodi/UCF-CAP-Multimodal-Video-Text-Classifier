@@ -110,7 +110,7 @@ def evaluation(test_path, model_path):
 
     # Load model
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    model = load_model(model_path, num_classes=10).to(device)
+    model = load_model(model_path, num_classes=13).to(device)
 
     # Extract embeddings and predictions
     print('[INFO] Model Loaded')
