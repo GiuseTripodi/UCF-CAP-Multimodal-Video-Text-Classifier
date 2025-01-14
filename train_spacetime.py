@@ -71,7 +71,7 @@ def training(data, save, name):
     # Initialize Trainer class and start training
     save_path = f'{save}/spacetime_transformer_{name}'
 
-    trainer = Trainer(model, train_dataloader, valid_dataloader, criterion, optimizer, device, save_path, num_epochs=1)
+    trainer = Trainer(model, train_dataloader, valid_dataloader, criterion, optimizer, device, save_path, num_epochs=50)
     trainer.train()
 
 
