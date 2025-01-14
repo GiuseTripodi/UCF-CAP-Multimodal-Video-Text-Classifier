@@ -40,9 +40,9 @@ def training(data, save, name):
     logger.info(f'Training dataset loaded from {csv_train_file_path}')
     logger.info(f'Validation dataset loaded from {csv_val_file_path}')
     dataset_train = UCF101Dataset(csv_train_file_path, transform=transform)
-    train_dataloader = DataLoader(dataset_train, batch_size=8, shuffle=True)
+    train_dataloader = DataLoader(dataset_train, batch_size=4, shuffle=True)
     dataset_val = UCF101Dataset(csv_val_file_path, transform=transform)
-    valid_dataloader = DataLoader(dataset_val, batch_size=8, shuffle=True)
+    valid_dataloader = DataLoader(dataset_val, batch_size=4, shuffle=True)
 
 
     model = SpaceTimeTransformer(
