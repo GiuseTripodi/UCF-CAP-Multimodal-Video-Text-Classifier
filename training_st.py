@@ -57,6 +57,7 @@ def training(data, save, name):
     optimizer = optim.Adam(model.parameters(), lr=1e-4)
     logger.info(model)
 
+    # Test
     num_epochs = 20
     for epoch in range(num_epochs):
         model.train()
