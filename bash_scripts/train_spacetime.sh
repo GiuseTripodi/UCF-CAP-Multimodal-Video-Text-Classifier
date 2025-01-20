@@ -12,10 +12,9 @@ echo "Job is using $NGPUS GPU(s) with ID(s) $CUDA_VISIBLE_DEVICES and $NSLOTS CP
 source /mnt/iusers01/mace01/t08341gt/env_phd/bin/activate
 
 # Default values arg parameters
-DEFAULT_DATA="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/UcfCap"
-DEFAULT_LOG="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/logs"
-DEFAULT_SAVE="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/models"
-DEFAULT_NAME="test"
+DEFAULT_CONFIG="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/configs/ucf-cap.json"
+DEFAULT_SAVE_DIR="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data"
+DEFAULT_NAME="TESTFRAMCESCP"
 
 # Usage function to display help
 usage() {
@@ -23,25 +22,21 @@ usage() {
     exit 1
 }
 
+
 # Initialize variables with default values
-DATA="$DEFAULT_DATA"
-LOG="$DEFAULT_LOG"
-SAVE="$DEFAULT_SAVE"
+CONFIG="$DEFAULT_CONFIG"
+SAVE_DIR="$DEFAULT_SAVE_DIR"
 NAME="$DEFAULT_NAME"
 
 # Parse command line arguments
 while [ "$#" -gt 0 ]; do
     case "$1" in
-        --data)
-            DATA="$2"
+        --config)
+            CONFIG="$2"
             shift 2
             ;;
-        --log)
-            LOG="$2"
-            shift 2
-            ;;
-        --save)
-            SAVE="$2"
+        --save_dir)
+            SAVE_DIR="$2"
             shift 2
             ;;
         --name)
@@ -55,4 +50,4 @@ while [ "$#" -gt 0 ]; do
 done
 
 # Run the Python script with the provided or default arguments
-python3 /mnt/iusers01/mace01/t08341gt/UCF_cap_mh/train_spacetime.py  --data="$DATA" --save="$SAVE" --log="$LOG" --name="$NAME"
+python3 /mnt/iusers01/mace01/t08341gt/UCF_cap_mh/train_spacetime.py  --config="$CONFIG" --save_dir="$SAVE_DIR" --name="$NAME"
