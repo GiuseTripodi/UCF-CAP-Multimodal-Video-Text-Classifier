@@ -1,104 +1,73 @@
 import inspect
 import logging
+import logging.config
 import os
 import time
 from datetime import datetime
 from functools import reduce
 from operator import getitem
 from pathlib import Path
-
-from logger import setup_logging
-from utils import read_json, write_json
-
+import json
 
 class ConfigParser:
-    def __init__(self, args, options='', timestamp=True, test=False):
-        # parse default and custom cli options
-        for opt in options:
-            args.add_argument(*opt.flags, default=None, type=opt.type)
-        args = args.parse_args()
-
-        if args.device:
-            os.environ["CUDA_VISIBLE_DEVICES"] = args.device
-        #if args.resume is None:
-        msg_no_cfg = "Configuration file need to be specified. Add '-c config.json', for example."
-        assert args.config is not None, msg_no_cfg
-        self.cfg_fname = Path(args.config)
-        config = read_json(self.cfg_fname)
-        self.resume = None
-        '''
-        else:
-            self.resume = Path(args.resume)
-            resume_cfg_fname = self.resume.parent / 'config.json'
-            config = read_json(resume_cfg_fname)
-            if args.config is not None:
-                config.update(read_json(Path(args.config)))
-        '''
-        # load config file and apply custom cli options
-        self._config = _update_config(config, options, args)
+    def __init__(self, args, timestamp=True, test=False):
+        # load json config file
+        if args.config is None:
+            msg_no_cfg = "Configuration file need to be specified. Add '-c config.json', for example."
+            assert args.config is not None, msg_no_cfg
+        with open(args.config, 'r') as file:
+            self.config = json.load(file)
 
         # set save_dir where trained model and log will be saved.
-        save_dir = Path(self.config['trainer']['save_dir'])
-        timestamp = datetime.now().strftime(r'%m%d_%H%M%S') if timestamp else ''
+        save_dir = args.save_dir
 
-        exper_name = self.config['name']
-        self._save_dir = save_dir / 'models' / exper_name / timestamp
-        self._web_log_dir = save_dir / 'web' / exper_name / timestamp
-        self._log_dir = save_dir / 'log' / exper_name / timestamp
-
-        if not test:
-            self.save_dir.mkdir(parents=True, exist_ok=True)
-            self.log_dir.mkdir(parents=True, exist_ok=True)
-
-        # if set, remove all previous experiments with the current config
-        if vars(args).get("purge_exp_dir", False):
-            for dirpath in (self._save_dir, self._log_dir, self._web_log_dir):
-                config_dir = dirpath.parent
-                existing = list(config_dir.glob("*"))
-                print(f"purging {len(existing)} directories from config_dir...")
-                tic = time.time()
-                os.system(f"rm -rf {config_dir}")
-                print(f"Finished purge in {time.time() - tic:.3f}s")
-
-        # save updated config file to the checkpoint dir
-        if not test:
-            write_json(self.config, self.save_dir / 'config.json')
-
-            # configure logging module
-            setup_logging(self.log_dir)
-            self.log_levels = {
-                0: logging.WARNING,
-                1: logging.INFO,
-                2: logging.DEBUG
-            }
-
-    def initialize(self, name, module,  *args, index=None, **kwargs):
-        """
-        finds a function handle with the name given as 'type' in config, and returns the 
-        instance initialized with corresponding keyword args given as 'args'.
-        """
-        if index is None:
-            module_name = self[name]['type']
-            module_args = dict(self[name]['args'])
-            assert all(k not in module_args for k in kwargs), 'Overwriting kwargs given in config file is not allowed'
-            module_args.update(kwargs)
+        if args.name is None:
+            self._exper_name = self.config['name']
         else:
-            module_name = self[name][index]['type']
-            module_args = dict(self[name][index]['args'])
+            self._exper_name = args.name
 
-        # if parameter not in config subdict, then check if it's in global config.
-        signature = inspect.signature(getattr(module, module_name).__init__)
-        print(module_name)
-        for param in signature.parameters.keys():
-            if param not in module_args and param in self.config:
-                module_args[param] = self[param]
+        self._save_dir = os.path.join(save_dir, 'models')
+        self._log_dir = os.path.join(save_dir, 'log')
+        self.data_dir = os.path.join(save_dir, 'UcfCap')
 
-        return getattr(module, module_name)(*args, **module_args)
+        # get model parameters
+        self.model_parameters = self.config['trainer']
 
     def __getitem__(self, name):
         return self.config[name]
 
-    def get_logger(self, name, verbosity=2):
+    def get_logger(self, name, ):
+        log_config = {
+            "version": 1,
+            "disable_existing_loggers": False,
+            "formatters": {
+                "simple": {"format": "%(message)s"},
+                "datetime": {"format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"},
+            },
+            "handlers": {
+                "console": {
+                    "class": "logging.StreamHandler",
+                    "level": "DEBUG",
+                    "formatter": "simple",
+                    "stream": "ext://sys.stdout",
+                },
+                "info_file_handler": {
+                    "class": "logging.handlers.RotatingFileHandler",
+                    "level": "INFO",
+                    "formatter": "datetime",
+                    "filename": "info.log",
+                    "maxBytes": 10485760,
+                    "backupCount": 20,
+                    "encoding": "utf8",
+                },
+            },
+            "root": {
+                "level": "INFO",
+                "handlers": ["console", "info_file_handler"],
+            },
+        }
+
+        logging.config.dictConfig(log_config)
         logger = logging.getLogger(name)
         return logger
 
@@ -112,31 +81,67 @@ class ConfigParser:
         return self._save_dir
 
     @property
-    def log_dir(self):
+    def batch_size(self):
+        return self.config['data_loader']['batch_size']
+
+    @property
+    def shuffle(self):
+        return self.config['data_loader']['shuffle']
+
+
+    @property
+    def train_path(self):
+        train_path = os.path.join(self.data_dir, 'train_dataset.csv')
+        val_path = os.path.join(self.data_dir, 'val_dataset.csv')
+        return train_path, val_path
+
+    @property
+    def test_path(self):
+        test_path = os.path.join(self.data_dir, 'test_dataset.csv')
+        return test_path
+
+    @property
+    def train_data_path(self):
         return self._log_dir
 
+    @property
+    def model_parameters(self):
+        return self._model_parameters
 
-# helper functions used to update config dict with custom cli options
-def _update_config(config, options, args):
-    for opt in options:
-        value = getattr(args, _get_opt_name(opt.flags))
-        if value is not None:
-            _set_by_path(config, opt.target, value)
-    return config
+    @property
+    def img_size(self):
+        return self.config['trainer']['img_size']
+    @property
+    def in_chans(self):
+        return self.config['trainer']['in_chans']
+    @property
+    def num_frames(self):
+        return self.config['trainer']['num_frames']
+    @property
+    def num_classes(self):
+        return self.config['trainer']['num_classes']
+    @property
+    def depth(self):
+        return self.config['trainer']['depth']
+    @property
+    def num_heads(self):
+        return self.config['trainer']['num_heads']
+    @property
+    def epochs(self):
+        return self.config['trainer']['epochs']
 
+    @property
+    def learning_rate(self):
+        return self.config['optimizer']['args']['lr']
 
-def _get_opt_name(flags):
-    for flg in flags:
-        if flg.startswith('--'):
-            return flg.replace('--', '')
-    return flags[0].replace('--', '')
+    @property
+    def exper_name(self):
+        return self._exper_name
 
+    @model_parameters.setter
+    def model_parameters(self, value):
+        self._model_parameters = value
 
-def _set_by_path(tree, keys, value):
-    """Set a value in a nested object in tree by sequence of keys."""
-    _get_by_path(tree, keys[:-1])[keys[-1]] = value
-
-
-def _get_by_path(tree, keys):
-    """Access a nested object in tree by sequence of keys."""
-    return reduce(getitem, keys, tree)
+    @config.setter
+    def config(self, value):
+        self._config = value

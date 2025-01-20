@@ -1,6 +1,9 @@
 import argparse
 import sys
 import os
+
+from parse_config import ConfigParser
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
@@ -22,19 +25,22 @@ logger = logging.getLogger('eval')
 
 
 # Define a function to load the trained model
-def load_model(model_path, num_classes=10):
+def load_model(config, model_path):
     model = SpaceTimeTransformer(
-        img_size=224,
-        num_frames=8,
-        in_chans=3,
-        num_classes=num_classes,
+        img_size=config.img_size,
+        num_frames=config.num_frames,
+        in_chans=config.in_chans,
+        num_classes=config.num_classes,
+        depth=config.depth,
+        num_heads=config.num_heads,
         embed_dim=768,
-        depth=12,
-        num_heads=12,
         attention_style='frozen-in-time'
     )
     model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
-    model.eval()  # Set model to evaluation mode
+    total_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    print(f"[INFO] Total Trainable Parameters: {total_params}")
+    logger.info(f"Total Trainable Parameters: {total_params}")
+    model.eval()
     return model
 
 
@@ -61,25 +67,6 @@ def extract_predictions(model, dataloader, device):
     return embeddings, true_labels, pred_labels
 
 
-# Define a function to plot embeddings
-def plot_embeddings(embeddings, labels, method='pca'):
-    if method == 'pca':
-        reducer = PCA(n_components=2)
-    elif method == 'tsne':
-        reducer = TSNE(n_components=2, random_state=42)
-    else:
-        raise ValueError("Unsupported method. Use 'pca' or 'tsne'.")
-
-    reduced_embeddings = reducer.fit_transform(embeddings)
-    plt.figure(figsize=(10, 8))
-    scatter = plt.scatter(reduced_embeddings[:, 0], reduced_embeddings[:, 1], c=labels, cmap='viridis', alpha=0.7)
-    plt.colorbar(scatter, label='Class Labels')
-    plt.title(f"Embeddings Visualization ({method.upper()})")
-    plt.xlabel("Component 1")
-    plt.ylabel("Component 2")
-    plt.show()
-
-
 # Define a function to compute classification metrics
 def compute_metrics(true_labels, pred_labels):
     print("\n[INFO] Classification Metrics")
@@ -96,21 +83,24 @@ def compute_metrics(true_labels, pred_labels):
 
 
 # Main function
-def evaluation(test_path, model_path):
+def eval_spacetime(config: ConfigParser, model_name):
     # Data transformation
     transform = transforms.Compose([
         transforms.Resize((224, 224)),
-        transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
 
     # Load dataset and dataloader
+    test_path = config.test_path
+    logger.info(f'Loading dataset from {test_path}')
     test_dataset = UCF101Dataset(test_path, transform=transform)
-    test_dataloader = DataLoader(test_dataset, batch_size=4, shuffle=False)
+    test_dataloader = DataLoader(test_dataset, config.batch_size, config.shuffle)
+    print('Test dataset:', len(test_dataset), 'samples')
 
     # Load model
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    model = load_model(model_path, num_classes=13).to(device)
+    model_path = os.path.join(config.save_dir, f'{model_name}')
+    model = load_model(config, model_path).to(device)
 
     # Extract embeddings and predictions
     print('[INFO] Model Loaded')
@@ -119,20 +109,19 @@ def evaluation(test_path, model_path):
     # Compute and display metrics
     compute_metrics(true_labels, pred_labels)
 
-    # Plot embeddings
-    #plot_embeddings(embeddings, true_labels, method='tsne')
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Script to train model")
-    parser.add_argument('--data', help='path to data dir used to train the model')
-    parser.add_argument('--model_path', default=None, help='Path where to save the trained models')
-    parser.add_argument('--name', default=None, help='Name of the experiments, way of saving the model ')
-    parser.add_argument('--log', default=None, help="Path to where the logs are saved")
-    parser.add_argument('-c', '--config', default=None, type=str,
-                      help='config file path (default: None)')
+    parser.add_argument('--config', default=None, help='Path to configuration file')
+    parser.add_argument('--model_name', help='Path to CSV file with dataset information to eval the model')
+    parser.add_argument('--name', default=None, help='Name of the experiment (used for saving the model)')
+    parser.add_argument('--save_dir', default=None, help='Path to where get the saves file')
     args = parser.parse_args()
 
-    #setup_logging(args.log)
+    # setup_logging(args.log)
 
-    logger.info("Training started")
-    evaluation(args.data, args.model_path)
+    config = ConfigParser(args)
+    logger = config.get_logger('Evaluation')
+    logger.info("Evaluation started")
+    eval_spacetime(config, args.model_name)

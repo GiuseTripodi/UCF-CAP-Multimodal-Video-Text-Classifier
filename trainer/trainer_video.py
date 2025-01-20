@@ -1,5 +1,8 @@
 import sys
 import os
+from datetime import date
+from os.path import join
+
 import torch
 import torch.optim as optim
 import torch.nn as nn
@@ -13,20 +16,22 @@ from torch.utils.data import DataLoader
 from torch.utils.data import Dataset
 import torchvision.transforms as transforms
 
+from parse_config import ConfigParser
 
 # Configure and create a logger
 logger = logging.getLogger('train')
 
 class Trainer:
-    def __init__(self, model, train_loader, val_loader, criterion, optimizer, device, save_path, num_epochs=20):
+    def __init__(self, model, train_loader, val_loader, criterion, optimizer, device, config:ConfigParser):
         self.model = model
         self.train_loader = train_loader
         self.val_loader = val_loader
         self.criterion = criterion
         self.optimizer = optimizer
         self.device = device
-        self.save_path = save_path
-        self.num_epochs = num_epochs
+        self.exper_name = config.exper_name
+        self.save_path = config.save_dir
+        self.num_epochs = config.epochs
 
     def train_epoch(self):
         self.model.train()
@@ -66,7 +71,7 @@ class Trainer:
 
     def save_model(self):
         # Save model after all epochs are completed
-        torch.save(self.model.state_dict(), self.save_path)
+        torch.save(self.model.state_dict(), join(self.save_path, f'space_time_{self.exper_name}_{date.today().strftime("%d-%m-%y")}'))
         logger.info(f"Model saved to {self.save_path}")
 
     def train(self):
