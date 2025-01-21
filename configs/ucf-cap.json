@@ -14,11 +14,11 @@
     "trainer": {
         "epochs": 50,
         "early_stop": 10,
-        "num_frames": 8,
+        "num_frames": 16,
         "num_classes":12,
         "img_size":224,
         "in_chans":3,
-        "depth": 6,
-        "num_heads":6
+        "depth": 4,
+        "num_heads":4
     }
 }
