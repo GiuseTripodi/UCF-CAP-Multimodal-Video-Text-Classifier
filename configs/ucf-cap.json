@@ -3,7 +3,7 @@
     "n_gpu": 1,
     "data_loader":{
       "shuffle": true,
-      "batch_size": 250
+      "batch_size": 100
     },
     "optimizer": {
         "type": "AdamW",
