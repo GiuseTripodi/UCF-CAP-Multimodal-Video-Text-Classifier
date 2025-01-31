@@ -18,7 +18,7 @@
         "num_classes":12,
         "img_size":224,
         "in_chans":3,
-        "depth": 1,
-        "num_heads":1
+        "depth": 2,
+        "num_heads":2
     }
 }
