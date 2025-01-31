@@ -4,8 +4,10 @@ from datetime import date
 
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
-from sklearn.metrics import precision_score, recall_score, f1_score, classification_report
+from sklearn.metrics import precision_score, recall_score, f1_score, classification_report, confusion_matrix
 import torch
+
+from data_loader.ucf_cap_dataset import UCF101Dataset
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -20,7 +22,6 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 from torchvision import transforms
 from model.video_transformer import SpaceTimeTransformer
-from data_loader.lung_pet_ct import DICOMVolumeDataset
 import pandas as pd
 import torch
 import numpy as np
@@ -31,9 +32,20 @@ from torchvision import transforms
 from torch.utils.data import DataLoader
 from transformers import AutoImageProcessor, TimesformerForVideoClassification
 
-# Configure and create a logger
-logger = logging.getLogger('train')
 
+# Define a function to compute classification metrics
+def compute_metrics(true_labels, pred_labels):
+    print("\n[INFO] Classification Metrics")
+    accuracy = np.mean(true_labels == pred_labels)
+    print(f"Accuracy: {accuracy * 100:.2f}%")
+
+    report = classification_report(true_labels, pred_labels, zero_division=0)
+    print("Classification Report:")
+    print(report)
+
+    conf_matrix = confusion_matrix(true_labels, pred_labels)
+    print("Confusion Matrix:")
+    print(conf_matrix)
 
 # Define a function to extract embeddings and predictions
 def extract_embeddings_and_predictions(model, processor, dataloader, device):
@@ -43,22 +55,23 @@ def extract_embeddings_and_predictions(model, processor, dataloader, device):
     with torch.no_grad():
         for inputs, label, *other_info in dataloader:
             inputs = inputs.to(device)
+            inputs = inputs.squeeze(0)  # Removes the batch dimension
             if processor:
-                inputs = inputs.squeeze(0)  # Removes the batch dimension
-                inputs = processor(inputs, return_tensors="pt")
+                inputs = processor(list(inputs), return_tensors="pt")
 
-            inputs = inputs.to(device)
 
             # Get the embeddings and predicted classes
-            outputs = model(inputs)
+            outputs = model(**inputs)
             logits = outputs.logits
-
             predicted_labels = torch.argmax(logits, dim=1)  # Get the predicted class
 
+            print(outputs)
+
+            #embeddings.append(embedding.cpu().numpy())
             labels.append(label.numpy())
             predictions.append(predicted_labels.cpu().numpy())
 
-    #embeddings = np.concatenate(embeddings, axis=0)
+    embeddings = np.concatenate(embeddings, axis=0)
     labels = np.concatenate(labels, axis=0)
     predictions = np.concatenate(predictions, axis=0)
     return embeddings, labels, predictions
@@ -68,21 +81,26 @@ def eval_spacetime(config: ConfigParser, model_name):
     logger = config.get_logger('Eval')
     logger.info(f'Evaluation started for model: {model_name}')
 
+    # Data transformation
+    transform = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor()
+    ])
+
     # Load dataset and dataloader
     test_path = config.test_path
     logger.info(f'Loading dataset from {test_path}')
-    dataset = DICOMVolumeDataset(test_path, config)
-    test_dataloader = DataLoader(dataset, 1, config.shuffle)
-    print('Test dataset:', len(dataset), 'samples')
+    test_dataset = UCF101Dataset(test_path, transform=transform)
+    test_dataloader = DataLoader(test_dataset, 1, config.shuffle)
+    print('Test dataset:', len(test_dataset), 'samples')
 
     # Load model
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    model_path = os.path.join(config.save_dir, f'{model_name}')
-    #processor = AutoImageProcessor.from_pretrained(model_path)
-    processor = None
+    #model_path = os.path.join(config.save_dir, f'{model_name}')
+    model_path = "facebook/timesformer-base-finetuned-k400"
+    processor = AutoImageProcessor.from_pretrained("MCG-NJU/videomae-base-finetuned-kinetics")
+    #processor = None
     model = TimesformerForVideoClassification.from_pretrained(model_path).to(device)
-    logger.info(f"Epochs: {config.epochs} - Num Frames: {config.num_frames} - Batch size: {config.batch_size} - Depth: {config.depth} - Heads: {config.num_heads} ")
-
 
     # Extract embeddings and predictions
     print('[INFO] Model Loaded')
@@ -91,19 +109,8 @@ def eval_spacetime(config: ConfigParser, model_name):
     # Print Classification Metrics
     print('[INFO] Classification Metrics')
     logger.info('[INFO] Classification Metrics')
-
-    accuracy = (predictions == labels).sum().item() / len(labels)  # Accuracy calculation
-    print(f'Accuracy: {accuracy * 100:.2f}%')  # Print accuracy as percentage
-    print(f'Precision: {precision_score(labels, predictions, average="weighted")}')
-    print(f'Recall: {recall_score(labels, predictions, average="weighted")}')
-    print(f'F1 Score: {f1_score(labels, predictions, average="weighted")}')
-    print(f'Classification Report: \n{classification_report(labels, predictions)}')
-    logger.info(f'Accuracy: {accuracy * 100:.2f}%')
-    logger.info(f'Precision: {precision_score(labels, predictions, average="weighted")}')
-    logger.info(f'Recall: {recall_score(labels, predictions, average="weighted")}')
-    logger.info(f'F1 Score: {f1_score(labels, predictions, average="weighted")}')
-    logger.info(f'Classification Report: \n{classification_report(labels, predictions)}')
-
+    # Compute and display metrics
+    compute_metrics(labels, predictions)
 
 
 # Main function

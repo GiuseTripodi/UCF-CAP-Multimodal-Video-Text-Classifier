@@ -82,3 +82,36 @@
   (pre_logits): Identity()
   (head): Linear(in_features=768, out_features=12, bias=True)
 )
+2025-01-31 10:01:24,867 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:01:24,869 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-31 10:03:43,548 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:03:43,549 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-31 10:04:53,810 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:04:53,810 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-31 10:05:36,836 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:05:36,836 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-31 10:06:25,644 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:06:25,644 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-31 10:07:04,349 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:07:04,350 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-31 10:10:51,850 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:10:51,851 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-31 10:11:56,456 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:11:56,457 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-31 10:12:42,552 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:12:42,553 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-31 10:13:30,773 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:13:30,773 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-31 10:22:27,680 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:22:27,681 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-31 10:23:12,249 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:23:12,250 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-31 10:24:33,331 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:24:33,331 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-31 10:27:54,916 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:27:54,917 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-31 10:29:15,349 - Eval - INFO - [INFO] Classification Metrics
+2025-01-31 10:38:23,336 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:38:23,337 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-31 10:42:09,549 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-01-31 10:42:09,550 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
