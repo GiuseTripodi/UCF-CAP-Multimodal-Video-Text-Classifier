@@ -3,7 +3,7 @@
     "n_gpu": 1,
     "data_loader":{
       "shuffle": true,
-      "batch_size": 50
+      "batch_size": 16
     },
     "optimizer": {
         "type": "AdamW",
@@ -14,11 +14,11 @@
     "trainer": {
         "epochs": 5,
         "early_stop": 10,
-        "num_frames": 16,
+        "num_frames": 32,
         "num_classes":12,
         "img_size":224,
         "in_chans":3,
-        "depth": 4,
-        "num_heads":4
+        "depth": 1,
+        "num_heads":1
     }
 }

@@ -43,3 +43,42 @@
 )
 2025-01-20 14:44:26,266 - Evaluation - INFO - Evaluation started
 2025-01-20 14:44:26,269 - Evaluation - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-01-30 16:40:11,920 - Train - INFO - Training started
+2025-01-30 16:40:11,921 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-01-30 16:40:12,060 - Train - INFO - Total Trainable Parameters: 38572812
+2025-01-30 16:40:12,060 - Train - INFO - Device model: cpu
+2025-01-30 16:40:16,548 - Train - INFO - SpaceTimeTransformer(
+  (patch_embed): VideoPatchEmbed(
+    (proj): Conv2d(3, 768, kernel_size=(16, 16), stride=(16, 16))
+  )
+  (pos_drop): Dropout(p=0.0, inplace=False)
+  (blocks): ModuleList(
+    (0-3): 4 x SpaceTimeBlock(
+      (norm1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (attn): VarAttention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (timeattn): VarAttention(
+        (qkv): Linear(in_features=768, out_features=2304, bias=True)
+        (proj): Linear(in_features=768, out_features=768, bias=True)
+        (attn_drop): Dropout(p=0.0, inplace=False)
+        (proj_drop): Dropout(p=0.0, inplace=False)
+      )
+      (drop_path): Identity()
+      (norm2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      (mlp): Mlp(
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (act): GELU(approximate='none')
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (drop): Dropout(p=0.0, inplace=False)
+      )
+      (norm3): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+    )
+  )
+  (norm): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+  (pre_logits): Identity()
+  (head): Linear(in_features=768, out_features=12, bias=True)
+)
