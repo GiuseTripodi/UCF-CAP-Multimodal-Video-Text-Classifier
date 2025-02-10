@@ -21,7 +21,7 @@ from sklearn.metrics import accuracy_score
 
 def load_model(config: ConfigParser):
     if config.modality == 0:
-        # define the model configurations
+        # Model configuration for Hugging Face Model
         configuration = TimesformerConfig(
             image_size=config.img_size,
             num_frames=config.num_frames,
@@ -39,18 +39,19 @@ def load_model(config: ConfigParser):
     elif config.modality == 1:
         model = TimesformerForVideoClassification.from_pretrained(
             config.model_name,
-            num_labels=config.num_classes,
+            num_labels=5,
             ignore_mismatched_sizes=True
         )
 
-        # Freeze the base layers
+        # Freeze all layers except the classification head
         for param in model.parameters():
-            param.requires_grad = True  # Freeze pre-trained base layers
+            param.requires_grad = False  # Freeze all base layers
 
-        processor = AutoImageProcessor.from_pretrained(
-            config.model_name
-        )
+        # Unfreeze the classification head
+        for param in model.classifier.parameters():
+            param.requires_grad = True
 
+        processor = AutoImageProcessor.from_pretrained(config.model_name)
     return model, processor
 
 # Define a simple function to compute accuracy
@@ -100,7 +101,6 @@ def training(config: ConfigParser):
 
     criterion = nn.CrossEntropyLoss(weight=class_weights)
     optimizer = optim.Adam(model.parameters(), lr=config.learning_rate)
-    logger.info(model)
 
     # Initialize Trainer class and start training
     trainer = Trainer(model, train_dataloader, val_dataloader, criterion, optimizer, device, config)

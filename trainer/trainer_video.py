@@ -32,6 +32,7 @@ class Trainer:
         self.exper_name = config.exper_name
         self.save_path = config.save_dir
         self.num_epochs = config.epochs
+        self.config = config
 
     def train_epoch(self):
         self.model.train()
