@@ -86,7 +86,6 @@ class UCF101Dataset(Dataset):
         frames = sorted(glob.glob(os.path.join(path, '*.jpg')))
         selected_frames = frames[:self.num_frames] # Choose first N frames
         images = [Image.open(frame).convert("RGB") for frame in selected_frames]
-
         # Check pixel values for the first image
         if self.transform:
             images = [self.transform(img) for img in images]
