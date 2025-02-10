@@ -3,6 +3,7 @@ import os
 import collections
 
 from sklearn.utils import compute_class_weight
+from transformers import AutoImageProcessor, TimesformerForVideoClassification, TimesformerConfig
 
 from parse_config import ConfigParser
 from trainer.trainer_video import *
@@ -18,6 +19,40 @@ from logger import setup_logging
 import model.metric as module_metric
 from sklearn.metrics import accuracy_score
 
+def load_model(config: ConfigParser):
+    if config.modality == 0:
+        # define the model configurations
+        configuration = TimesformerConfig(
+            image_size=config.img_size,
+            num_frames=config.num_frames,
+            num_channels=config.in_chans,
+            num_attention_heads=config.num_heads,
+            num_hidden_layers = config.depth,
+            num_labels=config.num_classes
+        )
+
+        model = TimesformerForVideoClassification(
+            configuration
+        )
+        processor = None
+
+    elif config.modality == 1:
+        model = TimesformerForVideoClassification.from_pretrained(
+            config.model_name,
+            num_labels=config.num_classes,
+            ignore_mismatched_sizes=True
+        )
+
+        # Freeze the base layers
+        for param in model.parameters():
+            param.requires_grad = True  # Freeze pre-trained base layers
+
+        processor = AutoImageProcessor.from_pretrained(
+            config.model_name
+        )
+
+    return model, processor
+
 # Define a simple function to compute accuracy
 def compute_metrics(p):
     preds, labels = p
@@ -26,10 +61,17 @@ def compute_metrics(p):
     return {"accuracy": accuracy}
 
 def training(config: ConfigParser):
+    logger = config.get_logger('Train')
+    logger.info(f'Training started for model: space_time_{config.model_name}_{date.today().strftime("%d-%m-%y")}')
+
+    # Load the model
+    logger.info(f'Loading model')
+    model, processor = load_model(config)
+
+    # Data transformation
     transform = transforms.Compose([
-    transforms.Resize((224, 224)),
-    transforms.ToTensor(),
-    transforms.Normalize()
+        transforms.Resize((224, 224)),
+        transforms.ToTensor()
     ])
 
     # Load dataset
@@ -39,21 +81,6 @@ def training(config: ConfigParser):
     train_dataloader = DataLoader(dataset_train, config.batch_size, config.shuffle)
     dataset_val = UCF101Dataset(csv_val_file_path, transform=transform)
     val_dataloader = DataLoader(dataset_val, config.batch_size, config.shuffle)
-
-    # Initialize model
-    model = SpaceTimeTransformer(
-        img_size=config.img_size,
-        num_frames=config.num_frames,
-        in_chans=config.in_chans,
-        num_classes=config.num_classes,
-        depth=config.depth,
-        num_heads=config.num_heads,
-        embed_dim=768,
-        attention_style='frozen-in-time'
-    )
-    total_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    print(f"[INFO] Total Trainable Parameters: {total_params}")
-    logger.info(f"Total Trainable Parameters: {total_params}")
 
     # Device configuration
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -88,6 +115,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     config = ConfigParser(args)
-    logger = config.get_logger('Train')
-    logger.info("Training started")
     training(config)

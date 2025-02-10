@@ -19,6 +19,7 @@ import re
 import csv
 from sklearn.model_selection import train_test_split
 import numpy as np
+import torchvision.io as io
 
 def create_csv_splits(home_path):
     # Paths to the UCF101 dataset
@@ -83,12 +84,14 @@ class UCF101Dataset(Dataset):
     def __getitem__(self, idx):
         path, label = self.data[idx]
         frames = sorted(glob.glob(os.path.join(path, '*.jpg')))
-        if len(frames) < self.num_frames:
-            frames = frames + frames[:self.num_frames - len(frames)]  # Padding
+        selected_frames = frames[:self.num_frames]# Choose first N frames
+        image_pil = Image.open(selected_frames[0]).convert("RGB")
+        #image_pil.show()  # Display image to ensure it's read correctly
+        image_tensor = transforms.ToTensor()(image_pil)  # Convert to tensor
+        images = [Image.open(frame).convert("RGB") for frame in selected_frames]
+        image_arrays = [np.array(img, dtype=float) for img in images]
 
-        selected_frames = frames[:self.num_frames]  # Choose first N frames
-        images = [Image.open(frame) for frame in selected_frames]
-
+        # Check pixel values for the first image
         if self.transform:
             images = [self.transform(img) for img in images]
 

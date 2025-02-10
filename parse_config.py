@@ -138,6 +138,13 @@ class ConfigParser:
     def exper_name(self):
         return self._exper_name
 
+    @property
+    def model_name(self):
+        return self.config['trainer']['model_name']
+    @property
+    def modality(self):
+        return self.config['trainer']['modality']
+
     @model_parameters.setter
     def model_parameters(self, value):
         self._model_parameters = value

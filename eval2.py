@@ -55,23 +55,20 @@ def extract_embeddings_and_predictions(model, processor, dataloader, device):
     with torch.no_grad():
         for inputs, label, *other_info in dataloader:
             inputs = inputs.to(device)
-            inputs = inputs.squeeze(0)  # Removes the batch dimension
             if processor:
+                inputs = inputs.squeeze(0)  # Removes the batch dimension
                 inputs = processor(list(inputs), return_tensors="pt")
 
-
             # Get the embeddings and predicted classes
-            outputs = model(**inputs)
+            outputs = model(inputs)
             logits = outputs.logits
             predicted_labels = torch.argmax(logits, dim=1)  # Get the predicted class
-
-            print(outputs)
 
             #embeddings.append(embedding.cpu().numpy())
             labels.append(label.numpy())
             predictions.append(predicted_labels.cpu().numpy())
 
-    embeddings = np.concatenate(embeddings, axis=0)
+    #embeddings = np.concatenate(embeddings, axis=0)
     labels = np.concatenate(labels, axis=0)
     predictions = np.concatenate(predictions, axis=0)
     return embeddings, labels, predictions
@@ -99,7 +96,7 @@ def eval_spacetime(config: ConfigParser, model_name):
     #model_path = os.path.join(config.save_dir, f'{model_name}')
     model_path = "facebook/timesformer-base-finetuned-k400"
     processor = AutoImageProcessor.from_pretrained("MCG-NJU/videomae-base-finetuned-kinetics")
-    #processor = None
+    processor = None
     model = TimesformerForVideoClassification.from_pretrained(model_path).to(device)
 
     # Extract embeddings and predictions

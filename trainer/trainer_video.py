@@ -41,7 +41,8 @@ class Trainer:
 
             # Forward pass
             outputs = self.model(inputs)
-            loss = self.criterion(outputs, labels)
+            logits = outputs.logits
+            loss = self.criterion(logits, labels)
 
             # Backward pass
             self.optimizer.zero_grad()
@@ -62,7 +63,8 @@ class Trainer:
 
                 # Forward pass
                 outputs = self.model(inputs)
-                loss = self.criterion(outputs, labels)
+                logits = outputs.logits
+                loss = self.criterion(logits, labels)
 
                 running_loss += loss.item()
 
