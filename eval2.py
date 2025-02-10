@@ -34,18 +34,16 @@ from transformers import AutoImageProcessor, TimesformerForVideoClassification
 
 
 # Define a function to compute classification metrics
-def compute_metrics(true_labels, pred_labels):
-    print("\n[INFO] Classification Metrics")
-    accuracy = np.mean(true_labels == pred_labels)
-    print(f"Accuracy: {accuracy * 100:.2f}%")
+def compute_metrics(labels, predictions, logger):
+    logger.info('[INFO] Classification Metrics')
+    accuracy = (predictions == labels).sum().item() / len(labels)  # Accuracy calculation
+    logger.info(f'Accuracy: {accuracy * 100:.2f}%')
+    logger.info(f'Precision: {precision_score(labels, predictions, average="weighted")}')
+    logger.info(f'Recall: {recall_score(labels, predictions, average="weighted")}')
+    logger.info(f'F1 Score: {f1_score(labels, predictions, average="weighted")}')
+    logger.info(f'Classification Report: \n{classification_report(labels, predictions)}')
 
-    report = classification_report(true_labels, pred_labels, zero_division=0)
-    print("Classification Report:")
-    print(report)
 
-    conf_matrix = confusion_matrix(true_labels, pred_labels)
-    print("Confusion Matrix:")
-    print(conf_matrix)
 
 # Define a function to extract embeddings and predictions
 def extract_embeddings_and_predictions(model, processor, dataloader, device):
@@ -80,7 +78,9 @@ def load_model(config: ConfigParser, model_name, logger):
         # Use pre-trained model
         processor = AutoImageProcessor.from_pretrained(config.model_name)
         processor = None
-        model = TimesformerForVideoClassification.from_pretrained(config.model_name)
+        model = TimesformerForVideoClassification.from_pretrained(config.model_name, num_labels=config.num_classes, ignore_mismatched_sizes=True)
+        print(model.config)
+
     elif config.modality == 1:
         # Use model pre_trained and the fine_tuned
         model_path = os.path.join(config.save_dir, f'{model_name}')
@@ -88,6 +88,8 @@ def load_model(config: ConfigParser, model_name, logger):
         model = TimesformerForVideoClassification.from_pretrained(model_path)
         # processor = AutoImageProcessor.from_pretrained(model_path)
         processor = None
+        print(model.config)
+
     return model, processor
 
 
@@ -117,10 +119,8 @@ def eval_spacetime(config: ConfigParser, model_name):
     print('[INFO] Model Loaded')
     embeddings, labels, predictions = extract_embeddings_and_predictions(model, processor, test_dataloader, device)
 
-    # Print Classification Metrics
-    logger.info('[INFO] Classification Metrics')
     # Compute and display metrics
-    compute_metrics(labels, predictions)
+    compute_metrics(labels, predictions, logger)
 
 
 # Main function

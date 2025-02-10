@@ -21,6 +21,6 @@
         "depth": 2,
         "num_heads":2,
         "model_name": "facebook/timesformer-base-finetuned-k400",
-        "modality": 1
+        "modality": 0
     }
 }

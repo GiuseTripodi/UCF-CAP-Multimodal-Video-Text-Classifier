@@ -623,3 +623,129 @@
 2025-02-10 16:18:59,906 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
 2025-02-10 16:18:59,911 - Eval - INFO - [INFO] Loaded pre-trained model: facebook/timesformer-base-finetuned-k400
 2025-02-10 16:19:04,909 - Eval - INFO - [INFO] Classification Metrics
+2025-02-10 16:52:21,159 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-02-10 16:52:21,160 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-02-10 16:52:21,163 - Eval - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/spacetime_transformer_ucf101.pth
+2025-02-10 16:52:49,075 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-02-10 16:52:49,075 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-02-10 16:52:49,076 - Eval - INFO - [INFO] Loaded pre-trained model: facebook/timesformer-base-finetuned-k400
+2025-02-10 16:52:53,513 - Eval - INFO - [INFO] Classification Metrics
+2025-02-10 16:52:53,513 - Eval - INFO - [INFO] Classification Metrics
+2025-02-10 16:52:53,514 - Eval - INFO - Accuracy: 0.00%
+2025-02-10 16:52:53,533 - Eval - INFO - Precision: 0.0
+2025-02-10 16:52:53,534 - Eval - INFO - Recall: 0.0
+2025-02-10 16:52:53,534 - Eval - INFO - F1 Score: 0.0
+2025-02-10 16:52:53,536 - Eval - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       2.0
+           1       0.00      0.00      0.00       2.0
+          35       0.00      0.00      0.00       0.0
+          69       0.00      0.00      0.00       0.0
+         173       0.00      0.00      0.00       0.0
+         356       0.00      0.00      0.00       0.0
+
+    accuracy                           0.00       4.0
+   macro avg       0.00      0.00      0.00       4.0
+weighted avg       0.00      0.00      0.00       4.0
+
+2025-02-10 16:53:56,295 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-02-10 16:53:56,296 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-02-10 16:53:56,299 - Eval - INFO - [INFO] Loaded pre-trained model: facebook/timesformer-base-finetuned-k400
+2025-02-10 16:59:39,590 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-02-10 16:59:39,591 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-02-10 16:59:39,591 - Eval - INFO - [INFO] Loaded pre-trained model: facebook/timesformer-base-finetuned-k400
+2025-02-10 16:59:44,154 - Eval - INFO - [INFO] Classification Metrics
+2025-02-10 16:59:44,154 - Eval - INFO - [INFO] Classification Metrics
+2025-02-10 16:59:44,155 - Eval - INFO - Accuracy: 0.00%
+2025-02-10 16:59:44,158 - Eval - INFO - Precision: 0.0
+2025-02-10 16:59:44,159 - Eval - INFO - Recall: 0.0
+2025-02-10 16:59:44,160 - Eval - INFO - F1 Score: 0.0
+2025-02-10 16:59:44,162 - Eval - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       2.0
+           1       0.00      0.00      0.00       2.0
+          35       0.00      0.00      0.00       0.0
+          69       0.00      0.00      0.00       0.0
+         173       0.00      0.00      0.00       0.0
+         356       0.00      0.00      0.00       0.0
+
+    accuracy                           0.00       4.0
+   macro avg       0.00      0.00      0.00       4.0
+weighted avg       0.00      0.00      0.00       4.0
+
+2025-02-10 17:00:59,459 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-02-10 17:00:59,460 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-02-10 17:00:59,466 - Eval - INFO - [INFO] Loaded pre-trained model: facebook/timesformer-base-finetuned-k400
+2025-02-10 17:01:03,747 - Eval - INFO - [INFO] Classification Metrics
+2025-02-10 17:01:03,748 - Eval - INFO - [INFO] Classification Metrics
+2025-02-10 17:01:03,749 - Eval - INFO - Accuracy: 0.00%
+2025-02-10 17:01:03,762 - Eval - INFO - Precision: 0.0
+2025-02-10 17:01:03,763 - Eval - INFO - Recall: 0.0
+2025-02-10 17:01:03,764 - Eval - INFO - F1 Score: 0.0
+2025-02-10 17:01:03,766 - Eval - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       2.0
+           1       0.00      0.00      0.00       2.0
+          35       0.00      0.00      0.00       0.0
+          69       0.00      0.00      0.00       0.0
+         173       0.00      0.00      0.00       0.0
+         356       0.00      0.00      0.00       0.0
+
+    accuracy                           0.00       4.0
+   macro avg       0.00      0.00      0.00       4.0
+weighted avg       0.00      0.00      0.00       4.0
+
+2025-02-10 17:01:26,058 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-02-10 17:01:26,058 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-02-10 17:01:26,059 - Eval - INFO - [INFO] Loaded pre-trained model: facebook/timesformer-base-finetuned-k400
+2025-02-10 17:01:30,300 - Eval - INFO - [INFO] Classification Metrics
+2025-02-10 17:01:30,300 - Eval - INFO - [INFO] Classification Metrics
+2025-02-10 17:01:30,300 - Eval - INFO - Accuracy: 0.00%
+2025-02-10 17:01:30,303 - Eval - INFO - Precision: 0.0
+2025-02-10 17:01:30,304 - Eval - INFO - Recall: 0.0
+2025-02-10 17:01:30,304 - Eval - INFO - F1 Score: 0.0
+2025-02-10 17:01:30,306 - Eval - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       2.0
+           1       0.00      0.00      0.00       2.0
+          35       0.00      0.00      0.00       0.0
+          69       0.00      0.00      0.00       0.0
+         173       0.00      0.00      0.00       0.0
+         356       0.00      0.00      0.00       0.0
+
+    accuracy                           0.00       4.0
+   macro avg       0.00      0.00      0.00       4.0
+weighted avg       0.00      0.00      0.00       4.0
+
+2025-02-10 17:01:54,678 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-02-10 17:01:54,678 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-02-10 17:01:54,679 - Eval - INFO - [INFO] Loaded pre-trained model: facebook/timesformer-base-finetuned-k400
+2025-02-10 17:02:14,461 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-02-10 17:02:14,461 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-02-10 17:02:14,462 - Eval - INFO - [INFO] Loaded pre-trained model: facebook/timesformer-base-finetuned-k400
+2025-02-10 17:02:20,263 - Eval - INFO - [INFO] Classification Metrics
+2025-02-10 17:02:20,264 - Eval - INFO - [INFO] Classification Metrics
+2025-02-10 17:02:20,264 - Eval - INFO - Accuracy: 0.00%
+2025-02-10 17:02:20,267 - Eval - INFO - Precision: 0.0
+2025-02-10 17:02:20,267 - Eval - INFO - Recall: 0.0
+2025-02-10 17:02:20,268 - Eval - INFO - F1 Score: 0.0
+2025-02-10 17:02:20,270 - Eval - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       2.0
+           1       0.00      0.00      0.00       2.0
+           3       0.00      0.00      0.00       0.0
+          10       0.00      0.00      0.00       0.0
+          11       0.00      0.00      0.00       0.0
+
+    accuracy                           0.00       4.0
+   macro avg       0.00      0.00      0.00       4.0
+weighted avg       0.00      0.00      0.00       4.0
+
+2025-02-10 17:03:09,934 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-02-10 17:03:09,935 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-02-10 17:03:09,937 - Eval - INFO - [INFO] Loaded pre-trained model: facebook/timesformer-base-finetuned-k400
