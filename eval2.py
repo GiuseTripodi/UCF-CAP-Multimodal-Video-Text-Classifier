@@ -76,18 +76,18 @@ def extract_embeddings_and_predictions(model, processor, dataloader, device):
 
 def load_model(config: ConfigParser, model_name, logger):
     if config.modality == 0:
-        # Use model fine_tuned
+        logger.info(f"[INFO] Loaded pre-trained model: {config.model_name}")
+        # Use pre-trained model
+        processor = AutoImageProcessor.from_pretrained(config.model_name)
+        processor = None
+        model = TimesformerForVideoClassification.from_pretrained(config.model_name)
+    elif config.modality == 1:
+        # Use model pre_trained and the fine_tuned
         model_path = os.path.join(config.save_dir, f'{model_name}')
         logger.info(f"[INFO] Loaded fine_tuned model from: {model_path}")
         model = TimesformerForVideoClassification.from_pretrained(model_path)
         # processor = AutoImageProcessor.from_pretrained(model_path)
         processor = None
-    elif config.modality == 1:
-        logger.info(f"[INFO] Loaded pre-trained model: {config.model_name}")
-        #Use pre-trained model
-        processor = AutoImageProcessor.from_pretrained(config.model_name)
-        processor = None
-        model = TimesformerForVideoClassification.from_pretrained(config.model_name)
     return model, processor
 
 
