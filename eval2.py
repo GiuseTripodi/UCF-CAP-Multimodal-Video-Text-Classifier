@@ -74,16 +74,17 @@ def extract_embeddings_and_predictions(model, processor, dataloader, device):
     return embeddings, labels, predictions
 
 
-def load_model(config: ConfigParser, model_name):
+def load_model(config: ConfigParser, model_name, logger):
     if config.modality == 0:
         # Use model fine_tuned
         model_path = os.path.join(config.save_dir, f'{model_name}')
+        logger.info(f"[INFO] Loaded fine_tuned model from: {model_path}")
         model = TimesformerForVideoClassification.from_pretrained(model_path)
         # processor = AutoImageProcessor.from_pretrained(model_path)
         processor = None
     elif config.modality == 1:
+        logger.info(f"[INFO] Loaded pre-trained model: {config.model_name}")
         #Use pre-trained model
-        # model_path = os.path.join(config.save_dir, f'{model_name}')
         processor = AutoImageProcessor.from_pretrained(config.model_name)
         processor = None
         model = TimesformerForVideoClassification.from_pretrained(config.model_name)
@@ -109,7 +110,7 @@ def eval_spacetime(config: ConfigParser, model_name):
 
     # Load model
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    model, processor = load_model(config, model_name)
+    model, processor = load_model(config, model_name, logger)
     model.to(device)
 
     # Extract embeddings and predictions
@@ -117,7 +118,6 @@ def eval_spacetime(config: ConfigParser, model_name):
     embeddings, labels, predictions = extract_embeddings_and_predictions(model, processor, test_dataloader, device)
 
     # Print Classification Metrics
-    print('[INFO] Classification Metrics')
     logger.info('[INFO] Classification Metrics')
     # Compute and display metrics
     compute_metrics(labels, predictions)
