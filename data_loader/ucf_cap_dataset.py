@@ -84,12 +84,8 @@ class UCF101Dataset(Dataset):
     def __getitem__(self, idx):
         path, label = self.data[idx]
         frames = sorted(glob.glob(os.path.join(path, '*.jpg')))
-        selected_frames = frames[:self.num_frames]# Choose first N frames
-        image_pil = Image.open(selected_frames[0]).convert("RGB")
-        #image_pil.show()  # Display image to ensure it's read correctly
-        image_tensor = transforms.ToTensor()(image_pil)  # Convert to tensor
+        selected_frames = frames[:self.num_frames] # Choose first N frames
         images = [Image.open(frame).convert("RGB") for frame in selected_frames]
-        image_arrays = [np.array(img, dtype=float) for img in images]
 
         # Check pixel values for the first image
         if self.transform:

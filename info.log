@@ -612,3 +612,10 @@
 2025-02-10 16:00:02,216 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
 2025-02-10 16:00:02,217 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
 2025-02-10 16:00:06,425 - Eval - INFO - [INFO] Classification Metrics
+2025-02-10 16:00:59,914 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-02-10 16:00:59,914 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-02-10 16:01:04,304 - Eval - INFO - [INFO] Classification Metrics
+2025-02-10 16:12:28,795 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_10-02-25
+2025-02-10 16:12:28,796 - Train - INFO - Loading model
+2025-02-10 16:12:31,207 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-02-10 16:12:31,217 - Train - INFO - Device model: cpu
