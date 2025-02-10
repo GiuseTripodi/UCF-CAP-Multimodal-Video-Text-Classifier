@@ -609,3 +609,6 @@
 2025-02-10 15:48:29,613 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
 2025-02-10 15:48:29,614 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
 2025-02-10 15:48:35,940 - Eval - INFO - [INFO] Classification Metrics
+2025-02-10 16:00:02,216 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-02-10 16:00:02,217 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-02-10 16:00:06,425 - Eval - INFO - [INFO] Classification Metrics

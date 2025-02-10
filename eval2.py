@@ -74,6 +74,22 @@ def extract_embeddings_and_predictions(model, processor, dataloader, device):
     return embeddings, labels, predictions
 
 
+def load_model(config: ConfigParser, model_name):
+    if config.modality == 0:
+        # Use model fine_tuned
+        model_path = os.path.join(config.save_dir, f'{model_name}')
+        model = TimesformerForVideoClassification.from_pretrained(model_path)
+        # processor = AutoImageProcessor.from_pretrained(model_path)
+        processor = None
+    elif config.modality == 1:
+        #Use pre-trained model
+        # model_path = os.path.join(config.save_dir, f'{model_name}')
+        processor = AutoImageProcessor.from_pretrained(config.model_name)
+        processor = None
+        model = TimesformerForVideoClassification.from_pretrained(config.model_name)
+    return model, processor
+
+
 def eval_spacetime(config: ConfigParser, model_name):
     logger = config.get_logger('Eval')
     logger.info(f'Evaluation started for model: {model_name}')
@@ -93,11 +109,8 @@ def eval_spacetime(config: ConfigParser, model_name):
 
     # Load model
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    #model_path = os.path.join(config.save_dir, f'{model_name}')
-    model_path = "facebook/timesformer-base-finetuned-k400"
-    processor = AutoImageProcessor.from_pretrained("MCG-NJU/videomae-base-finetuned-kinetics")
-    processor = None
-    model = TimesformerForVideoClassification.from_pretrained(model_path).to(device)
+    model, processor = load_model(config, model_name)
+    model.to(device)
 
     # Extract embeddings and predictions
     print('[INFO] Model Loaded')

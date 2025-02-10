@@ -39,7 +39,7 @@ def load_model(config: ConfigParser):
     elif config.modality == 1:
         model = TimesformerForVideoClassification.from_pretrained(
             config.model_name,
-            num_labels=5,
+            num_labels=config.num_classes,
             ignore_mismatched_sizes=True
         )
 
