@@ -73,9 +73,18 @@ class Trainer:
         return avg_loss
 
     def save_model(self):
+        '''
+        # Uncomment if using a pytorch model
         # Save model after all epochs are completed
         torch.save(self.model.state_dict(), join(self.save_path, f'space_time_{self.exper_name}_{date.today().strftime("%d-%m-%y")}'))
         logger.info(f"Model saved to {self.save_path}")
+        '''
+        path = join(self.save_path, f'space_time_{self.exper_name}_{date.today().strftime("%d-%m-%y")}')
+        os.makedirs(path, exist_ok=True)
+        self.model.save_pretrained(path)
+        logger.info(f"Model {self.exper_name}_{date.today().strftime('%d-%m-%y')} saved to {self.save_path}")
+
+
 
     def train(self):
         for epoch in range(self.num_epochs):
