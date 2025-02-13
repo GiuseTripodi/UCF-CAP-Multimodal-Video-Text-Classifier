@@ -12,10 +12,10 @@
         }
     },
     "trainer": {
-        "epochs": 1,
+        "epochs": 10,
         "early_stop": 10,
         "num_frames": 32,
-        "num_classes":5,
+        "num_classes":12,
         "img_size":224,
         "in_chans":3,
         "depth": 2,
