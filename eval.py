@@ -59,8 +59,9 @@ def extract_embeddings_and_predictions(model, processor, dataloader, device):
 
             # Get the embeddings and predicted classes
             outputs = model(inputs)
-            logits = outputs.logits
-            predicted_labels = torch.argmax(logits, dim=1)  # Get the predicted class
+            if config.modality == 1:
+                outputs = outputs.logits
+            predicted_labels = torch.argmax(outputs, dim=1)  # Get the predicted class
 
             #embeddings.append(embedding.cpu().numpy())
             labels.append(label.numpy())
@@ -74,12 +75,19 @@ def extract_embeddings_and_predictions(model, processor, dataloader, device):
 
 def load_model(config: ConfigParser, model_name, logger):
     if config.modality == 0:
-        logger.info(f"[INFO] Loaded pre-trained model: {config.model_name}")
-        # Use pre-trained model
-        processor = AutoImageProcessor.from_pretrained(config.model_name)
+        model_path = os.path.join(config.save_dir, f'{model_name}')
+        model = SpaceTimeTransformer(
+            img_size=config.img_size,
+            num_frames=config.num_frames,
+            in_chans=config.in_chans,
+            num_classes=config.num_classes,
+            depth=config.depth,
+            num_heads=config.num_heads,
+            embed_dim=768,
+            attention_style='frozen-in-time'
+        )
+        model.load_state_dict(torch.load(model_path))
         processor = None
-        model = TimesformerForVideoClassification.from_pretrained(config.model_name, num_labels=config.num_classes, ignore_mismatched_sizes=True)
-        print(model.config)
 
     elif config.modality == 1:
         # Use model pre_trained and the fine_tuned

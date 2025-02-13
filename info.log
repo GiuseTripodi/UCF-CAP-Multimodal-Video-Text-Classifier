@@ -849,3 +849,122 @@ weighted avg       0.00      0.00      0.00       4.0
 2025-02-10 17:40:28,290 - Train - INFO - Loading model
 2025-02-10 17:40:30,088 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
 2025-02-10 17:40:30,090 - Train - INFO - Device model: cpu
+2025-02-11 13:01:30,276 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_11-02-25
+2025-02-11 13:01:30,277 - Train - INFO - Loading model
+2025-02-11 13:01:32,296 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-02-11 13:01:32,308 - Train - INFO - Device model: cpu
+2025-02-13 17:02:34,512 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_13-02-25
+2025-02-13 17:02:34,512 - Train - INFO - Loading model
+2025-02-13 17:02:36,652 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-02-13 17:02:36,662 - Train - INFO - Device model: cpu
+2025-02-13 17:04:17,509 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_13-02-25
+2025-02-13 17:04:17,510 - Train - INFO - Loading model
+2025-02-13 17:04:19,615 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-02-13 17:04:19,616 - Train - INFO - Device model: cpu
+2025-02-13 17:15:01,310 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_13-02-25
+2025-02-13 17:15:01,310 - Train - INFO - Loading model
+2025-02-13 17:15:01,609 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-02-13 17:15:01,620 - Train - INFO - Device model: cpu
+2025-02-13 17:18:20,316 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_13-02-25
+2025-02-13 17:18:20,316 - Train - INFO - Loading model
+2025-02-13 17:18:43,245 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_13-02-25
+2025-02-13 17:18:43,245 - Train - INFO - Loading model
+2025-02-13 17:18:43,321 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-02-13 17:18:43,323 - Train - INFO - Device model: cpu
+2025-02-13 17:20:13,043 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_13-02-25
+2025-02-13 17:20:13,043 - Train - INFO - Loading model
+2025-02-13 17:20:13,113 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-02-13 17:20:13,114 - Train - INFO - Device model: cpu
+2025-02-13 17:24:34,403 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_13-02-25
+2025-02-13 17:24:34,403 - Train - INFO - Loading model
+2025-02-13 17:24:34,458 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-02-13 17:24:34,460 - Train - INFO - Device model: cpu
+2025-02-13 17:28:44,575 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_13-02-25
+2025-02-13 17:28:44,576 - Train - INFO - Loading model
+2025-02-13 17:28:44,632 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-02-13 17:28:44,635 - Train - INFO - Device model: cpu
+2025-02-13 17:28:50,000 - train - INFO - Epoch 1/10, Train Loss: 1.6886
+2025-02-13 17:29:15,528 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_13-02-25
+2025-02-13 17:29:15,528 - Train - INFO - Loading model
+2025-02-13 17:29:15,593 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-02-13 17:29:15,595 - Train - INFO - Device model: cpu
+2025-02-13 17:29:22,961 - train - INFO - Epoch 1/10, Train Loss: 1.7565
+2025-02-13 17:29:23,521 - train - INFO - Epoch 1/10, Validation Loss: 1.9812
+2025-02-13 17:29:29,060 - train - INFO - Epoch 2/10, Train Loss: 1.6274
+2025-02-13 17:29:29,473 - train - INFO - Epoch 2/10, Validation Loss: 1.8427
+2025-02-13 17:29:34,714 - train - INFO - Epoch 3/10, Train Loss: 1.5249
+2025-02-13 17:29:35,113 - train - INFO - Epoch 3/10, Validation Loss: 1.7430
+2025-02-13 17:29:39,630 - train - INFO - Epoch 4/10, Train Loss: 1.4455
+2025-02-13 17:29:40,026 - train - INFO - Epoch 4/10, Validation Loss: 1.6745
+2025-02-13 17:29:44,582 - train - INFO - Epoch 5/10, Train Loss: 1.3833
+2025-02-13 17:29:44,979 - train - INFO - Epoch 5/10, Validation Loss: 1.6298
+2025-02-13 17:29:49,537 - train - INFO - Epoch 6/10, Train Loss: 1.3312
+2025-02-13 17:29:49,930 - train - INFO - Epoch 6/10, Validation Loss: 1.6024
+2025-02-13 17:29:54,991 - train - INFO - Epoch 7/10, Train Loss: 1.2837
+2025-02-13 17:29:55,383 - train - INFO - Epoch 7/10, Validation Loss: 1.5877
+2025-02-13 17:30:00,722 - train - INFO - Epoch 8/10, Train Loss: 1.2379
+2025-02-13 17:30:01,117 - train - INFO - Epoch 8/10, Validation Loss: 1.5825
+2025-02-13 17:30:06,338 - train - INFO - Epoch 9/10, Train Loss: 1.1933
+2025-02-13 17:30:06,712 - train - INFO - Epoch 9/10, Validation Loss: 1.5847
+2025-02-13 17:30:11,947 - train - INFO - Epoch 10/10, Train Loss: 1.1501
+2025-02-13 17:30:12,345 - train - INFO - Epoch 10/10, Validation Loss: 1.5930
+2025-02-13 17:32:13,336 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_13-02-25
+2025-02-13 17:32:13,336 - Train - INFO - Loading model
+2025-02-13 17:32:13,391 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-02-13 17:32:13,393 - Train - INFO - Device model: cpu
+2025-02-13 17:32:18,544 - train - INFO - Epoch 1/10, Train Loss: 1.5859
+2025-02-13 17:32:18,954 - train - INFO - Epoch 1/10, Validation Loss: 1.6328
+2025-02-13 17:32:23,209 - train - INFO - Epoch 2/10, Train Loss: 1.4837
+2025-02-13 17:32:23,608 - train - INFO - Epoch 2/10, Validation Loss: 1.6129
+2025-02-13 17:32:28,091 - train - INFO - Epoch 3/10, Train Loss: 1.4079
+2025-02-13 17:32:28,485 - train - INFO - Epoch 3/10, Validation Loss: 1.6217
+2025-02-13 17:32:33,100 - train - INFO - Epoch 4/10, Train Loss: 1.3506
+2025-02-13 17:32:33,557 - train - INFO - Epoch 4/10, Validation Loss: 1.6466
+2025-02-13 17:32:38,649 - train - INFO - Epoch 5/10, Train Loss: 1.3034
+2025-02-13 17:32:39,038 - train - INFO - Epoch 5/10, Validation Loss: 1.6782
+2025-02-13 17:32:44,191 - train - INFO - Epoch 6/10, Train Loss: 1.2608
+2025-02-13 17:32:44,604 - train - INFO - Epoch 6/10, Validation Loss: 1.7105
+2025-02-13 17:32:50,448 - train - INFO - Epoch 7/10, Train Loss: 1.2205
+2025-02-13 17:32:50,867 - train - INFO - Epoch 7/10, Validation Loss: 1.7404
+2025-02-13 17:32:55,901 - train - INFO - Epoch 8/10, Train Loss: 1.1817
+2025-02-13 17:32:56,374 - train - INFO - Epoch 8/10, Validation Loss: 1.7667
+2025-02-13 17:33:02,295 - train - INFO - Epoch 9/10, Train Loss: 1.1446
+2025-02-13 17:33:02,867 - train - INFO - Epoch 9/10, Validation Loss: 1.7894
+2025-02-13 17:33:09,686 - train - INFO - Epoch 10/10, Train Loss: 1.1095
+2025-02-13 17:33:10,320 - train - INFO - Epoch 10/10, Validation Loss: 1.8087
+2025-02-13 17:36:02,721 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_13-02-25
+2025-02-13 17:36:02,721 - Train - INFO - Loading model
+2025-02-13 17:36:02,778 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-02-13 17:36:02,780 - Train - INFO - Device model: cpu
+2025-02-13 17:36:13,056 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_13-02-25
+2025-02-13 17:36:13,056 - Train - INFO - Loading model
+2025-02-13 17:36:13,112 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-02-13 17:36:13,113 - Train - INFO - Device model: cpu
+2025-02-13 17:36:19,027 - train - INFO - Epoch 1/1, Train Loss: 1.7794
+2025-02-13 17:36:19,448 - train - INFO - Epoch 1/1, Validation Loss: 1.7462
+2025-02-13 17:36:19,570 - train - INFO - Model saved to /Users/user/PycharmProjects/frozen-in-time/data/models
+2025-02-13 17:36:19,570 - train - INFO - Model ciccio_13-02-25 saved to /Users/user/PycharmProjects/frozen-in-time/data/models
+2025-02-13 17:39:37,671 - Eval - INFO - Evaluation started for model: spacetime_transformer_ucf101.pth
+2025-02-13 17:39:37,671 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-02-13 17:39:56,318 - Eval - INFO - Evaluation started for model: ciccio_13-02-25
+2025-02-13 17:39:56,318 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-02-13 17:40:22,134 - Eval - INFO - Evaluation started for model: space_time_ciccio_13-02-25
+2025-02-13 17:40:22,134 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-02-13 17:41:05,857 - Eval - INFO - Evaluation started for model: space_time_ciccio_13-02-25
+2025-02-13 17:41:05,857 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-02-13 17:41:06,364 - Eval - INFO - [INFO] Classification Metrics
+2025-02-13 17:41:06,364 - Eval - INFO - Accuracy: 25.00%
+2025-02-13 17:41:06,378 - Eval - INFO - Precision: 0.25
+2025-02-13 17:41:06,378 - Eval - INFO - Recall: 0.25
+2025-02-13 17:41:06,379 - Eval - INFO - F1 Score: 0.25
+2025-02-13 17:41:06,381 - Eval - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00         2
+           1       0.50      0.50      0.50         2
+           3       0.00      0.00      0.00         0
+
+    accuracy                           0.25         4
+   macro avg       0.17      0.17      0.17         4
+weighted avg       0.25      0.25      0.25         4
+

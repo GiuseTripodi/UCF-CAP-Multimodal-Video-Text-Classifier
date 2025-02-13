@@ -21,18 +21,16 @@ from sklearn.metrics import accuracy_score
 
 def load_model(config: ConfigParser):
     if config.modality == 0:
-        # Model configuration for Hugging Face Model
-        configuration = TimesformerConfig(
-            image_size=config.img_size,
+        # Initialize model
+        model = SpaceTimeTransformer(
+            img_size=config.img_size,
             num_frames=config.num_frames,
-            num_channels=config.in_chans,
-            num_attention_heads=config.num_heads,
-            num_hidden_layers = config.depth,
-            num_labels=config.num_classes
-        )
-
-        model = TimesformerForVideoClassification(
-            configuration
+            in_chans=config.in_chans,
+            num_classes=config.num_classes,
+            depth=config.depth,
+            num_heads=config.num_heads,
+            embed_dim=768,
+            attention_style='frozen-in-time'
         )
         processor = None
 
@@ -97,7 +95,6 @@ def training(config: ConfigParser):
     unique_labels = np.unique(train_labels)
     class_weights = compute_class_weight(class_weight='balanced', classes=unique_labels, y=train_labels)
     class_weights = torch.tensor(class_weights, dtype=torch.float).to(device)
-    #class_weights = class_weights / class_weights.max()  # Normalize if necessary
     print(class_weights)
 
     criterion = nn.CrossEntropyLoss(weight=class_weights)
