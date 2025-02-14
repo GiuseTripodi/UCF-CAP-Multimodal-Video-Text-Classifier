@@ -41,13 +41,24 @@ def load_model(config: ConfigParser):
             ignore_mismatched_sizes=True
         )
 
-        # Freeze all layers except the classification head
-        for param in model.parameters():
-            param.requires_grad = False  # Freeze all base layers
+        # Unfreeze the last few layers of the transformer backbone
+        for name, param in model.named_parameters():
+            if 'encoder.layer.10' in name or 'encoder.layer.11' in name:  # Adjust this based on your model depth
+                param.requires_grad = True
+            else:
+                param.requires_grad = False
 
         # Unfreeze the classification head
         for param in model.classifier.parameters():
             param.requires_grad = True
+
+        total_params = sum(p.numel() for p in model.parameters())  # Total parameters
+        trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)  # Trainable parameters
+        frozen_params = total_params - trainable_params  # Frozen parameters
+
+        print(f"Total Parameters: {total_params:,}")
+        print(f"Trainable Parameters: {trainable_params:,}")
+        print(f"Frozen Parameters: {frozen_params:,}")
 
         processor = AutoImageProcessor.from_pretrained(config.model_name)
     return model, processor
