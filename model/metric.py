@@ -7,6 +7,10 @@ import numpy as np
 import scipy.stats
 import torch
 
+# Compute Cosine Similarity
+def cosine_similarity(embedding1, embedding2):
+    return torch.nn.functional.cosine_similarity(embedding1, embedding2)
+
 
 def t2v_metrics(sims, query_masks=None):
     """Compute retrieval metrics from a similarity matrix.
