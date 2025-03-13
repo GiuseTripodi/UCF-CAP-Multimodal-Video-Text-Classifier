@@ -127,8 +127,11 @@ class ConfigParser:
     def num_heads(self):
         return self.config['trainer']['num_heads']
     @property
-    def epochs(self):
+    def num_epochs(self):
         return self.config['trainer']['epochs']
+    @property
+    def max_seq_len(self):
+        return self.config['trainer']['max_seq_len']
 
     @property
     def learning_rate(self):

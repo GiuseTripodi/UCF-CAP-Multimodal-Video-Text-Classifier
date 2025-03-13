@@ -100,7 +100,7 @@ def training(config: ConfigParser):
 
     # Define loss and optimizer and test class labels
     # Get class labels from the dataset
-    train_labels = [label for _, label, *_ in dataset_train]  # Extract labels
+    train_labels = [label for _, _, label, *_ in dataset_train]  # Extract labels
 
     # Calculate class weights (inversely proportional to class frequencies)
     unique_labels = np.unique(train_labels)

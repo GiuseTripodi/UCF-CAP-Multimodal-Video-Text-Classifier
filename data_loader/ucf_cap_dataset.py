@@ -1,3 +1,5 @@
+from os.path import join
+
 import pandas as pd
 import os
 import csv
@@ -25,6 +27,15 @@ def create_csv_splits(home_path):
     # Paths to the UCF101 dataset
     data_dir = f'{home_path}/data/UcfCap/YouTubeClips'  # Replace with your UCF101 frames directory
     output_dir = f'{home_path}/data/UcfCap/'  # Directory to save CSV files
+    mapping_path = f'{home_path}/data/UcfCap/captions/youtube_mapping.txt'
+
+    # Load mapping
+    mapping = {}
+    with open(mapping_path, "r") as file:
+        for line in file:
+            key, value = line.strip().split()  # Split by whitespace
+            mapping[key] = value  # Store in dictionary
+
 
     # Get the list of class names (folder names in the dataset)
     videos_folder_frame = sorted(os.listdir(data_dir))
@@ -36,26 +47,33 @@ def create_csv_splits(home_path):
         match = re.search(r'([a-zA-Z]+)\d', video_fold)
         if match and os.path.isdir(video_path):  # Ensure it's a directory and matches the pattern
             label = match.group(1)
-            data_entries.append((video_path, label))
+            data_entries.append((video_path, label, mapping[video_fold]))
 
-    # Split data into train, test, and validation sets
-    train_entries, temp_entries = train_test_split(data_entries, test_size=0.4, random_state=42)  # 60% train, 40% temp
-    val_entries, test_entries = train_test_split(temp_entries, test_size=0.5, random_state=42)  # 20% val, 20% test
+    df_mapping = pd.DataFrame(data_entries, columns=["video_path", "label", "videoID"])
+    def load_txt_splitting(path):
+        with open(path, "r", encoding="utf-8") as file:
+            data = [line.strip().split(" ", 1) for line in file]  # Split only on the first space
 
-    # Helper function to write CSV
-    def write_csv(entries, filename):
-        csv_path = os.path.join(output_dir, filename)
-        with open(csv_path, 'w', newline='') as f:
-            writer = csv.writer(f)
-            writer.writerow(['video_path', 'label'])  # Add a header row
-            writer.writerows(entries)
-        print(f"CSV file created: {csv_path}")
+        # Convert to DataFrame
+        df = pd.DataFrame(data, columns=["videoID", "caption"])
+        return df
 
-    # Write to separate CSV files
-    #TODO test with less data
-    write_csv(train_entries, 'train_dataset.csv')
-    write_csv(val_entries, 'val_dataset.csv')
-    write_csv(test_entries, 'test_dataset.csv')
+    # Load test, train, val txt file and merge it based on video id
+    df_test = load_txt_splitting(f'{home_path}/data/UcfCap/captions/sents_test_lc_nopunc.txt')
+    df_val = load_txt_splitting(f'{home_path}/data/UcfCap/captions/sents_val_lc_nopunc.txt')
+    df_train = load_txt_splitting(f'{home_path}/data/UcfCap/captions/sents_train_lc_nopunc.txt')
+
+    # Merge the two datasets on 'videoID'
+    merged_df_test = pd.merge(df_test, df_mapping, on="videoID", how="inner")
+    merged_df_val = pd.merge(df_val, df_mapping, on="videoID", how="inner")
+    merged_df_train = pd.merge(df_train, df_mapping, on="videoID", how="inner")
+
+    # Save the merged dataset
+    merged_df_test.to_csv(join(output_dir, "test_dataset.csv"), index=False)
+    merged_df_val.to_csv(join(output_dir, "val_dataset.csv"), index=False)
+    merged_df_train.to_csv(join(output_dir, "train_dataset.csv"), index=False)
+
+
 
 class UCF101Dataset(Dataset):
     def __init__(self, csv_file, transform=None, num_frames=8):
@@ -71,18 +89,21 @@ class UCF101Dataset(Dataset):
             reader = csv.reader(f)
             next(reader)  # Skip the header
             for line in reader:
-                path, label = line
-                self.data.append((path, label))
+                id, caption, path, label = line
+                self.data.append((caption, path, label))
 
+
+        #TODO just for test
+        #self.data = self.data[:10]
 
         # Fit the label encoder to the labels
-        self.label_encoder.fit([label for _, label in self.data])
+        self.label_encoder.fit([label for _, _, label in self.data])
 
     def __len__(self):
         return len(self.data)
 
     def __getitem__(self, idx):
-        path, label = self.data[idx]
+        caption, path, label = self.data[idx]
         frames = sorted(glob.glob(os.path.join(path, '*.jpg')))
         selected_frames = frames[:self.num_frames] # Choose first N frames
         images = [Image.open(frame).convert("RGB") for frame in selected_frames]
@@ -99,16 +120,15 @@ class UCF101Dataset(Dataset):
         # Convert label to integer using label_encoder
         label_idx = self.label_encoder.transform([label])[0]  # Convert string label to integer index
 
-        return video_tensor, label_idx  # Return the label index as an integer tensor
+        return video_tensor, caption, label_idx  # Return the label index as an integer tensor
 
 
 if __name__ == '__main__':
     # Run the function
-    #home_path_local = '/Users/user/PycharmProjects/frozen-in-time'
-    home_path_clus = '/mnt/iusers01/mace01/t08341gt/UCF_cap_mh'
-    create_csv_splits(home_path_clus)
+    home_path = '/Users/user/PycharmProjects/frozen-in-time'
+    #home_path = '/mnt/iusers01/mace01/t08341gt/UCF_cap_mh'
+    #create_csv_splits(home_path)
 
-    '''
 
     transform = transforms.Compose([
         transforms.Resize((224, 224)),
@@ -116,8 +136,7 @@ if __name__ == '__main__':
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
 
-    csv_file = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/dataset.csv'
+    csv_file = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv'
 
     dataset = UCF101Dataset(csv_file, transform=transform)
     dataloader = DataLoader(dataset, batch_size=16, shuffle=True)
-    '''

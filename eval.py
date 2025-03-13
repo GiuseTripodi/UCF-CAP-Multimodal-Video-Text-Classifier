@@ -51,7 +51,7 @@ def extract_embeddings_and_predictions(model, processor, dataloader, device):
     labels = []
     predictions = []
     with torch.no_grad():
-        for inputs, label, *other_info in dataloader:
+        for inputs, captions, label, *other_info in dataloader:
             inputs = inputs.to(device)
             if processor:
                 inputs = inputs.squeeze(0)  # Removes the batch dimension
