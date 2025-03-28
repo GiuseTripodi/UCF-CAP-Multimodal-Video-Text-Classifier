@@ -1,4 +1,7 @@
+import argparse
 import os
+from datetime import date
+
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
@@ -9,35 +12,29 @@ import tensorflow_addons as tfa
 import tensorflow as tf
 from tensorflow.keras.callbacks import ModelCheckpoint
 
+from parse_config import ConfigParser
 
 
-def load_and_preprocess_data(file_path, max_seq_len, bert_name):
+def load_and_preprocess_data(config: ConfigParser, max_seq_len, bert_name):
     """Carica il dataset, esegue la pulizia, prepara i dati e codifica le etichette."""
     # Caricamento del dataset
-    data = pd.read_csv(file_path, sep=';', encoding='utf-8')
-    data.dropna(subset=["caption", "class", "split"], inplace=True)
+    train_csv_path, val_csv_path = config.train_path
+    test__csv_path = config.test_path
 
-    # Divisione del dataset
-    train_data = data[data["split"] == "train"]
-    val_data = data[data["split"] == "val"]
-    test_data = data[data["split"] == "test"]
+    train_df = pd.read_csv(train_csv_path,  encoding='utf-8').sample(frac=1).reset_index(drop=True)[:20]
+    test_df = pd.read_csv(test__csv_path,  encoding='utf-8').sample(frac=1).reset_index(drop=True)[:20]
+    val_df = pd.read_csv(val_csv_path,  encoding='utf-8').sample(frac=1).reset_index(drop=True)[:20]
 
-    def shuffle_data(df):
-        return df.sample(frac=1, random_state=42).reset_index(drop=True)
 
-    train_data = shuffle_data(train_data)
-    val_data = shuffle_data(val_data)
-    test_data = shuffle_data(test_data)
-
-    train_sentences = train_data["caption"].values
-    val_sentences = val_data["caption"].values
-    test_sentences = test_data["caption"].values
+    train_sentences = train_df["caption"].values
+    val_sentences = val_df["caption"].values
+    test_sentences = test_df["caption"].values
 
     # Codifica delle etichette
     label_encoder = LabelEncoder()
-    y_train = label_encoder.fit_transform(train_data["class"])
-    y_val = label_encoder.transform(val_data["class"])
-    y_test = label_encoder.transform(test_data["class"])
+    y_train = label_encoder.fit_transform(train_df["label"])
+    y_val = label_encoder.transform(val_df["label"])
+    y_test = label_encoder.transform(test_df["label"])
 
     num_classes = len(label_encoder.classes_)
 
@@ -184,22 +181,19 @@ def print_embeddings(model, X_data, output_layer_name="tf_distil_bert_model"):
     print(embeddings)
 
 
-def main():
+def main_train_text_embedding(config: ConfigParser):
     # ================= Configurazione ====================
-    BASE_DIR = "C:\\Users\\CristianCos\\Desktop\\Python\\Multimodal"
-    DATASET_PATH = f"{BASE_DIR}\\texts_dataset.csv"
-    SAVE_DIR = f"{BASE_DIR}\\DistilBert"
-    os.makedirs(SAVE_DIR, exist_ok=True)
+    SAVE_DIR = config.save_dir
 
-    WEIGHTS_FILE = f"{SAVE_DIR}\\weights_multiclass.h5"
-    MAX_SEQ_LEN = 128
+    WEIGHTS_FILE = f"{SAVE_DIR}\\weights_multiclass_{config.exper_name}.h5"
+    MAX_SEQ_LEN = config.max_seq_len
     BERT_NAME = "distilbert-base-uncased"
-    TOTAL_EPOCHS = 8
+    TOTAL_EPOCHS = config.num_epochs
     ADDITIONAL_EPOCHS = 5
 
     # Caricamento e preprocessing dei dati
     X_train, y_train, X_val, y_val, X_test, y_test, num_classes, label_encoder = load_and_preprocess_data(
-        DATASET_PATH, MAX_SEQ_LEN, BERT_NAME
+        config, MAX_SEQ_LEN, BERT_NAME
     )
 
     # Creazione del modello
@@ -253,4 +247,19 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Script to train model")
+    parser.add_argument('--config', default=None, help='Path to configuration file')
+    parser.add_argument('--model_name',default=None, help='Path to CSV file with dataset information to eval the model')
+    parser.add_argument('--name', default=None, help='Name of the experiment (used for saving the model)')
+    parser.add_argument('--save_dir', default=None, help='Path to where get the saves file')
+    args = parser.parse_args()
+
+
+    config = ConfigParser(args)
+    if args.model_name is None:
+        exper_name = config.exper_name
+        model_name = f'space_time_{exper_name}_{date.today().strftime("%d-%m-%y")}'
+    else:
+        model_name = args.model_name
+
+    main_train_text_embedding(config)

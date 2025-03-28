@@ -1125,3 +1125,39 @@ Lambda fuctions will be no more assumed to be used in the statement where they a
 2025-03-28 11:24:01,128 - TrainMLP - INFO - Validation Loss: 1.9388, Validation Accuracy: 15.00%
 2025-03-28 11:24:01,143 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
 2025-03-28 11:24:01,144 - TrainMLP - INFO - Epoch [2/5] Training...
+2025-03-28 11:25:02,353 - TrainMLP - INFO - Train Loss: 1.9256, Train Accuracy: 20.00%
+2025-03-28 11:25:58,637 - TrainMLP - INFO - Validation Loss: 1.9562, Validation Accuracy: 9.00%
+2025-03-28 11:25:58,638 - TrainMLP - INFO - Epoch [3/5] Training...
+2025-03-28 11:26:54,003 - TrainMLP - INFO - Train Loss: 1.9245, Train Accuracy: 20.00%
+2025-03-28 11:27:49,451 - TrainMLP - INFO - Validation Loss: 1.9494, Validation Accuracy: 19.00%
+2025-03-28 11:27:49,451 - TrainMLP - INFO - Epoch [4/5] Training...
+2025-03-28 11:28:44,468 - TrainMLP - INFO - Train Loss: 1.9158, Train Accuracy: 16.00%
+2025-03-28 11:29:40,344 - TrainMLP - INFO - Validation Loss: 1.9429, Validation Accuracy: 27.00%
+2025-03-28 11:29:40,345 - TrainMLP - INFO - Epoch [5/5] Training...
+2025-03-28 11:30:36,726 - TrainMLP - INFO - Train Loss: 1.9071, Train Accuracy: 26.00%
+2025-03-28 11:31:32,127 - TrainMLP - INFO - Validation Loss: 1.9595, Validation Accuracy: 13.00%
+2025-03-28 11:31:32,141 - TrainMLP - INFO - Final model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_28-03-25_final_MLP.pth
+2025-03-28 11:34:16,394 - TrainMLP - INFO - MLP_eval_started: space_time_ciccio_13-03-25
+2025-03-28 11:34:18,629 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-28 11:34:19,196 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-28 11:34:19,313 - TrainMLP - INFO - Loaded model from /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_28-03-25_final_MLP.pth
+2025-03-28 11:35:25,630 - TrainMLP - INFO - [INFO] Classification Metrics
+2025-03-28 11:35:25,633 - TrainMLP - INFO - Accuracy: 22.00%
+2025-03-28 11:35:25,636 - TrainMLP - INFO - Precision: 0.3275334476843911
+2025-03-28 11:35:25,646 - TrainMLP - INFO - Recall: 0.22
+2025-03-28 11:35:25,647 - TrainMLP - INFO - F1 Score: 0.19760579710144927
+2025-03-28 11:35:25,649 - TrainMLP - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.50      0.04      0.07        28
+           1       0.30      0.21      0.25        28
+           2       0.27      0.21      0.24        28
+           3       0.17      0.56      0.26        16
+           5       0.00      0.00      0.00         0
+
+    accuracy                           0.22       100
+   macro avg       0.25      0.21      0.16       100
+weighted avg       0.33      0.22      0.20       100
+

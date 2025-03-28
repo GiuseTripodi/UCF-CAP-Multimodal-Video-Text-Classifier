@@ -125,7 +125,7 @@ def run_eval(config: ConfigParser, model_name):
     input_dim = 512
     hidden_dim = 256
     num_classes = config.num_classes
-    model_path = "/Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_28-03-25_final_MLP.pth"
+    model_path = "/Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_28-03-25_final_MLP.pt"
     classifier = MLPClassifier(input_dim, hidden_dim, num_classes).to(device)
     classifier.load_state_dict(torch.load(model_path, map_location=device))
     logger.info(f'Loaded model from {model_path}')
