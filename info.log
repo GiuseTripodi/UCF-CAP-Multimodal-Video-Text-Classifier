@@ -452,3 +452,676 @@ weighted avg       0.07      0.10      0.07       198
 2025-03-13 12:55:13,152 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
 2025-03-13 12:55:13,155 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
 2025-03-13 12:55:13,156 - TrainMLP - INFO - Epoch [1/1] Training...
+2025-03-13 14:56:07,210 - TrainMLP - INFO - Train Loss: 1.9491, Train Accuracy: 15.35%
+2025-03-13 14:57:05,782 - TrainMLP - INFO - Validation Loss: 1.9490, Validation Accuracy: 5.88%
+2025-03-13 14:57:05,808 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-03-13 14:57:05,819 - TrainMLP - INFO - Final model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_13-03-25_final_MLP.pth
+2025-03-13 14:59:52,008 - TrainMLP - INFO - MLP_eval_started: space_time_ciccio_14-02-25
+2025-03-13 14:59:52,568 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_14-02-25
+2025-03-13 15:00:28,927 - TrainMLP - INFO - MLP_eval_started: space_time_ciccio_13-03-25
+2025-03-13 15:00:29,303 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-13 15:00:57,323 - TrainMLP - INFO - MLP_eval_started: space_time_ciccio_13-03-25
+2025-03-13 15:00:57,739 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-13 15:00:57,828 - TrainMLP - INFO - Loaded model from /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-03-13 15:03:50,276 - TrainMLP - INFO - [INFO] Classification Metrics
+2025-03-13 15:03:50,278 - TrainMLP - INFO - Accuracy: 15.15%
+2025-03-13 15:03:50,282 - TrainMLP - INFO - Precision: 0.18236192149235625
+2025-03-13 15:03:50,283 - TrainMLP - INFO - Recall: 0.15151515151515152
+2025-03-13 15:03:50,284 - TrainMLP - INFO - F1 Score: 0.10880999481818417
+2025-03-13 15:03:50,286 - TrainMLP - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.14      0.57      0.23        28
+           1       0.00      0.00      0.00        28
+           2       0.07      0.04      0.05        28
+           3       0.00      0.00      0.00        28
+           4       0.24      0.14      0.18        36
+           5       0.67      0.07      0.13        28
+           6       0.13      0.27      0.18        22
+
+    accuracy                           0.15       198
+   macro avg       0.18      0.16      0.11       198
+weighted avg       0.18      0.15      0.11       198
+
+2025-03-13 15:05:47,215 - Eval - INFO - Evaluation started for model: space_time_ciccio_13-03-25
+2025-03-13 15:05:47,216 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-03-13 15:05:47,217 - Eval - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-13 15:07:47,648 - Eval - INFO - Evaluation started for model: space_time_ciccio_13-03-25
+2025-03-13 15:07:47,649 - Eval - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/test_dataset.csv
+2025-03-13 15:07:47,650 - Eval - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-13 15:10:16,845 - Eval - INFO - [INFO] Classification Metrics
+2025-03-13 15:10:16,846 - Eval - INFO - Accuracy: 61.11%
+2025-03-13 15:10:16,849 - Eval - INFO - Precision: 0.6267782859757324
+2025-03-13 15:10:16,849 - Eval - INFO - Recall: 0.6111111111111112
+2025-03-13 15:10:16,850 - Eval - INFO - F1 Score: 0.5662710960741161
+2025-03-13 15:10:16,852 - Eval - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.56      1.00      0.72        28
+           1       0.50      0.89      0.64        28
+           2       0.78      0.50      0.61        28
+           3       0.25      0.07      0.11        28
+           4       0.71      0.33      0.45        36
+           5       0.65      1.00      0.79        28
+           6       1.00      0.55      0.71        22
+
+    accuracy                           0.61       198
+   macro avg       0.63      0.62      0.58       198
+weighted avg       0.63      0.61      0.57       198
+
+2025-03-13 16:32:03,798 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-13 16:32:04,363 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-13 16:32:04,460 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-13 16:32:04,470 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-13 16:32:04,476 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-14 11:46:16,045 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-14 11:46:16,601 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-14 11:46:16,689 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-14 11:46:16,698 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-14 11:46:16,709 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-14 12:06:12,069 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-14 12:06:28,377 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-14 12:09:08,616 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-17 14:15:02,370 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-17 14:24:27,580 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-17 14:26:04,386 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-17 14:27:15,518 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-17 14:36:12,874 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-17 14:36:15,508 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 16:11:21,749 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 16:11:24,498 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 16:35:38,690 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 16:35:41,685 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 16:38:18,202 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 16:38:20,350 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 16:40:48,007 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 16:41:35,950 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 16:41:38,010 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 16:42:05,917 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 16:42:07,897 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 16:44:32,549 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 16:44:34,684 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 16:44:35,229 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 16:45:08,109 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 16:45:10,174 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 16:45:10,669 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 16:45:10,731 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 16:45:10,740 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 16:45:43,647 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 16:45:46,032 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 16:45:46,841 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 16:45:46,990 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 16:45:46,993 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 16:45:46,995 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 16:50:05,164 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 16:50:07,501 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 16:50:08,009 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 16:50:08,115 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 16:50:08,130 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 16:50:08,137 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 16:51:21,753 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 16:51:25,872 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 16:51:26,674 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 16:51:26,792 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 16:51:26,795 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 16:51:26,799 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 16:54:31,883 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 16:54:35,681 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 16:54:36,473 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 16:54:36,583 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 16:54:36,586 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 16:54:36,591 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 16:58:57,038 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 16:58:59,693 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 16:59:00,194 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 16:59:00,285 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 16:59:00,288 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 16:59:00,290 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 16:59:18,990 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 16:59:20,704 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 16:59:21,173 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 16:59:21,234 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 16:59:21,236 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 16:59:21,237 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:01:00,124 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:01:02,414 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:01:03,194 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:01:03,427 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:01:03,497 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:01:03,498 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:02:29,321 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:02:31,309 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:02:31,796 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:02:31,858 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:02:31,861 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:02:31,863 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:03:14,063 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:03:18,094 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:03:18,879 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:03:18,986 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:03:18,989 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:03:18,992 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:05:00,258 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:05:04,044 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:05:04,836 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:05:04,940 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:05:04,943 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:05:04,947 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:06:03,434 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:06:06,981 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:06:07,722 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:06:07,821 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:06:07,823 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:06:07,827 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:06:47,345 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:06:50,708 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:06:51,439 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:06:51,536 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:06:51,538 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:06:51,541 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:07:31,517 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:07:35,035 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:07:35,778 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:07:35,878 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:07:35,880 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:07:35,884 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:22:49,164 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:22:53,123 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:22:53,929 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:22:54,064 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:22:54,071 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:22:54,087 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:23:21,013 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:23:24,632 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:23:25,449 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:23:25,561 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:23:25,564 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:23:25,568 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:24:33,369 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:24:37,093 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:24:37,869 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:24:37,990 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:24:37,993 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:24:37,997 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:24:42,213 - tensorflow - WARNING - Keras is training/fitting/evaluating on array-like data. Keras may not be optimized for this format, so if your input data format is supported by TensorFlow I/O (https://github.com/tensorflow/io) we recommend using that to load a Dataset instead.
+2025-03-19 17:25:14,484 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:25:18,378 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:25:19,164 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:25:19,278 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:25:19,281 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:25:19,285 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:25:27,259 - tensorflow - WARNING - Keras is training/fitting/evaluating on array-like data. Keras may not be optimized for this format, so if your input data format is supported by TensorFlow I/O (https://github.com/tensorflow/io) we recommend using that to load a Dataset instead.
+2025-03-19 17:26:33,769 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:26:37,641 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:26:38,418 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:26:38,542 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:26:38,545 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:26:38,549 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:27:04,472 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:27:08,355 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:27:09,230 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:27:09,372 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:27:09,375 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:27:09,386 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:28:27,189 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:28:29,238 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:28:29,719 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:28:29,789 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:28:29,792 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:28:29,793 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:28:59,707 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:29:02,033 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:29:02,468 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:29:02,529 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:29:02,531 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:29:02,533 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:29:31,139 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:29:33,175 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:29:33,614 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:29:33,678 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:29:33,680 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:29:33,682 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:29:55,675 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:29:59,499 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:30:00,241 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:30:00,352 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:30:00,356 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:30:00,360 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:33:24,354 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:33:29,112 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:33:29,923 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:33:30,030 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:33:30,053 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:33:30,062 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:35:50,278 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:35:54,179 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:35:54,982 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:35:55,094 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:35:55,097 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:35:55,105 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-19 17:37:04,420 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-19 17:37:06,376 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-19 17:37:06,896 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-19 17:37:06,952 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-19 17:37:06,956 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-19 17:37:06,958 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-25 16:20:18,976 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-25 16:20:21,239 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-25 16:20:21,754 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-25 16:20:21,856 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-25 16:20:21,863 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-25 16:20:21,869 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-25 16:23:08,676 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-25 16:23:12,809 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-25 16:23:13,625 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-25 16:23:13,760 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-25 16:23:13,764 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-25 16:23:13,768 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-25 16:25:24,839 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-25 16:25:28,572 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-25 16:25:29,343 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-25 16:25:29,440 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-25 16:25:29,443 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-25 16:25:29,446 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-25 16:26:54,131 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-25 16:26:57,719 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-25 16:26:58,506 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-25 16:26:58,618 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-25 16:26:58,621 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-25 16:26:58,624 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-25 16:29:12,322 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-25 16:29:16,325 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-25 16:29:17,161 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-25 16:29:17,296 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-25 16:29:17,305 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-25 16:29:17,314 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-25 16:31:56,606 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-25 16:32:00,250 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-25 16:32:01,029 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-25 16:32:01,131 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-25 16:32:01,134 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-25 16:32:01,138 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-25 16:36:33,813 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-25 16:36:37,619 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-25 16:36:38,651 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-25 16:36:39,008 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-25 16:36:39,014 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-25 16:36:39,024 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-25 16:42:32,341 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-25 16:42:35,967 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-25 16:42:36,725 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-25 16:42:36,834 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-25 16:42:36,837 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-25 16:42:36,840 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-25 16:45:18,802 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-25 16:45:20,789 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-25 16:45:21,282 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-25 16:45:21,345 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-25 16:45:21,348 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-25 16:45:21,350 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-26 17:02:06,176 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-26 17:02:09,654 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-26 17:02:10,191 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-26 17:02:10,305 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-26 17:02:10,314 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-26 17:02:10,319 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-26 17:04:36,758 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-26 17:04:45,697 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-26 17:04:46,555 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-26 17:04:46,671 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-26 17:04:46,674 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-26 17:04:46,678 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-26 17:09:54,993 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-26 17:09:59,066 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-26 17:09:59,913 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-26 17:10:00,046 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-26 17:10:00,058 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-26 17:13:09,508 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-26 17:13:11,662 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-26 17:13:12,194 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-26 17:13:12,268 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-26 17:13:12,270 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-26 17:13:12,271 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-26 17:14:14,885 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-26 17:14:16,837 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-26 17:14:17,356 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-26 17:14:17,421 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-26 17:14:17,424 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-26 17:14:17,425 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-26 17:15:24,684 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-26 17:15:28,572 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-26 17:15:29,366 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-26 17:15:29,480 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-26 17:15:29,483 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-26 17:15:29,487 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-26 17:17:30,679 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-26 17:17:34,520 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-26 17:17:35,359 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-26 17:17:35,463 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-26 17:17:35,466 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-26 17:17:35,470 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-26 17:19:26,529 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-26 17:19:30,597 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-26 17:19:31,429 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-26 17:19:31,535 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-26 17:19:31,538 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-26 17:19:31,542 - TrainMLP - INFO - Epoch [1/10] Training...
+2025-03-26 17:20:04,486 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-26 17:20:06,614 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-26 17:20:07,063 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-26 17:20:07,125 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-26 17:20:07,127 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-26 17:20:07,129 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-03-26 17:24:32,621 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-26 17:24:36,885 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-26 17:24:37,760 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-26 17:24:37,888 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-26 17:24:37,896 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-26 17:24:37,904 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-03-26 17:26:58,788 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-26 17:27:00,990 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-26 17:27:01,523 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-26 17:27:01,591 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-26 17:27:01,594 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-26 17:27:01,595 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-03-26 17:27:09,628 - TrainMLP - INFO - Train Loss: 1.9363, Train Accuracy: 10.00%
+2025-03-26 17:28:02,922 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-26 17:28:05,106 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-26 17:28:05,597 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-26 17:28:05,694 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-26 17:28:05,696 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-26 17:28:05,698 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-03-26 17:28:19,614 - TrainMLP - INFO - Train Loss: 1.9957, Train Accuracy: 5.00%
+2025-03-26 17:32:30,152 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-26 17:32:32,311 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-26 17:32:32,794 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-26 17:32:32,869 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-26 17:32:32,871 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-26 17:32:32,873 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-03-26 17:32:46,293 - TrainMLP - INFO - Train Loss: 1.9073, Train Accuracy: 20.00%
+2025-03-26 17:32:59,994 - TrainMLP - INFO - Validation Loss: 1.9035, Validation Accuracy: 30.00%
+2025-03-26 17:33:00,007 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-03-26 17:33:00,007 - TrainMLP - INFO - Epoch [2/5] Training...
+2025-03-26 17:33:13,885 - TrainMLP - INFO - Train Loss: 1.8745, Train Accuracy: 35.00%
+2025-03-26 17:33:26,967 - TrainMLP - INFO - Validation Loss: 1.8542, Validation Accuracy: 45.00%
+2025-03-26 17:33:26,975 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-03-26 17:33:26,975 - TrainMLP - INFO - Epoch [3/5] Training...
+2025-03-26 17:33:39,333 - TrainMLP - INFO - Train Loss: 1.8826, Train Accuracy: 15.00%
+2025-03-26 17:33:51,939 - TrainMLP - INFO - Validation Loss: 1.8804, Validation Accuracy: 35.00%
+2025-03-26 17:33:51,939 - TrainMLP - INFO - Epoch [4/5] Training...
+2025-03-26 17:34:04,412 - TrainMLP - INFO - Train Loss: 1.9102, Train Accuracy: 30.00%
+2025-03-26 17:34:19,071 - TrainMLP - INFO - Validation Loss: 1.8816, Validation Accuracy: 40.00%
+2025-03-26 17:34:19,071 - TrainMLP - INFO - Epoch [5/5] Training...
+2025-03-26 17:34:34,384 - TrainMLP - INFO - Train Loss: 1.9038, Train Accuracy: 5.00%
+2025-03-26 17:34:47,133 - TrainMLP - INFO - Validation Loss: 1.8555, Validation Accuracy: 40.00%
+2025-03-26 17:34:47,137 - TrainMLP - INFO - Final model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-03-25_final_MLP.pth
+2025-03-26 17:35:51,566 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-26 17:35:53,620 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-26 17:35:54,135 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-26 17:35:54,217 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-26 17:35:54,219 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-26 17:35:54,221 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-03-26 17:36:07,329 - TrainMLP - INFO - Train Loss: 1.9785, Train Accuracy: 15.00%
+2025-03-26 17:36:18,971 - TrainMLP - INFO - Validation Loss: 1.8879, Validation Accuracy: 25.00%
+2025-03-26 17:36:18,982 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-03-26 17:36:18,982 - TrainMLP - INFO - Epoch [2/5] Training...
+2025-03-26 17:36:30,914 - TrainMLP - INFO - Train Loss: 2.0495, Train Accuracy: 0.00%
+2025-03-26 17:36:43,083 - TrainMLP - INFO - Validation Loss: 1.9453, Validation Accuracy: 15.00%
+2025-03-26 17:36:43,083 - TrainMLP - INFO - Epoch [3/5] Training...
+2025-03-26 17:36:56,622 - TrainMLP - INFO - Train Loss: 1.9830, Train Accuracy: 0.00%
+2025-03-26 17:37:08,366 - TrainMLP - INFO - Validation Loss: 1.9645, Validation Accuracy: 5.00%
+2025-03-26 17:37:08,367 - TrainMLP - INFO - Epoch [4/5] Training...
+2025-03-26 17:37:20,002 - TrainMLP - INFO - Train Loss: 2.0049, Train Accuracy: 10.00%
+2025-03-26 17:37:32,252 - TrainMLP - INFO - Validation Loss: 1.9676, Validation Accuracy: 15.00%
+2025-03-26 17:37:32,252 - TrainMLP - INFO - Epoch [5/5] Training...
+2025-03-26 17:37:43,932 - TrainMLP - INFO - Train Loss: 1.9967, Train Accuracy: 0.00%
+2025-03-26 17:37:55,700 - TrainMLP - INFO - Validation Loss: 1.9913, Validation Accuracy: 5.00%
+2025-03-26 17:37:55,710 - TrainMLP - INFO - Final model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-03-25_final_MLP.pth
+2025-03-26 17:38:36,395 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-26 17:38:38,445 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-26 17:38:39,022 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-26 17:38:39,095 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-26 17:38:39,098 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-26 17:38:39,100 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-03-26 17:47:06,299 - TrainMLP - INFO - Train Loss: 1.9478, Train Accuracy: 13.67%
+2025-03-26 17:48:06,312 - TrainMLP - INFO - Validation Loss: 1.9619, Validation Accuracy: 14.71%
+2025-03-26 17:48:06,321 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-03-26 17:48:06,321 - TrainMLP - INFO - Epoch [2/5] Training...
+2025-03-26 17:56:42,375 - TrainMLP - INFO - Train Loss: 1.9449, Train Accuracy: 16.67%
+2025-03-26 17:57:43,664 - TrainMLP - INFO - Validation Loss: 1.9523, Validation Accuracy: 10.78%
+2025-03-26 17:57:43,675 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-03-26 17:57:43,675 - TrainMLP - INFO - Epoch [3/5] Training...
+2025-03-26 18:19:17,794 - TrainMLP - INFO - Train Loss: 1.9465, Train Accuracy: 14.75%
+2025-03-26 18:20:20,668 - TrainMLP - INFO - Validation Loss: 1.9685, Validation Accuracy: 6.86%
+2025-03-26 18:20:20,668 - TrainMLP - INFO - Epoch [4/5] Training...
+2025-03-26 18:28:51,453 - TrainMLP - INFO - Train Loss: 1.9453, Train Accuracy: 15.95%
+2025-03-26 18:45:26,186 - TrainMLP - INFO - Validation Loss: 1.9536, Validation Accuracy: 11.76%
+2025-03-26 18:45:26,187 - TrainMLP - INFO - Epoch [5/5] Training...
+2025-03-26 19:47:16,540 - TrainMLP - INFO - Train Loss: 1.9406, Train Accuracy: 16.67%
+2025-03-26 19:48:25,287 - TrainMLP - INFO - Validation Loss: 1.9454, Validation Accuracy: 17.65%
+2025-03-26 19:48:25,303 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-03-26 19:48:25,316 - TrainMLP - INFO - Final model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-03-25_final_MLP.pth
+2025-03-27 17:32:42,255 - TrainMLP - INFO - MLP_eval_started: ciccio_26-03-25_final_MLP.pth
+2025-03-27 17:32:42,731 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-03-25_final_MLP.pth
+2025-03-27 17:34:28,723 - TrainMLP - INFO - MLP_eval_started: space_time_ciccio_13-03-25
+2025-03-27 17:34:29,159 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-27 17:34:29,258 - TrainMLP - INFO - Loaded model from /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-03-25_final_MLP.pth
+2025-03-27 17:35:35,568 - TrainMLP - INFO - MLP_eval_started: space_time_ciccio_13-03-25
+2025-03-27 17:35:36,017 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-27 17:35:36,099 - TrainMLP - INFO - Loaded model from /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-03-25_final_MLP.pth
+2025-03-27 17:38:27,977 - TrainMLP - INFO - MLP_eval_started: space_time_ciccio_13-03-25
+2025-03-27 17:38:30,247 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-27 17:38:30,750 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-27 17:39:28,367 - TrainMLP - INFO - MLP_eval_started: space_time_ciccio_13-03-25
+2025-03-27 17:39:30,368 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-27 17:39:30,890 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-27 17:39:30,996 - TrainMLP - INFO - Loaded model from /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-03-25_final_MLP.pth
+2025-03-27 17:41:45,581 - TrainMLP - INFO - [INFO] Classification Metrics
+2025-03-27 17:41:45,584 - TrainMLP - INFO - Accuracy: 14.14%
+2025-03-27 17:41:45,588 - TrainMLP - INFO - Precision: 0.11368966822092562
+2025-03-27 17:41:45,588 - TrainMLP - INFO - Recall: 0.1414141414141414
+2025-03-27 17:41:45,589 - TrainMLP - INFO - F1 Score: 0.10187188922187328
+2025-03-27 17:41:45,591 - TrainMLP - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.07      0.04      0.05        28
+           1       0.10      0.07      0.08        28
+           2       0.08      0.04      0.05        28
+           3       0.18      0.07      0.10        28
+           4       0.18      0.56      0.27        36
+           5       0.10      0.04      0.05        28
+           6       0.06      0.05      0.05        22
+
+    accuracy                           0.14       198
+   macro avg       0.11      0.12      0.09       198
+weighted avg       0.11      0.14      0.10       198
+
+2025-03-28 11:09:06,209 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-28 11:09:08,762 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-28 11:09:09,308 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-28 11:09:09,414 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-28 11:09:09,423 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-28 11:09:09,430 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-03-28 11:15:47,340 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-28 11:15:49,477 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-28 11:15:50,038 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-28 11:15:50,133 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-28 11:15:50,142 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-28 11:15:50,150 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-03-28 11:16:04,641 - TrainMLP - INFO - Train Loss: 1.9063, Train Accuracy: 10.00%
+2025-03-28 11:16:16,790 - TrainMLP - INFO - Validation Loss: 1.8708, Validation Accuracy: 30.00%
+2025-03-28 11:16:16,804 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-03-28 11:16:16,804 - TrainMLP - INFO - Epoch [2/5] Training...
+2025-03-28 11:16:29,014 - TrainMLP - INFO - Train Loss: 1.9378, Train Accuracy: 5.00%
+2025-03-28 11:16:41,063 - TrainMLP - INFO - Validation Loss: 1.8954, Validation Accuracy: 30.00%
+2025-03-28 11:16:41,063 - TrainMLP - INFO - Epoch [3/5] Training...
+2025-03-28 11:16:52,936 - TrainMLP - INFO - Train Loss: 1.9047, Train Accuracy: 15.00%
+2025-03-28 11:17:05,022 - TrainMLP - INFO - Validation Loss: 1.8833, Validation Accuracy: 20.00%
+2025-03-28 11:17:05,022 - TrainMLP - INFO - Epoch [4/5] Training...
+2025-03-28 11:17:17,320 - TrainMLP - INFO - Train Loss: 1.9315, Train Accuracy: 5.00%
+2025-03-28 11:17:29,790 - TrainMLP - INFO - Validation Loss: 1.8659, Validation Accuracy: 20.00%
+2025-03-28 11:17:29,802 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-03-28 11:17:29,802 - TrainMLP - INFO - Epoch [5/5] Training...
+2025-03-28 11:17:41,684 - TrainMLP - INFO - Train Loss: 1.9267, Train Accuracy: 0.00%
+2025-03-28 11:17:53,900 - TrainMLP - INFO - Validation Loss: 1.8406, Validation Accuracy: 30.00%
+2025-03-28 11:17:53,909 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-03-28 11:17:53,914 - TrainMLP - INFO - Final model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_28-03-25_final_MLP.pth
+2025-03-28 11:19:16,739 - TrainMLP - INFO - MLP_eval_started: space_time_ciccio_13-03-25
+2025-03-28 11:19:19,269 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-28 11:19:19,835 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-28 11:19:19,945 - TrainMLP - INFO - Loaded model from /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_28-03-25_final_MLP.pth
+2025-03-28 11:19:39,425 - TrainMLP - INFO - [INFO] Classification Metrics
+2025-03-28 11:19:39,426 - TrainMLP - INFO - Accuracy: 10.00%
+2025-03-28 11:19:39,429 - TrainMLP - INFO - Precision: 1.0
+2025-03-28 11:19:39,441 - TrainMLP - INFO - Recall: 0.1
+2025-03-28 11:19:39,442 - TrainMLP - INFO - F1 Score: 0.18181818181818182
+2025-03-28 11:19:39,445 - TrainMLP - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       1.00      0.10      0.18        20
+           1       0.00      0.00      0.00         0
+           2       0.00      0.00      0.00         0
+           5       0.00      0.00      0.00         0
+
+    accuracy                           0.10        20
+   macro avg       0.25      0.03      0.05        20
+weighted avg       1.00      0.10      0.18        20
+
+2025-03-28 11:21:51,866 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-03-28 11:21:54,031 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-03-28 11:21:54,560 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-03-28 11:21:54,660 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-03-28 11:21:54,663 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv
+2025-03-28 11:21:54,665 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-03-28 11:22:58,065 - TrainMLP - INFO - Train Loss: 1.9358, Train Accuracy: 13.00%
+2025-03-28 11:24:01,128 - TrainMLP - INFO - Validation Loss: 1.9388, Validation Accuracy: 15.00%
+2025-03-28 11:24:01,143 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-03-28 11:24:01,144 - TrainMLP - INFO - Epoch [2/5] Training...

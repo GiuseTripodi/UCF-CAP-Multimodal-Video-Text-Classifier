@@ -94,7 +94,7 @@ class UCF101Dataset(Dataset):
 
 
         #TODO just for test
-        #self.data = self.data[:10]
+        self.data = self.data[:100]
 
         # Fit the label encoder to the labels
         self.label_encoder.fit([label for _, _, label in self.data])

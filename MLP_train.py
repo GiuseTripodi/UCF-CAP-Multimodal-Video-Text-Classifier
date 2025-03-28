@@ -20,7 +20,8 @@ from utils.utilis_combination_text_video import (
     extract_videos_embedding,
     load_text_encoder,
     load_model_embeddings,
-    project_text_video,
+    project_text_video, load_pretrained_text_model, extract_text_embeddings_weight,
+    load_pretrained_text_model_with_embeddings,
 )
 from parse_config import ConfigParser
 
@@ -32,11 +33,10 @@ def train_model_MLP(text_encoder, tokenizer, video_encoder, classifier, train_lo
     """
     Train the MLP model using both training and validation datasets.
     """
-    text_encoder.eval()  # Keep text encoder frozen
     video_encoder.eval()  # Keep video encoder frozen
     classifier.train()  # Set MLP to training mode
 
-    num_epochs = config.num_epochs
+    num_epochs = 5
     best_val_loss = float("inf")
     save_path = f"{config.save_dir}/{config.exper_name}_best_MLP.pth"
 
@@ -53,25 +53,29 @@ def train_model_MLP(text_encoder, tokenizer, video_encoder, classifier, train_lo
                                        return_tensors="pt")
             inputs, caption, labels = inputs.to(device), caption_tokens.to(device), labels.to(device)
 
-            text_embeddings = extract_text_embeddings(text_encoder, tokenizer, caption, config.max_seq_len)
-            text_embeddings = text_embeddings.clone().detach().to(device)
-            image_embeddings = extract_videos_embedding(video_encoder, inputs)
+            with torch.no_grad():
+                #text_embeddings = extract_text_embeddings(text_encoder, tokenizer, caption_tokens, config.max_seq_len)
+                text_embeddings = extract_text_embeddings_weight(text_encoder, tokenizer, caption, config.max_seq_len)
+                #TODO Testare risultati text embedding caricato per vedere come va
+                image_embeddings = extract_videos_embedding(video_encoder, inputs)
 
-            # Project to a common embedding
-            text_embedding, video_embedding = project_text_video(text_encoder, video_encoder, text_embeddings,
-                                                                 image_embeddings, projection_dim=256)
-            # Ensure text_embedding has shape (8, 1, 256) for broadcasting
-            #text_embedding = text_embedding.unsqueeze(1)  # (8, 1, 256)
-            attn_weights = F.softmax(torch.matmul(text_embedding.unsqueeze(1), video_embedding.transpose(1, 2)),
-                                     dim=-1)  # Shape: (1, 1, 1569)
-            video_embedding_attended = torch.matmul(attn_weights, video_embedding).squeeze(1)  # Shape: (1, 256)
-            combined_embedding = torch.cat((text_embedding, video_embedding_attended), dim=-1)  # Shape: (1, 512)
+                # Project to a common embedding
+                text_embedding, video_embedding = project_text_video(text_encoder, video_encoder, text_embeddings, image_embeddings, projection_dim=256)
+                # Ensure text_embedding has shape (8, 1, 256) for broadcasting
+                #text_embedding = text_embedding.unsqueeze(1)  # (8, 1, 256)
+                attn_weights = F.softmax(torch.bmm(text_embedding, video_embedding.transpose(1, 2)), dim=-1)
+                video_embedding_attended = torch.matmul(attn_weights, video_embedding)  # Shape: (1, 256)
+                #TODO provare senza attention
+                combined_embedding = torch.cat((text_embedding, video_embedding_attended), dim=-1)  # Shape: (1, 512)
+
+                # Take the mean along the sequence dimension
+                combined_embedding = combined_embedding.mean(dim=1)  # Shape: (8, 512)
 
             # Forward pass
             outputs = classifier(combined_embedding)
             loss = criterion(outputs, labels)
 
-            optimizer.zero_grad()
+            optimizer.zero_grad(set_to_none=True)
             loss.backward()
             optimizer.step()
 
@@ -105,27 +109,28 @@ def validate_model_MLP(text_encoder, tokenizer, video_encoder, classifier, val_l
 
     with torch.no_grad():
         for inputs, caption, labels, *_ in tqdm(val_loader, desc="Validating"):
-            inputs, labels = inputs.to(device), labels.to(device)
-            caption_tokens = tokenizer(
-                caption, padding="max_length", truncation=True, max_length=config.max_seq_len, return_tensors="pt"
-            ).to(device)
+            # Convert the caption into tokenized tensor
+            caption_tokens = tokenizer(caption, padding="max_length", truncation=True, max_length=config.max_seq_len,
+                                       return_tensors="pt")
+            inputs, caption, labels = inputs.to(device), caption_tokens.to(device), labels.to(device)
 
-            text_embeddings = extract_text_embeddings(text_encoder, tokenizer, caption_tokens, config.max_seq_len)
-            text_embeddings = text_embeddings.detach().to(device)
+
+            #text_embeddings = extract_text_embeddings(text_encoder, tokenizer, caption_tokens, config.max_seq_len)
+            text_embeddings = extract_text_embeddings_weight(text_encoder, tokenizer, caption, config.max_seq_len)
             image_embeddings = extract_videos_embedding(video_encoder, inputs)
 
-            # Project embeddings
-            text_embedding, video_embedding = project_text_video(
-                text_encoder, video_encoder, text_embeddings, image_embeddings, projection_dim=256
-            )
-
-            # Compute attention-based fusion
-            attn_weights = F.softmax(torch.matmul(text_embedding.unsqueeze(1), video_embedding.transpose(1, 2)),
-                                     dim=-1)  # Shape: (1, 1, 1569)
-            video_embedding_attended = torch.matmul(attn_weights, video_embedding).squeeze(1)
-            combined_embedding = torch.cat((text_embedding, video_embedding_attended), dim=-1)
+            # Project to a common embedding
+            text_embedding, video_embedding = project_text_video(text_encoder, video_encoder, text_embeddings,
+                                                                 image_embeddings, projection_dim=256)
+            # Ensure text_embedding has shape (8, 1, 256) for broadcasting
+            #text_embedding = text_embedding.unsqueeze(1)  # (8, 1, 256)
+            attn_weights = F.softmax(torch.bmm(text_embedding, video_embedding.transpose(1, 2)), dim=-1)
+            video_embedding_attended = torch.matmul(attn_weights, video_embedding)  # Shape: (1, 256)
+            combined_embedding = torch.cat((text_embedding, video_embedding_attended), dim=-1)  # Shape: (1, 512)
 
             # Forward pass
+            # Take the mean along the sequence dimension
+            combined_embedding = combined_embedding.mean(dim=1)  # Shape: (8, 512)
             outputs = classifier(combined_embedding)
             loss = criterion(outputs, labels)
 
@@ -147,10 +152,11 @@ def run_training(config: ConfigParser, model_name, expt_name):
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
     # Load encoders
-    tokenizer, text_encoder = load_text_encoder()
+    #tokenizer, text_encoder = load_text_encoder()
+    tokenizer, text_encoder = load_pretrained_text_model_with_embeddings('/Users/user/PycharmProjects/frozen-in-time/data/models/weights_multiclass.h5')
     video_encoder, _ = load_model_embeddings(config, model_name, logger)
 
-    text_encoder.to(device)
+    #text_encoder.to(device)
     video_encoder.to(device)
 
     transform = transforms.Compose([
