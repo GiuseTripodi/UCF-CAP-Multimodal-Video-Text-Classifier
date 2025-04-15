@@ -39,7 +39,7 @@ def load_pretrained_text_model_with_embeddings(weights_path, bert_name='distilbe
     """Carica il modello DistilBERT con pesi pre-addestrati e consente l'estrazione degli embeddings."""
 
     max_seq_len = 245
-    num_classes = 13
+    num_classes = 7
 
     # Input layers
     input_ids = layers.Input(shape=(max_seq_len,), dtype=tf.int32, name='input_ids')

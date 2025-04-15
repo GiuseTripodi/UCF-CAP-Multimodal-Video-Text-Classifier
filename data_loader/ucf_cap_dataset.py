@@ -4,6 +4,8 @@ import pandas as pd
 import os
 import csv
 import re
+
+from sklearn.utils import shuffle
 from torchvision import transforms
 from torch.utils.data import Dataset, DataLoader
 import os
@@ -76,34 +78,39 @@ def create_csv_splits(home_path):
 
 
 class UCF101Dataset(Dataset):
-    def __init__(self, csv_file, transform=None, num_frames=8):
-        self.data = []
+    def __init__(self, csv_file, transform=None, num_frames=8, num_samples=100,):
         self.num_frames = num_frames
         self.transform = transform
+
+        # Read and process the CSV file
+        df = pd.read_csv(csv_file)
+        print(df.columns)
+
+        # Get all unique classes
+        classes = df['label'].unique()
+        print(classes)
+        num_classes = len(classes)
+        samples_per_class = num_samples // num_classes
+
+        # Sample evenly from each class
+        df = df.groupby('label', group_keys=False).apply(lambda x: x.sample(min(len(x), samples_per_class), random_state=42))
+        self.data = shuffle(df, random_state=42)
+        # print number of classes per sample
+        # Count how many samples per class
+        print(f"Labels distributions for: {csv_file} \\n {self.data['label'].value_counts().sort_index()}")
+
 
         # Initialize a LabelEncoder to convert string labels to integer indices
         self.label_encoder = LabelEncoder()
 
-        # Read and process the CSV file
-        with open(csv_file, 'r') as f:
-            reader = csv.reader(f)
-            next(reader)  # Skip the header
-            for line in reader:
-                id, caption, path, label = line
-                self.data.append((caption, path, label))
-
-
-        #TODO just for test
-        self.data = self.data[:100]
-
         # Fit the label encoder to the labels
-        self.label_encoder.fit([label for _, _, label in self.data])
+        self.label_encoder.fit([label for label in self.data['label']])
 
     def __len__(self):
         return len(self.data)
 
     def __getitem__(self, idx):
-        caption, path, label = self.data[idx]
+        idx, caption, path, label = self.data.iloc[idx]
         frames = sorted(glob.glob(os.path.join(path, '*.jpg')))
         selected_frames = frames[:self.num_frames] # Choose first N frames
         images = [Image.open(frame).convert("RGB") for frame in selected_frames]
@@ -127,9 +134,9 @@ if __name__ == '__main__':
     # Run the function
     home_path = '/Users/user/PycharmProjects/frozen-in-time'
     #home_path = '/mnt/iusers01/mace01/t08341gt/UCF_cap_mh'
-    #create_csv_splits(home_path)
+    create_csv_splits(home_path)
 
-
+    '''
     transform = transforms.Compose([
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
@@ -140,3 +147,4 @@ if __name__ == '__main__':
 
     dataset = UCF101Dataset(csv_file, transform=transform)
     dataloader = DataLoader(dataset, batch_size=16, shuffle=True)
+    '''

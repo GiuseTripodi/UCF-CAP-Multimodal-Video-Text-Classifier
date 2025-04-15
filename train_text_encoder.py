@@ -21,9 +21,9 @@ def load_and_preprocess_data(config: ConfigParser, max_seq_len, bert_name):
     train_csv_path, val_csv_path = config.train_path
     test__csv_path = config.test_path
 
-    train_df = pd.read_csv(train_csv_path,  encoding='utf-8').sample(frac=1).reset_index(drop=True)[:20]
-    test_df = pd.read_csv(test__csv_path,  encoding='utf-8').sample(frac=1).reset_index(drop=True)[:20]
-    val_df = pd.read_csv(val_csv_path,  encoding='utf-8').sample(frac=1).reset_index(drop=True)[:20]
+    train_df = pd.read_csv(train_csv_path,  encoding='utf-8').sample(frac=1).reset_index(drop=True)[:200]
+    test_df = pd.read_csv(test__csv_path,  encoding='utf-8').sample(frac=1).reset_index(drop=True)[:200]
+    val_df = pd.read_csv(val_csv_path,  encoding='utf-8').sample(frac=1).reset_index(drop=True)[:200]
 
 
     train_sentences = train_df["caption"].values
@@ -185,7 +185,7 @@ def main_train_text_embedding(config: ConfigParser):
     # ================= Configurazione ====================
     SAVE_DIR = config.save_dir
 
-    WEIGHTS_FILE = f"{SAVE_DIR}\\weights_multiclass_{config.exper_name}.h5"
+    WEIGHTS_FILE = f"{SAVE_DIR}/weights_multiclass_{date.today().strftime('%d-%m-%y')}_{config.exper_name}.h5"
     MAX_SEQ_LEN = config.max_seq_len
     BERT_NAME = "distilbert-base-uncased"
     TOTAL_EPOCHS = config.num_epochs

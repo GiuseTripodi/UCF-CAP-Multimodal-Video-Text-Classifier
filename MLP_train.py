@@ -36,6 +36,7 @@ def train_model_MLP(text_encoder, tokenizer, video_encoder, classifier, train_lo
     video_encoder.eval()  # Keep video encoder frozen
     classifier.train()  # Set MLP to training mode
 
+    # TODO aumentare epoche
     num_epochs = 5
     best_val_loss = float("inf")
     save_path = f"{config.save_dir}/{config.exper_name}_best_MLP.pth"
@@ -63,13 +64,17 @@ def train_model_MLP(text_encoder, tokenizer, video_encoder, classifier, train_lo
                 text_embedding, video_embedding = project_text_video(text_encoder, video_encoder, text_embeddings, image_embeddings, projection_dim=256)
                 # Ensure text_embedding has shape (8, 1, 256) for broadcasting
                 #text_embedding = text_embedding.unsqueeze(1)  # (8, 1, 256)
-                attn_weights = F.softmax(torch.bmm(text_embedding, video_embedding.transpose(1, 2)), dim=-1)
-                video_embedding_attended = torch.matmul(attn_weights, video_embedding)  # Shape: (1, 256)
+                #attn_weights = F.softmax(torch.bmm(text_embedding, video_embedding.transpose(1, 2)), dim=-1)
+                #video_embedding_attended = torch.matmul(attn_weights, video_embedding)  # Shape: (1, 256)
                 #TODO provare senza attention
-                combined_embedding = torch.cat((text_embedding, video_embedding_attended), dim=-1)  # Shape: (1, 512)
+                video_embedding = video_embedding.permute(0, 2, 1)  # (8, 256, 1569)
+                video_embedding = F.adaptive_avg_pool1d(video_embedding, 245)  # (8, 256, 245)
+                video_embedding = video_embedding.permute(0, 2, 1)  # (8, 245, 256)
+                #combined_embedding = torch.cat((text_embedding, video_embedding), dim=-1)  # Shape: (1, 512)
+                combined_embedding = text_embedding + video_embedding  # (8, 245, 256)
 
                 # Take the mean along the sequence dimension
-                combined_embedding = combined_embedding.mean(dim=1)  # Shape: (8, 512)
+                combined_embedding = combined_embedding.mean(dim=1)
 
             # Forward pass
             outputs = classifier(combined_embedding)
@@ -124,13 +129,18 @@ def validate_model_MLP(text_encoder, tokenizer, video_encoder, classifier, val_l
                                                                  image_embeddings, projection_dim=256)
             # Ensure text_embedding has shape (8, 1, 256) for broadcasting
             #text_embedding = text_embedding.unsqueeze(1)  # (8, 1, 256)
-            attn_weights = F.softmax(torch.bmm(text_embedding, video_embedding.transpose(1, 2)), dim=-1)
-            video_embedding_attended = torch.matmul(attn_weights, video_embedding)  # Shape: (1, 256)
-            combined_embedding = torch.cat((text_embedding, video_embedding_attended), dim=-1)  # Shape: (1, 512)
+            #attn_weights = F.softmax(torch.bmm(text_embedding, video_embedding.transpose(1, 2)), dim=-1)
+            #video_embedding_attended = torch.matmul(attn_weights, video_embedding)  # Shape: (1, 256)
+            video_embedding = video_embedding.permute(0, 2, 1)  # (8, 256, 1569)
+            video_embedding = F.adaptive_avg_pool1d(video_embedding, 245)  # (8, 256, 245)
+            video_embedding = video_embedding.permute(0, 2, 1)  # (8, 245, 256)
+            # combined_embedding = torch.cat((text_embedding, video_embedding), dim=-1)  # Shape: (1, 512)
+            combined_embedding = text_embedding + video_embedding  # (8, 245, 256)
+
+            # Take the mean along the sequence dimension
+            combined_embedding = combined_embedding.mean(dim=1)
 
             # Forward pass
-            # Take the mean along the sequence dimension
-            combined_embedding = combined_embedding.mean(dim=1)  # Shape: (8, 512)
             outputs = classifier(combined_embedding)
             loss = criterion(outputs, labels)
 
@@ -153,7 +163,7 @@ def run_training(config: ConfigParser, model_name, expt_name):
 
     # Load encoders
     #tokenizer, text_encoder = load_text_encoder()
-    tokenizer, text_encoder = load_pretrained_text_model_with_embeddings('/Users/user/PycharmProjects/frozen-in-time/data/models/weights_multiclass.h5')
+    tokenizer, text_encoder = load_pretrained_text_model_with_embeddings('/Users/user/PycharmProjects/frozen-in-time/data/models/weights_multiclass_31-03-25_bert_training.h5')
     video_encoder, _ = load_model_embeddings(config, model_name, logger)
 
     #text_encoder.to(device)
@@ -168,16 +178,17 @@ def run_training(config: ConfigParser, model_name, expt_name):
     # Load datasets
     train_csv, val_csv = config.train_path
     logger.info(f'Loading training dataset from {train_csv}')
-    dataset_train = UCF101Dataset(train_csv, transform=transform)
-    train_dataloader = DataLoader(dataset_train, batch_size=config.batch_size, shuffle=config.shuffle)
-
     logger.info(f'Loading validation dataset from {val_csv}')
+    dataset_train = UCF101Dataset(train_csv, transform=transform, num_samples=200)
+    train_dataloader = DataLoader(dataset_train, batch_size=config.batch_size, shuffle=config.shuffle)
     dataset_val = UCF101Dataset(val_csv, transform=transform)
     val_dataloader = DataLoader(dataset_val, batch_size=config.batch_size, shuffle=False)
 
+    # Un comment if you want to generate the embeddings
+
     # Initialize MLP classifier
-    input_dim = 512
-    hidden_dim = 256
+    input_dim = 256
+    hidden_dim = 64
     num_classes = config.num_classes
     classifier = MLPClassifier(input_dim, hidden_dim, num_classes).to(device)
 
