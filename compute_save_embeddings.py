@@ -55,23 +55,17 @@ def add_embedding(dataframe, config: ConfigParser, text_encoder, video_encoder, 
 
             try:
                 text_embedding = extract_text_embeddings_weight(text_encoder, tokenizer, caption_tokens, config.max_seq_len)
-
-            except:
-                print(f'Error with the generation of the text embedding for row: {index}')
-
-            try:
                 video_embedding = extract_videos_embedding(video_encoder, video_tensor)
-
+                text_embedding, video_embedding = project_text_video(text_encoder, video_encoder, text_embedding, video_embedding, projection_dim=256)
+                video_embedding = video_embedding.permute(0, 2, 1)  # (8, 256, 1569)
+                video_embedding = F.adaptive_avg_pool1d(video_embedding, 245)  # (8, 256, 245)
+                video_embedding = video_embedding.permute(0, 2, 1)  # (8, 245, 256)
             except:
-                print(f'Error with the generation of the video embedding for row: {index}')
+                print(f'Error with the generation of the text embedding or video embedding for row: {index}')
+                text_embedding = []
+                video_embedding = []
 
-            # Project to a common embedding
-            text_embedding, video_embedding = project_text_video(text_encoder, video_encoder, text_embedding, video_embedding, projection_dim=256)
             text_embeddings.append(text_embedding)
-
-            video_embedding = video_embedding.permute(0, 2, 1)  # (8, 256, 1569)
-            video_embedding = F.adaptive_avg_pool1d(video_embedding, 245)  # (8, 256, 245)
-            video_embedding = video_embedding.permute(0, 2, 1)  # (8, 245, 256)
             video_embeddings.append(video_embedding)
             del video_embedding
 
@@ -117,7 +111,9 @@ def main(config: ConfigParser, model_name):
 
     # Load encoders
     #tokenizer, text_encoder = load_text_encoder()
-    tokenizer, text_encoder = load_pretrained_text_model_with_embeddings('/Users/user/PycharmProjects/frozen-in-time/data/models/weights_multiclass_31-03-25_bert_training.h5')
+    home = "/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/models"
+    #home = "/Users/user/PycharmProjects/frozen-in-time/data/models"
+    tokenizer, text_encoder = load_pretrained_text_model_with_embeddings(f'{home}/weights_multiclass_31-03-25_bert_training.h5')
     video_encoder, _ = load_model_embeddings(config, model_name, logger)
 
     #text_encoder.to(device)
