@@ -29,11 +29,10 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '')))
 
 
-def train_model_MLP(text_encoder, tokenizer, video_encoder, classifier, train_loader, val_loader, criterion, optimizer, device, config, logger):
+def train_model_MLP(classifier, train_loader, val_loader, criterion, optimizer, device, config, logger):
     """
     Train the MLP model using both training and validation datasets.
     """
-    video_encoder.eval()  # Keep video encoder frozen
     classifier.train()  # Set MLP to training mode
 
     # TODO aumentare epoche
@@ -48,30 +47,20 @@ def train_model_MLP(text_encoder, tokenizer, video_encoder, classifier, train_lo
 
         logger.info(f"Epoch [{epoch+1}/{num_epochs}] Training...")
 
-        for inputs, caption, labels, *_ in tqdm(train_loader, desc=f"Epoch {epoch+1}"):
-            # Convert the caption into tokenized tensor
-            caption_tokens = tokenizer(caption, padding="max_length", truncation=True, max_length=config.max_seq_len,
-                                       return_tensors="pt")
-            inputs, caption, labels = inputs.to(device), caption_tokens.to(device), labels.to(device)
-
+        for inputs, caption, labels, text_embeddings, video_embeddings, *_ in tqdm(train_loader, desc=f"Epoch {epoch+1}"):
+            inputs, labels, text_embeddings, video_embeddings, = inputs.to(device), labels.to(device), text_embeddings.to(device), video_embeddings.to(device)
             with torch.no_grad():
-                #text_embeddings = extract_text_embeddings(text_encoder, tokenizer, caption_tokens, config.max_seq_len)
-                text_embeddings = extract_text_embeddings_weight(text_encoder, tokenizer, caption, config.max_seq_len)
-                #TODO Testare risultati text embedding caricato per vedere come va
-                image_embeddings = extract_videos_embedding(video_encoder, inputs)
-
-                # Project to a common embedding
-                text_embedding, video_embedding = project_text_video(text_encoder, video_encoder, text_embeddings, image_embeddings, projection_dim=256)
                 # Ensure text_embedding has shape (8, 1, 256) for broadcasting
                 #text_embedding = text_embedding.unsqueeze(1)  # (8, 1, 256)
                 #attn_weights = F.softmax(torch.bmm(text_embedding, video_embedding.transpose(1, 2)), dim=-1)
                 #video_embedding_attended = torch.matmul(attn_weights, video_embedding)  # Shape: (1, 256)
+
                 #TODO provare senza attention
-                video_embedding = video_embedding.permute(0, 2, 1)  # (8, 256, 1569)
-                video_embedding = F.adaptive_avg_pool1d(video_embedding, 245)  # (8, 256, 245)
-                video_embedding = video_embedding.permute(0, 2, 1)  # (8, 245, 256)
+
                 #combined_embedding = torch.cat((text_embedding, video_embedding), dim=-1)  # Shape: (1, 512)
-                combined_embedding = text_embedding + video_embedding  # (8, 245, 256)
+                text_embeddings = text_embeddings.squeeze(1)
+                video_embeddings = video_embeddings.squeeze(1)
+                combined_embedding = text_embeddings + video_embeddings  # (8, 245, 256)
 
                 # Take the mean along the sequence dimension
                 combined_embedding = combined_embedding.mean(dim=1)
@@ -93,7 +82,7 @@ def train_model_MLP(text_encoder, tokenizer, video_encoder, classifier, train_lo
         logger.info(f"Train Loss: {train_loss / len(train_loader):.4f}, Train Accuracy: {train_accuracy:.2f}%")
 
         # Validation phase
-        val_loss, val_accuracy = validate_model_MLP(text_encoder, tokenizer, video_encoder, classifier, val_loader, criterion, device, config, logger)
+        val_loss, val_accuracy = validate_model_MLP(classifier, val_loader, criterion, device, config, logger)
         logger.info(f"Validation Loss: {val_loss:.4f}, Validation Accuracy: {val_accuracy:.2f}%")
 
         # Save the best model based on validation loss
@@ -103,7 +92,7 @@ def train_model_MLP(text_encoder, tokenizer, video_encoder, classifier, train_lo
             logger.info(f"Best model saved at {save_path}")
 
 
-def validate_model_MLP(text_encoder, tokenizer, video_encoder, classifier, val_loader, criterion, device, config, logger):
+def validate_model_MLP(classifier, val_loader, criterion, device, config, logger):
     """
     Validate the MLP model.
     """
@@ -113,31 +102,26 @@ def validate_model_MLP(text_encoder, tokenizer, video_encoder, classifier, val_l
     val_total = 0
 
     with torch.no_grad():
-        for inputs, caption, labels, *_ in tqdm(val_loader, desc="Validating"):
-            # Convert the caption into tokenized tensor
-            caption_tokens = tokenizer(caption, padding="max_length", truncation=True, max_length=config.max_seq_len,
-                                       return_tensors="pt")
-            inputs, caption, labels = inputs.to(device), caption_tokens.to(device), labels.to(device)
+        for inputs, caption, labels, text_embeddings, video_embeddings, *_  in tqdm(val_loader):
+            inputs, labels, text_embeddings, video_embeddings , = inputs.to(device), labels.to(device), text_embeddings.to(device), video_embeddings.to(device)
 
-            #text_embeddings = extract_text_embeddings(text_encoder, tokenizer, caption_tokens, config.max_seq_len)
-            text_embeddings = extract_text_embeddings_weight(text_encoder, tokenizer, caption, config.max_seq_len)
-            image_embeddings = extract_videos_embedding(video_encoder, inputs)
+            with torch.no_grad():
+                # Ensure text_embedding has shape (8, 1, 256) for broadcasting
+                #text_embedding = text_embedding.unsqueeze(1)  # (8, 1, 256)
+                #attn_weights = F.softmax(torch.bmm(text_embedding, video_embedding.transpose(1, 2)), dim=-1)
+                #video_embedding_attended = torch.matmul(attn_weights, video_embedding)  # Shape: (1, 256)
 
-            # Project to a common embedding
-            text_embedding, video_embedding = project_text_video(text_encoder, video_encoder, text_embeddings,
-                                                                 image_embeddings, projection_dim=256)
-            # Ensure text_embedding has shape (8, 1, 256) for broadcasting
-            #text_embedding = text_embedding.unsqueeze(1)  # (8, 1, 256)
-            #attn_weights = F.softmax(torch.bmm(text_embedding, video_embedding.transpose(1, 2)), dim=-1)
-            #video_embedding_attended = torch.matmul(attn_weights, video_embedding)  # Shape: (1, 256)
-            video_embedding = video_embedding.permute(0, 2, 1)  # (8, 256, 1569)
-            video_embedding = F.adaptive_avg_pool1d(video_embedding, 245)  # (8, 256, 245)
-            video_embedding = video_embedding.permute(0, 2, 1)  # (8, 245, 256)
-            # combined_embedding = torch.cat((text_embedding, video_embedding), dim=-1)  # Shape: (1, 512)
-            combined_embedding = text_embedding + video_embedding  # (8, 245, 256)
+                #TODO provare senza attention
+                #video_embedding = image_embeddings.permute(0, 2, 1)  # (8, 256, 1569)
+                #video_embedding = F.adaptive_avg_pool1d(video_embedding, 245)  # (8, 256, 245)
+                #video_embedding = video_embedding.permute(0, 2, 1)  # (8, 245, 256)
+                #combined_embedding = torch.cat((text_embedding, video_embedding), dim=-1)  # Shape: (1, 512)
+                text_embeddings = text_embeddings.squeeze(1)
+                video_embeddings = video_embeddings.squeeze(1)
+                combined_embedding = text_embeddings + video_embeddings  # (8, 245, 256)
 
-            # Take the mean along the sequence dimension
-            combined_embedding = combined_embedding.mean(dim=1)
+                # Take the mean along the sequence dimension
+                combined_embedding = combined_embedding.mean(dim=1)
 
             # Forward pass
             outputs = classifier(combined_embedding)
@@ -160,14 +144,6 @@ def run_training(config: ConfigParser, model_name, expt_name):
     logger.info(f'Starting training: {model_name}')
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-    # Load encoders
-    #tokenizer, text_encoder = load_text_encoder()
-    tokenizer, text_encoder = load_pretrained_text_model_with_embeddings('/Users/user/PycharmProjects/frozen-in-time/data/models/weights_multiclass_31-03-25_bert_training.h5')
-    video_encoder, _ = load_model_embeddings(config, model_name, logger)
-
-    #text_encoder.to(device)
-    video_encoder.to(device)
-
     transform = transforms.Compose([
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
@@ -175,15 +151,14 @@ def run_training(config: ConfigParser, model_name, expt_name):
     ])
 
     # Load datasets
-    train_csv, val_csv = config.train_path
+    train_csv = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_09-05-25.pkl'
+    val_csv = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_09-05-25.pkl'
     logger.info(f'Loading training dataset from {train_csv}')
     logger.info(f'Loading validation dataset from {val_csv}')
     dataset_train = UCF101Dataset(train_csv, transform=transform, num_samples=200)
     train_dataloader = DataLoader(dataset_train, batch_size=config.batch_size, shuffle=config.shuffle)
     dataset_val = UCF101Dataset(val_csv, transform=transform)
     val_dataloader = DataLoader(dataset_val, batch_size=config.batch_size, shuffle=False)
-
-    # Un comment if you want to generate the embeddings
 
     # Initialize MLP classifier
     input_dim = 256
@@ -196,7 +171,7 @@ def run_training(config: ConfigParser, model_name, expt_name):
     optimizer = optim.Adam(classifier.parameters(), lr=config.learning_rate)
 
     # Train the model
-    train_model_MLP(text_encoder, tokenizer, video_encoder, classifier, train_dataloader, val_dataloader, criterion, optimizer, device, config, logger)
+    train_model_MLP(classifier, train_dataloader, val_dataloader, criterion, optimizer, device, config, logger)
 
     # Save final model
     final_model_path = f"{config.save_dir}/{expt_name}_{date.today().strftime('%d-%m-%y')}_final_MLP.pth"

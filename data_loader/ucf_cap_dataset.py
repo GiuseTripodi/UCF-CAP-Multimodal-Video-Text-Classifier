@@ -1,3 +1,4 @@
+import ast
 from os.path import join
 
 import pandas as pd
@@ -83,7 +84,10 @@ class UCF101Dataset(Dataset):
         self.transform = transform
 
         # Read and process the CSV file
-        df = pd.read_csv(csv_file)
+        if csv_file.split('.')[-1] == 'csv':
+            df = pd.read_csv(csv_file)
+        else:
+            df = pd.read_pickle(csv_file)
         print(df.columns)
 
         # Get all unique classes
@@ -102,7 +106,6 @@ class UCF101Dataset(Dataset):
 
         # Initialize a LabelEncoder to convert string labels to integer indices
         self.label_encoder = LabelEncoder()
-
         # Fit the label encoder to the labels
         self.label_encoder.fit([label for label in self.data['label']])
 
@@ -110,7 +113,14 @@ class UCF101Dataset(Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        idx, caption, path, label = self.data.iloc[idx]
+        idx_, caption, path, label = self.data.iloc[idx]['videoID'], self.data.iloc[idx]['caption'], self.data.iloc[idx]['video_path'], self.data.iloc[idx]['label']
+        text_embedding = []
+        video_embedding = None
+
+        if len(self.data.columns) > 4:
+            text_embedding = self.data.iloc[idx]['text_embedding']
+            video_embedding = self.data.iloc[idx]['video_embedding']
+
         frames = sorted(glob.glob(os.path.join(path, '*.jpg')))
         selected_frames = frames[:self.num_frames] # Choose first N frames
         images = [Image.open(frame).convert("RGB") for frame in selected_frames]
@@ -127,7 +137,7 @@ class UCF101Dataset(Dataset):
         # Convert label to integer using label_encoder
         label_idx = self.label_encoder.transform([label])[0]  # Convert string label to integer index
 
-        return video_tensor, caption, label_idx  # Return the label index as an integer tensor
+        return video_tensor, caption, label_idx, text_embedding, video_embedding  # Return the label index as an integer tensor
 
 
 if __name__ == '__main__':

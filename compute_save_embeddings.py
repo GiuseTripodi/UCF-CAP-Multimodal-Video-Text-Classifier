@@ -34,6 +34,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '')))
 
 def add_embedding(dataframe, config: ConfigParser, text_encoder, video_encoder, tokenizer, tranformer, save_name = 'embeddings'):
 
+    ids = []
+    paths = []
     text_embeddings = []
     video_embeddings = []
     captions = []
@@ -41,7 +43,7 @@ def add_embedding(dataframe, config: ConfigParser, text_encoder, video_encoder, 
 
     with torch.no_grad():
         for index, row in dataframe.iterrows():
-            caption, path, label= row['caption'], row['path'], row['label']
+            ID, caption, path, label = row['videoID'], row['caption'], row['path'], row['label']
             caption_tokens = tokenizer(caption, padding="max_length", truncation=True, max_length=config.max_seq_len,
                                        return_tensors="pt")
 
@@ -51,32 +53,45 @@ def add_embedding(dataframe, config: ConfigParser, text_encoder, video_encoder, 
             images = [tranformer(img) for img in images]
             video_tensor = torch.stack(images, dim=0).unsqueeze(0)  # Shape: [num_frames, C, H, W]
 
-            # text_embeddings = extract_text_embeddings(text_encoder, tokenizer, caption_tokens, config.max_seq_len)
             try:
                 text_embedding = extract_text_embeddings_weight(text_encoder, tokenizer, caption_tokens, config.max_seq_len)
-                text_embeddings.append(text_embedding)
 
             except:
                 print(f'Error with the generation of the text embedding for row: {index}')
 
-            # text_embeddings = extract_text_embeddings(text_encoder, tokenizer, caption_tokens, config.max_seq_len)
             try:
-                image_embedding = extract_videos_embedding(video_encoder, video_tensor)
-                video_embeddings.append(image_embedding)
-                del image_embedding
+                video_embedding = extract_videos_embedding(video_encoder, video_tensor)
+
             except:
                 print(f'Error with the generation of the video embedding for row: {index}')
+
+            # Project to a common embedding
+            text_embedding, video_embedding = project_text_video(text_encoder, video_encoder, text_embedding, video_embedding, projection_dim=256)
+            text_embeddings.append(text_embedding)
+
+            video_embedding = video_embedding.permute(0, 2, 1)  # (8, 256, 1569)
+            video_embedding = F.adaptive_avg_pool1d(video_embedding, 245)  # (8, 256, 245)
+            video_embedding = video_embedding.permute(0, 2, 1)  # (8, 245, 256)
+            video_embeddings.append(video_embedding)
+            del video_embedding
+
             captions.append(caption)
             labels.append(label)
+            ids.append(ID)
+            paths.append(path)
 
     df = pd.DataFrame({
+        'videoID': ids,
         'caption': captions,
+        'video_path': paths,
         'label': labels,
         'text_embedding': text_embeddings,
         'video_embedding': video_embeddings,
     })
 
     df.to_csv(f'/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/{save_name}_{date.today().strftime("%d-%m-%y")}.csv', index=False)
+    df.to_pickle(
+        f'/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/{save_name}_{date.today().strftime("%d-%m-%y")}.pkl')
 
 
 
@@ -89,11 +104,10 @@ def load_dataset(csv_file):
         next(reader)  # Skip the header
         for line in reader:
             id, caption, path, label = line
-            data.append((caption, path, label))
+            data.append((id, caption, path, label))
 
-    data = data[:50]
     # Create the DataFrame
-    return pd.DataFrame(data, columns=['caption', 'path', 'label'])
+    return pd.DataFrame(data, columns=['videoID','caption', 'path', 'label'])
 
 
 def main(config: ConfigParser, model_name):
