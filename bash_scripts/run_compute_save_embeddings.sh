@@ -1,4 +1,9 @@
 #!/bin/bash --login
+
+
+#$ -l v100
+#$ -cwd
+
 # Latest version of CUDA
 module load libs/cuda
 
