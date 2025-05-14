@@ -112,7 +112,7 @@ def main(config: ConfigParser, model_name):
     # Load encoders
     #tokenizer, text_encoder = load_text_encoder()
     home = "/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/models"
-    #home = "/Users/user/PycharmProjects/frozen-in-time/data/models"
+    home = "/Users/user/PycharmProjects/frozen-in-time/data/models"
     tokenizer, text_encoder = load_pretrained_text_model_with_embeddings(f'{home}/weights_multiclass_31-03-25_bert_training.h5')
     video_encoder, _ = load_model_embeddings(config, model_name, logger)
 
@@ -129,9 +129,15 @@ def main(config: ConfigParser, model_name):
     train_csv, val_csv = config.train_path
     train_df = load_dataset(train_csv)
     val_df = load_dataset(val_csv)
+    test_path = config.test_path
+    test_df = load_dataset(test_path)
 
-    add_embedding(train_df, config, text_encoder, video_encoder, tokenizer, transform, save_name = 'Train_embeddings')
-    add_embedding(val_df, config, text_encoder, video_encoder, tokenizer, transform, save_name = 'Val_embeddings')
+
+
+    #add_embedding(train_df, config, text_encoder, video_encoder, tokenizer, transform, save_name = 'Train_embeddings')
+    #add_embedding(val_df, config, text_encoder, video_encoder, tokenizer, transform, save_name = 'Val_embeddings')
+    add_embedding(test_df, config, text_encoder, video_encoder, tokenizer, transform, save_name = 'Val_embeddings')
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Script to train MLP model with validation")

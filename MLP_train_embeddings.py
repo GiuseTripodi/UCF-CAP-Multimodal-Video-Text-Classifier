@@ -35,8 +35,7 @@ def train_model_MLP(classifier, train_loader, val_loader, criterion, optimizer, 
     """
     classifier.train()  # Set MLP to training mode
 
-    # TODO aumentare epoche
-    num_epochs = 5
+    num_epochs = config.num_epochs
     best_val_loss = float("inf")
     save_path = f"{config.save_dir}/{config.exper_name}_best_MLP.pth"
 
@@ -151,11 +150,11 @@ def run_training(config: ConfigParser, model_name, expt_name):
     ])
 
     # Load datasets
-    train_csv = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_09-05-25.pkl'
-    val_csv = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_09-05-25.pkl'
+    train_csv = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_13-05-25.pkl'
+    val_csv = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_13-05-25.pkl'
     logger.info(f'Loading training dataset from {train_csv}')
     logger.info(f'Loading validation dataset from {val_csv}')
-    dataset_train = UCF101Dataset(train_csv, transform=transform, num_samples=200)
+    dataset_train = UCF101Dataset(train_csv, transform=transform, num_samples=1000)
     train_dataloader = DataLoader(dataset_train, batch_size=config.batch_size, shuffle=config.shuffle)
     dataset_val = UCF101Dataset(val_csv, transform=transform)
     val_dataloader = DataLoader(dataset_val, batch_size=config.batch_size, shuffle=False)

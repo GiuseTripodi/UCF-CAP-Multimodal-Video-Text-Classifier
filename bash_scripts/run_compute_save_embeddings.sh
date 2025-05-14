@@ -1,4 +1,6 @@
 #!/bin/bash --login
+# Latest version of CUDA
+module load libs/cuda
 
 echo "Job is using $NGPUS GPU(s) with ID(s) $CUDA_VISIBLE_DEVICES and $NSLOTS CPU core(s)"
 
