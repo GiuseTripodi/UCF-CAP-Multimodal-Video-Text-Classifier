@@ -1,14 +1,12 @@
 #!/bin/bash --login
 
 
-#$ -l a100
-#$ -cwd
+#SBATCH -p serial
+#SBATCH -t 4-0
 
 # Latest version of CUDA
 module load libs/cuda
-
 echo "Job is using $NGPUS GPU(s) with ID(s) $CUDA_VISIBLE_DEVICES and $NSLOTS CPU core(s)"
-
 source /mnt/iusers01/mace01/t08341gt/env_phd/bin/activate
 
 # Default values arg parameters
