@@ -1,7 +1,7 @@
 #!/bin/bash --login
 
 
-#$ -l v100
+#$ -l a100
 #$ -cwd
 
 # Latest version of CUDA
