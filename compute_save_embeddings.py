@@ -112,7 +112,7 @@ def main(config: ConfigParser, model_name):
     # Load encoders
     #tokenizer, text_encoder = load_text_encoder()
     home = "/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/models"
-    home = "/Users/user/PycharmProjects/frozen-in-time/data/models"
+    #home = "/Users/user/PycharmProjects/frozen-in-time/data/models"
     tokenizer, text_encoder = load_pretrained_text_model_with_embeddings(f'{home}/weights_multiclass_31-03-25_bert_training.h5')
     video_encoder, _ = load_model_embeddings(config, model_name, logger)
 
