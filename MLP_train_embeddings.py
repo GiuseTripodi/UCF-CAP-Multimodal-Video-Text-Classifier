@@ -59,10 +59,9 @@ def train_model_MLP(classifier, train_loader, val_loader, criterion, optimizer, 
                 #combined_embedding = torch.cat((text_embedding, video_embedding), dim=-1)  # Shape: (1, 512)
                 text_embeddings = text_embeddings.squeeze(1)
                 video_embeddings = video_embeddings.squeeze(1)
-                combined_embedding = text_embeddings + video_embeddings  # (8, 245, 256)
 
-                # Take the mean along the sequence dimension
-                combined_embedding = combined_embedding.mean(dim=1)
+                combined_embedding = torch.cat((text_embeddings, video_embeddings), dim=-1)  # (batch_size, 245, 512)
+                combined_embedding = combined_embedding.mean(dim=1)  # Final shape: (batch_size, 512)
 
             # Forward pass
             outputs = classifier(combined_embedding)
@@ -117,10 +116,10 @@ def validate_model_MLP(classifier, val_loader, criterion, device, config, logger
                 #combined_embedding = torch.cat((text_embedding, video_embedding), dim=-1)  # Shape: (1, 512)
                 text_embeddings = text_embeddings.squeeze(1)
                 video_embeddings = video_embeddings.squeeze(1)
-                combined_embedding = text_embeddings + video_embeddings  # (8, 245, 256)
 
-                # Take the mean along the sequence dimension
-                combined_embedding = combined_embedding.mean(dim=1)
+
+                combined_embedding = torch.cat((text_embeddings, video_embeddings), dim=-1)  # (batch_size, 245, 512)
+                combined_embedding = combined_embedding.mean(dim=1)  # Final shape: (batch_size, 512)
 
             # Forward pass
             outputs = classifier(combined_embedding)
@@ -156,18 +155,18 @@ def run_training(config: ConfigParser, model_name, expt_name):
     logger.info(f'Loading validation dataset from {val_csv}')
     dataset_train = UCF101Dataset(train_csv, transform=transform, num_samples=1000)
     train_dataloader = DataLoader(dataset_train, batch_size=config.batch_size, shuffle=config.shuffle)
-    dataset_val = UCF101Dataset(val_csv, transform=transform)
-    val_dataloader = DataLoader(dataset_val, batch_size=config.batch_size, shuffle=False)
+    dataset_val = UCF101Dataset(val_csv, transform=transform, num_samples=200)
+    val_dataloader = DataLoader(dataset_val, batch_size=config.batch_size,shuffle=config.shuffle)
 
     # Initialize MLP classifier
-    input_dim = 256
-    hidden_dim = 64
+    input_dim = 512
+    hidden_dim = 256
     num_classes = config.num_classes
     classifier = MLPClassifier(input_dim, hidden_dim, num_classes).to(device)
 
     # Loss and optimizer
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(classifier.parameters(), lr=config.learning_rate)
+    optimizer = optim.Adam(classifier.parameters(), lr=config.learning_rate, weight_decay=1e-4)
 
     # Train the model
     train_model_MLP(classifier, train_dataloader, val_dataloader, criterion, optimizer, device, config, logger)

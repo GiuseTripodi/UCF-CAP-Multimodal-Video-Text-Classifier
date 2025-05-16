@@ -91,7 +91,6 @@ def add_embedding(dataframe, config: ConfigParser, text_encoder, video_encoder, 
 
 def load_dataset(csv_file):
     data = []
-
     # Read and process the CSV file
     with open(csv_file, 'r') as f:
         reader = csv.reader(f)
@@ -134,8 +133,8 @@ def main(config: ConfigParser, model_name):
 
 
 
-    #add_embedding(train_df, config, text_encoder, video_encoder, tokenizer, transform, save_name = 'Train_embeddings')
-    #add_embedding(val_df, config, text_encoder, video_encoder, tokenizer, transform, save_name = 'Val_embeddings')
+    add_embedding(train_df, config, text_encoder, video_encoder, tokenizer, transform, save_name = 'Train_embeddings')
+    add_embedding(val_df, config, text_encoder, video_encoder, tokenizer, transform, save_name = 'Val_embeddings')
     add_embedding(test_df, config, text_encoder, video_encoder, tokenizer, transform, save_name = 'Val_embeddings')
 
 

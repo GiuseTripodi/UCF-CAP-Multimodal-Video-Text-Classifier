@@ -142,8 +142,8 @@ class UCF101Dataset(Dataset):
 
 if __name__ == '__main__':
     # Run the function
-    home_path = '/Users/user/PycharmProjects/frozen-in-time'
-    #home_path = '/mnt/iusers01/mace01/t08341gt/UCF_cap_mh'
+    #home_path = '/Users/user/PycharmProjects/frozen-in-time'
+    home_path = '/mnt/iusers01/mace01/t08341gt/UCF_cap_mh'
     create_csv_splits(home_path)
 
     '''

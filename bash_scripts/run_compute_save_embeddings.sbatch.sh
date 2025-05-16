@@ -1,6 +1,5 @@
 #!/bin/bash --login
 
-
 #SBATCH -p serial
 #SBATCH -t 4-0
 
