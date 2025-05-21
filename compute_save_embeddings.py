@@ -47,8 +47,8 @@ def add_embedding(dataframe, config, text_encoder, video_encoder, tokenizer, tra
 
     # Ensure save_dir exists
     #os.makedirs(save_dir, exist_ok=True)
-    csv_path = os.path.join(save_dir, f"{save_name}_{today}.csv")
-    pkl_path = os.path.join(save_dir, f"{save_name}_{today}.pkl")
+    csv_path = os.path.join(save_dir, "UcfCap", f"{save_name}_{today}.csv")
+    pkl_path = os.path.join(save_dir, "UcfCap", f"{save_name}_{today}.pkl")
 
     # If CSV exists already (from previous flush), load it and track how many are already saved
     if os.path.exists(csv_path):
@@ -144,13 +144,12 @@ def load_dataset(csv_file):
 def main(config: ConfigParser, model_name):
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     logger = config.get_logger('TrainMLP')
-    save_dir = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap'
 
     # Load encoders
     #tokenizer, text_encoder = load_text_encoder()
-    home = "/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/models"
-    #home = "/Users/user/PycharmProjects/frozen-in-time/data/models"
-    tokenizer, text_encoder = load_pretrained_text_model_with_embeddings(f'{home}/weights_multiclass_31-03-25_bert_training.h5')
+    home = "/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data"
+    #home = "/Users/user/PycharmProjects/frozen-in-time/data"
+    tokenizer, text_encoder = load_pretrained_text_model_with_embeddings(f'{home}/models/weights_multiclass_31-03-25_bert_training.h5')
     video_encoder, _ = load_model_embeddings(config, model_name, logger)
 
     #text_encoder.to(device)
@@ -171,9 +170,9 @@ def main(config: ConfigParser, model_name):
 
 
 
-    add_embedding(train_df, config, text_encoder, video_encoder, tokenizer, transform, save_dir= save_dir, save_name = 'Train_embeddings')
-    add_embedding(val_df, config, text_encoder, video_encoder, tokenizer, transform, save_dir= save_dir, save_name = 'Val_embeddings')
-    add_embedding(test_df, config, text_encoder, video_encoder, tokenizer, transform,  save_dir= save_dir, save_name = 'Val_embeddings')
+    add_embedding(train_df, config, text_encoder, video_encoder, tokenizer, transform, save_dir= home, save_name = 'Train_embeddings')
+    add_embedding(val_df, config, text_encoder, video_encoder, tokenizer, transform, save_dir= home, save_name = 'Val_embeddings')
+    add_embedding(test_df, config, text_encoder, video_encoder, tokenizer, transform,  save_dir= home, save_name = 'Val_embeddings')
 
 
 if __name__ == '__main__':
