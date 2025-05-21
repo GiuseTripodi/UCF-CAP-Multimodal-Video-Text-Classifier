@@ -32,61 +32,99 @@ from parse_config import ConfigParser
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '')))
 
-def add_embedding(dataframe, config: ConfigParser, text_encoder, video_encoder, tokenizer, tranformer, save_name = 'embeddings'):
+def add_embedding(dataframe, config, text_encoder, video_encoder, tokenizer, transformer,
+                  save_dir, save_name='embeddings', flush_interval=100):
+    """
+    Extract embeddings and every flush_interval rows:
+     - Append to disk CSV / pickle
+     - Clear in-memory lists
+    """
+    # Prepare lists and counters
+    ids, captions, paths, labels = [], [], [], []
+    text_embs, video_embs = [], []
+    row_count = 0
+    today = date.today().strftime("%d-%m-%y")
 
-    ids = []
-    paths = []
-    text_embeddings = []
-    video_embeddings = []
-    captions = []
-    labels = []
+    # Ensure save_dir exists
+    os.makedirs(save_dir, exist_ok=True)
+    csv_path = os.path.join(save_dir, f"{save_name}_{today}.csv")
+    pkl_path = os.path.join(save_dir, f"{save_name}_{today}.pkl")
+
+    # If CSV exists already (from previous flush), load it and track how many are already saved
+    if os.path.exists(csv_path):
+        existing = pd.read_csv(csv_path)
+        row_count = len(existing)
+    else:
+        # write header if new
+        pd.DataFrame([], columns=['videoID','caption','video_path','label','text_embedding','video_embedding']
+                    ).to_csv(csv_path, index=False)
 
     with torch.no_grad():
         for index, row in dataframe.iterrows():
             ID, caption, path, label = row['videoID'], row['caption'], row['path'], row['label']
-            caption_tokens = tokenizer(caption, padding="max_length", truncation=True, max_length=config.max_seq_len,
-                                       return_tensors="pt")
+            # 1) Text embedding
+            tokens = tokenizer(caption,
+                               padding="max_length", truncation=True,
+                               max_length=config.max_seq_len, return_tensors="pt")
+            # 1) Text embedding
+            te = extract_text_embeddings_weight(text_encoder, tokenizer, tokens, config.max_seq_len)
+            if isinstance(te, torch.Tensor):
+                te = te.cpu().detach().numpy()
+            # now te is a NumPy array
+            te = te.tolist()
 
-            frames = sorted(glob.glob(os.path.join(path, '*.jpg')))
-            selected_frames = frames[:config.num_frames]  # Choose first N frames
-            images = [Image.open(frame).convert("RGB") for frame in selected_frames]
-            images = [tranformer(img) for img in images]
-            video_tensor = torch.stack(images, dim=0).unsqueeze(0)  # Shape: [num_frames, C, H, W]
+            # 2) Video embedding
+            frames = sorted(glob.glob(f"{path}/*.jpg"))[:config.num_frames]
+            imgs = [transformer(Image.open(f).convert("RGB")) for f in frames]
+            vt = torch.stack(imgs, dim=0).unsqueeze(0).to(video_encoder.device)
+            ve = extract_videos_embedding(video_encoder, vt)
+            ve = ve.cpu().detach()
+            ve = ve.permute(0,2,1)                       # (N_frames, dim, tokens)
+            ve = F.adaptive_avg_pool1d(ve, 245)         # (N_frames, dim, 245)
+            ve = ve.permute(0,2,1).numpy().tolist()     # back to list
 
-            try:
-                text_embedding = extract_text_embeddings_weight(text_encoder, tokenizer, caption_tokens, config.max_seq_len)
-                video_embedding = extract_videos_embedding(video_encoder, video_tensor)
-                text_embedding, video_embedding = project_text_video(text_encoder, video_encoder, text_embedding, video_embedding, projection_dim=256)
-                video_embedding = video_embedding.permute(0, 2, 1)  # (8, 256, 1569)
-                video_embedding = F.adaptive_avg_pool1d(video_embedding, 245)  # (8, 256, 245)
-                video_embedding = video_embedding.permute(0, 2, 1)  # (8, 245, 256)
-            except:
-                print(f'Error with the generation of the text embedding or video embedding for row: {index}')
-                text_embedding = []
-                video_embedding = []
+            # 3) Collect
+            ids.append(ID); captions.append(caption)
+            paths.append(path); labels.append(label)
+            text_embs.append(te); video_embs.append(ve)
 
-            text_embeddings.append(text_embedding)
-            video_embeddings.append(video_embedding)
-            del video_embedding
+            row_count += 1
 
-            captions.append(caption)
-            labels.append(label)
-            ids.append(ID)
-            paths.append(path)
+            # 4) Flush to disk every flush_interval
+            if row_count % flush_interval == 0:
+                df_flush = pd.DataFrame({
+                    'videoID': ids,
+                    'caption': captions,
+                    'video_path': paths,
+                    'label': labels,
+                    'text_embedding': text_embs,
+                    'video_embedding': video_embs,
+                })
+                # append to CSV/pickle
+                df_flush.to_csv(csv_path, mode='a', header=False, index=False)
+                # for pickle, you could append but here we rewrite entire pkl
+                full_df = pd.read_csv(csv_path)
+                full_df.to_pickle(pkl_path)
 
-    df = pd.DataFrame({
-        'videoID': ids,
-        'caption': captions,
-        'video_path': paths,
-        'label': labels,
-        'text_embedding': text_embeddings,
-        'video_embedding': video_embeddings,
-    })
+                # clear buffers
+                ids.clear(); captions.clear(); paths.clear(); labels.clear()
+                text_embs.clear(); video_embs.clear()
 
-    df.to_csv(f'/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/{save_name}_{date.today().strftime("%d-%m-%y")}.csv', index=False)
-    df.to_pickle(
-        f'/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/{save_name}_{date.today().strftime("%d-%m-%y")}.pkl')
+    # 5) Final flush of any remaining
+    if ids:
+        df_flush = pd.DataFrame({
+            'videoID': ids,
+            'caption': captions,
+            'video_path': paths,
+            'label': labels,
+            'text_embedding': text_embs,
+            'video_embedding': video_embs,
+        })
+        df_flush.to_csv(csv_path, mode='a', header=False, index=False)
+        full_df = pd.read_csv(csv_path)
+        full_df.to_pickle(pkl_path)
 
+    print(f"Finished. Embeddings saved to:\n  {csv_path}\n  {pkl_path}")
 
 
 def load_dataset(csv_file):
@@ -106,12 +144,12 @@ def load_dataset(csv_file):
 def main(config: ConfigParser, model_name):
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     logger = config.get_logger('TrainMLP')
-
+    save_dir = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap'
 
     # Load encoders
     #tokenizer, text_encoder = load_text_encoder()
-    home = "/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/models"
-    #home = "/Users/user/PycharmProjects/frozen-in-time/data/models"
+    #home = "/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/models"
+    home = "/Users/user/PycharmProjects/frozen-in-time/data/models"
     tokenizer, text_encoder = load_pretrained_text_model_with_embeddings(f'{home}/weights_multiclass_31-03-25_bert_training.h5')
     video_encoder, _ = load_model_embeddings(config, model_name, logger)
 
@@ -133,9 +171,9 @@ def main(config: ConfigParser, model_name):
 
 
 
-    add_embedding(train_df, config, text_encoder, video_encoder, tokenizer, transform, save_name = 'Train_embeddings')
-    add_embedding(val_df, config, text_encoder, video_encoder, tokenizer, transform, save_name = 'Val_embeddings')
-    add_embedding(test_df, config, text_encoder, video_encoder, tokenizer, transform, save_name = 'Val_embeddings')
+    add_embedding(train_df, config, text_encoder, video_encoder, tokenizer, transform, save_dir= save_dir, save_name = 'Train_embeddings')
+    add_embedding(val_df, config, text_encoder, video_encoder, tokenizer, transform, save_dir= save_dir, save_name = 'Val_embeddings')
+    add_embedding(test_df, config, text_encoder, video_encoder, tokenizer, transform,  save_dir= save_dir, save_name = 'Val_embeddings')
 
 
 if __name__ == '__main__':
