@@ -46,7 +46,7 @@ def add_embedding(dataframe, config, text_encoder, video_encoder, tokenizer, tra
     today = date.today().strftime("%d-%m-%y")
 
     # Ensure save_dir exists
-    os.makedirs(save_dir, exist_ok=True)
+    #os.makedirs(save_dir, exist_ok=True)
     csv_path = os.path.join(save_dir, f"{save_name}_{today}.csv")
     pkl_path = os.path.join(save_dir, f"{save_name}_{today}.pkl")
 
