@@ -163,16 +163,21 @@ def main(config: ConfigParser, model_name):
 
     #load the dataset
     train_csv, val_csv = config.train_path
-    train_df = load_dataset(train_csv)
+    train_df = load_dataset(train_csv).head(5)
     val_df = load_dataset(val_csv)
     test_path = config.test_path
     test_df = load_dataset(test_path)
 
 
 
-    #add_embedding(train_df, config, text_encoder, video_encoder, tokenizer, transform, save_dir= home, save_name = 'Train_embeddings')
+    add_embedding(train_df, config, text_encoder, video_encoder, tokenizer, transform, save_dir= home, save_name = 'Train_embeddings')
     add_embedding(val_df, config, text_encoder, video_encoder, tokenizer, transform, save_dir= home, save_name = 'Val_embeddings')
     add_embedding(test_df, config, text_encoder, video_encoder, tokenizer, transform,  save_dir= home, save_name = 'Test_embeddings')
+
+    #Test
+    df = pd.read_csv("/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_26-05-25.csv")
+    print(df.shape)
+    print(df.head(4))
 
 
 if __name__ == '__main__':

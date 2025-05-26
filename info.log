@@ -2793,3 +2793,30 @@ Lambda fuctions will be no more assumed to be used in the statement where they a
 Instructions for updating:
 Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
 2025-05-21 12:58:31,878 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-05-26 16:22:50,199 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-05-26 16:23:11,551 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-05-26 16:23:11,976 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-05-26 16:24:06,524 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-05-26 16:24:07,097 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-05-26 16:33:43,618 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-05-26 16:33:44,525 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-05-26 16:37:45,499 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-05-26 16:37:46,411 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-05-26 16:48:15,575 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-05-26 16:48:16,015 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
+2025-05-26 16:49:10,024 - tensorflow - WARNING - From /Users/user/anaconda3/envs/PhDMainProject/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py:83: Analyzer.lamba_check (from tensorflow.python.autograph.pyct.static_analysis.liveness) is deprecated and will be removed after 2023-09-23.
+Instructions for updating:
+Lambda fuctions will be no more assumed to be used in the statement where they are used, or at least in the same block. https://github.com/tensorflow/tensorflow/issues/56089
+2025-05-26 16:49:10,431 - TrainMLP - INFO - [INFO] Loaded fine_tuned model from: /Users/user/PycharmProjects/frozen-in-time/data/models/space_time_ciccio_13-03-25
