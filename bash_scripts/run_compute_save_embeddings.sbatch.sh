@@ -54,4 +54,4 @@ while [ "$#" -gt 0 ]; do
 done
 
 # Run the Python script with the provided or default arguments
-python3 /mnt/iusers01/mace01/t08341gt/UCF_cap_mh/compute_save_embeddings.py  --config="$CONFIG" --save_dir="$SAVE_DIR" --name="$NAME" --model_name="$MODEL_NAME"
+python3 /mnt/iusers01/mace01/t08341gt/UCF_cap_mh/src/utils/compute_save_embeddings.py  --config="$CONFIG" --save_dir="$SAVE_DIR" --name="$NAME" --model_name="$MODEL_NAME"
