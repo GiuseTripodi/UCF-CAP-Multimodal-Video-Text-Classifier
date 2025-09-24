@@ -27,7 +27,7 @@ from utils.utilis_combination_text_video import (
 )
 from parse_config import ConfigParser
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '')))
 
 
@@ -55,7 +55,7 @@ def train_model_MLP(classifier, train_loader, val_loader, criterion, optimizer, 
 
             with torch.no_grad():
                 combined_embedding = torch.cat((text_embeddings, video_embeddings), dim=-1)
-                combined_embedding = combined_embedding.mean(dim=1)
+                combined_embedding = combined_embedding.mean(dim=1).float()
 
             outputs = classifier(combined_embedding)
             loss = criterion(outputs, labels)
@@ -97,7 +97,7 @@ def validate_model_MLP(classifier, val_loader, criterion, device, config, logger
             video_embeddings = video_embeddings.to(device).squeeze(1)
 
             combined_embedding = torch.cat((text_embeddings, video_embeddings), dim=-1)
-            combined_embedding = combined_embedding.mean(dim=1)
+            combined_embedding = combined_embedding.mean(dim=1).float()
 
             outputs = classifier(combined_embedding)
             loss = criterion(outputs, labels)
@@ -122,8 +122,8 @@ def run_training(config: ConfigParser, model_name, expt_name):
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ])
 
-    train_csv = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_13-05-25.pkl'
-    val_csv = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_13-05-25.pkl'
+    train_csv = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings.pkl'
+    val_csv = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings.pkl'
     logger.info(f'Loading training dataset from {train_csv}')
     logger.info(f'Loading validation dataset from {val_csv}')
     dataset_train = UCF101Dataset(train_csv, transform=transform, num_samples=1000)
@@ -131,7 +131,7 @@ def run_training(config: ConfigParser, model_name, expt_name):
     dataset_val = UCF101Dataset(val_csv, transform=transform, num_samples=200)
     val_dataloader = DataLoader(dataset_val, batch_size=config.batch_size, shuffle=config.shuffle)
 
-    input_dim = 512
+    input_dim = 1536
     hidden_dim = 256
     num_classes = config.num_classes
     classifier = MLPClassifier(input_dim, hidden_dim, num_classes).to(device)

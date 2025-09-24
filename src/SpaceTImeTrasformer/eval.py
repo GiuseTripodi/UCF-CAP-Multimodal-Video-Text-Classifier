@@ -9,8 +9,8 @@ import torch
 
 from data_loader.ucf_cap_dataset import UCF101Dataset
 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import numpy as np
 from parse_config import ConfigParser
 import argparse

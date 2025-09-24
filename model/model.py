@@ -6,7 +6,7 @@ from transformers import AutoModel
 
 from base.base_model import BaseModel
 from model.video_transformer import SpaceTimeTransformer
-from utils.util import state_dict_data_parallel_fix
+from src.utils.util import state_dict_data_parallel_fix
 
 
 class FrozenInTime(BaseModel):

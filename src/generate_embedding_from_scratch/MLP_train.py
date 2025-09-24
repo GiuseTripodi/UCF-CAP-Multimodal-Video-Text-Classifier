@@ -25,7 +25,7 @@ from utils.utilis_combination_text_video import (
 )
 from parse_config import ConfigParser
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '')))
 
 

@@ -5,7 +5,7 @@ from tqdm.auto import tqdm
 
 from base.base_trainer import BaseTrainer
 from model.model import sim_matrix
-from utils import inf_loop
+from src.utils import inf_loop
 
 
 class Trainer(BaseTrainer):

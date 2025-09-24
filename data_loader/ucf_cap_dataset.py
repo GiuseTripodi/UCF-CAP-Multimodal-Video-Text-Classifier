@@ -88,7 +88,7 @@ class UCF101Dataset(Dataset):
             df = pd.read_csv(csv_file)
         else:
             df = pd.read_pickle(csv_file)
-        print(df.columns)
+        print(df.info())
 
         # Get all unique classes
         classes = df['label'].unique()
@@ -115,11 +115,11 @@ class UCF101Dataset(Dataset):
     def __getitem__(self, idx):
         idx_, caption, path, label = self.data.iloc[idx]['videoID'], self.data.iloc[idx]['caption'], self.data.iloc[idx]['video_path'], self.data.iloc[idx]['label']
         text_embedding = []
-        video_embedding = None
+        video_embedding = []
 
         if len(self.data.columns) > 4:
-            text_embedding = self.data.iloc[idx]['text_embedding']
-            video_embedding = self.data.iloc[idx]['video_embedding']
+            text_embedding = np.array(self.data.iloc[idx]['text_embedding'])
+            video_embedding = np.array(self.data.iloc[idx]['video_embedding'])
 
         frames = sorted(glob.glob(os.path.join(path, '*.jpg')))
         selected_frames = frames[:self.num_frames] # Choose first N frames
@@ -142,8 +142,8 @@ class UCF101Dataset(Dataset):
 
 if __name__ == '__main__':
     # Run the function
-    #home_path = '/Users/user/PycharmProjects/frozen-in-time'
-    home_path = '/mnt/iusers01/mace01/t08341gt/UCF_cap_mh'
+    home_path = '/Users/user/PycharmProjects/frozen-in-time'
+    #home_path = '/mnt/iusers01/mace01/t08341gt/UCF_cap_mh'
     create_csv_splits(home_path)
 
     '''

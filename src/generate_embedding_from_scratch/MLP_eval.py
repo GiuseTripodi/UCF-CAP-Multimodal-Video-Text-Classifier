@@ -12,7 +12,7 @@ from utils.utilis_combination_text_video import extract_text_embeddings, extract
     load_text_encoder, load_pretrained_text_model, extract_videos_embedding, load_model_embeddings, project_text_video, \
     load_pretrained_text_model_with_embeddings
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '')))
 import numpy as np
 from parse_config import ConfigParser
@@ -50,20 +50,38 @@ def compute_metrics(labels, predictions, logger):
 
 
 # Define a function to extract embeddings and predictions
-def evaluate_model(classifier, dataloader, device, config, logger):
+def evaluate_model(text_encoder, tokenizer, video_encoder, classifier, dataloader, device, config, logger):
+    #text_encoder.eval()
+    video_encoder.eval()
     classifier.eval()
 
     all_labels = []
     all_predictions = []
 
     with torch.no_grad():
-        for inputs, caption, labels, text_embeddings, video_embeddings, *_ in tqdm(dataloader, desc=f"Epoch eval"):
-            inputs, labels, text_embeddings, video_embeddings, = inputs.to(device), labels.to(device), text_embeddings.to(device), video_embeddings.to(device)
+        for inputs, caption, labels, *other_info in tqdm(dataloader, desc="Training Epoch"):
+            # Convert the caption into tokenized tensor
+            caption_tokens = tokenizer(caption, padding="max_length", truncation=True, max_length=config.max_seq_len,
+                                       return_tensors="pt")
+            inputs, caption, labels = inputs.to(device), caption_tokens.to(device), labels.to(device)
 
-            #combined_embedding = torch.cat((text_embedding, video_embedding), dim=-1)  # Shape: (1, 512)
-            text_embeddings = text_embeddings.squeeze(1)
-            video_embeddings = video_embeddings.squeeze(1)
-            combined_embedding = text_embeddings + video_embeddings  # (8, 245, 256)
+            #text_embeddings = extract_text_embeddings(text_encoder, tokenizer, caption_tokens, config.max_seq_len)
+            text_embeddings = extract_text_embeddings_weight(text_encoder, tokenizer, caption, config.max_seq_len)
+            image_embeddings = extract_videos_embedding(video_encoder, inputs)
+
+            # Project to a common embedding
+            text_embedding, video_embedding = project_text_video(text_encoder, video_encoder, text_embeddings, image_embeddings, projection_dim=256)
+
+            # Ensure text_embedding has shape (8, 1, 256) for broadcasting
+            #text_embedding = text_embedding.unsqueeze(1)  # (8, 1, 256)
+            #attn_weights = F.softmax(torch.bmm(text_embedding, video_embedding.transpose(1, 2)), dim=-1)
+            #video_embedding_attended = torch.matmul(attn_weights, video_embedding)  # Shape: (1, 256)
+            #combined_embedding = torch.cat((text_embedding, video_embedding_attended), dim=-1)  # Shape: (1, 512)
+            video_embedding = video_embedding.permute(0, 2, 1)  # (8, 256, 1569)
+            video_embedding = F.adaptive_avg_pool1d(video_embedding, 245)  # (8, 256, 245)
+            video_embedding = video_embedding.permute(0, 2, 1)  # (8, 245, 256)
+            # combined_embedding = torch.cat((text_embedding, video_embedding), dim=-1)  # Shape: (1, 512)
+            combined_embedding = text_embedding + video_embedding  # (8, 245, 256)
 
             # Take the mean along the sequence dimension
             combined_embedding = combined_embedding.mean(dim=1)
@@ -89,6 +107,14 @@ def run_eval(config: ConfigParser, model_name):
     logger.info(f'MLP_eval_started: {model_name}')
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
+    # Load encoders
+    #tokenizer, text_encoder = load_text_encoder()
+    tokenizer, text_encoder = load_pretrained_text_model_with_embeddings('/Users/user/PycharmProjects/frozen-in-time/data/models/weights_multiclass_31-03-25_bert_training.h5')
+    video_encoder, _ = load_model_embeddings(config, model_name, logger)
+
+    #text_encoder.to(device)
+    video_encoder.to(device)
+
     transform = transforms.Compose([
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
@@ -96,7 +122,7 @@ def run_eval(config: ConfigParser, model_name):
     ])
 
     # Load test file
-    test_path = "/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Test_embeddings_14-05-25.pkl"
+    test_path = config.test_path
     test_dataset = UCF101Dataset(test_path, transform=transform)
     test_dataloader = DataLoader(test_dataset, 1, config.shuffle)
 
@@ -111,8 +137,9 @@ def run_eval(config: ConfigParser, model_name):
     logger.info(f'Loaded model from {model_path}')
 
 
+
     # Evaluate the model
-    evaluate_model(classifier, test_dataloader, device, config, logger)
+    evaluate_model(text_encoder, tokenizer, video_encoder, classifier, test_dataloader, device, config, logger)
 
 
 # Main function
