@@ -1,36 +1,25 @@
 import csv
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '')))
-
-from datetime import date
-import pandas as pd
+import argparse
 import torch
 import torch.nn.functional as F
-from torchvision import transforms
-import argparse
+import pandas as pd
 import glob
 from PIL import Image
+# Remove current working directory (".") from sys.path if it's there
+if '' in sys.path:
+    sys.path.remove('')
+from torchvision import transforms
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '')))
 from src.utils.utilis_combination_text_video import (
     extract_videos_embedding,
-    load_model_embeddings,
     extract_text_embeddings_weight,
-    load_pretrained_text_model_with_embeddings,
 )
 from parse_config import ConfigParser
-
-
-import os
-import torch
-import torch.nn.functional as F
-import pandas as pd
-import glob
-from PIL import Image
-from torchvision import transforms
 from src.utils.utilis_combination_text_video import (
-    extract_videos_embedding,
-    extract_text_embeddings_weight,
+    load_model_embeddings,
+    load_pretrained_text_model_with_embeddings,
 )
 
 def add_embedding(dataframe, config, text_encoder, video_encoder, tokenizer, transformer,
