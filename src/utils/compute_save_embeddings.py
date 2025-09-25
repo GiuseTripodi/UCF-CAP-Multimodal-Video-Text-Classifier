@@ -29,38 +29,41 @@ def add_embedding(dataframe, config, text_encoder, video_encoder, tokenizer, tra
     buffer = []
 
     with torch.no_grad():
-        for _, row in dataframe.iterrows():
-            ID, caption, path, label = row['videoID'], row['caption'], row['path'], row['label']
+        for index, row in dataframe.iterrows():
+            try:
+                ID, caption, path, label = row['videoID'], row['caption'], row['path'], row['label']
 
-            # Text embedding
-            tokens = tokenizer(caption, padding="max_length", truncation=True,
-                               max_length=config.max_seq_len, return_tensors="pt")
-            te = extract_text_embeddings_weight(text_encoder, tokenizer, tokens, config.max_seq_len)
-            if isinstance(te, torch.Tensor):
-                te = te.cpu().detach().half().numpy()  # float16
-            # Video embedding
-            frames = sorted(glob.glob(f"{path}/*.jpg"))[:config.num_frames]
-            imgs = [transformer(Image.open(f).convert("RGB")) for f in frames]
-            vt = torch.stack(imgs, dim=0).unsqueeze(0).to(video_encoder.device)
-            ve = extract_videos_embedding(video_encoder, vt)
-            ve = F.adaptive_avg_pool1d(ve.permute(0,2,1), 245).permute(0,2,1)
-            ve = ve.cpu().detach().half().numpy()
+                # Text embedding
+                tokens = tokenizer(caption, padding="max_length", truncation=True,
+                                   max_length=config.max_seq_len, return_tensors="pt")
+                te = extract_text_embeddings_weight(text_encoder, tokenizer, tokens, config.max_seq_len)
+                if isinstance(te, torch.Tensor):
+                    te = te.cpu().detach().half().numpy()  # float16
+                # Video embedding
+                frames = sorted(glob.glob(f"{path}/*.jpg"))[:config.num_frames]
+                imgs = [transformer(Image.open(f).convert("RGB")) for f in frames]
+                vt = torch.stack(imgs, dim=0).unsqueeze(0).to(video_encoder.device)
+                ve = extract_videos_embedding(video_encoder, vt)
+                ve = F.adaptive_avg_pool1d(ve.permute(0,2,1), 245).permute(0,2,1)
+                ve = ve.cpu().detach().half().numpy()
 
-            buffer.append({
-                'videoID': ID,
-                'caption': caption,
-                'video_path': path,
-                'label': label,
-                'text_embedding': te,
-                'video_embedding': ve,
-            })
+                buffer.append({
+                    'videoID': ID,
+                    'caption': caption,
+                    'video_path': path,
+                    'label': label,
+                    'text_embedding': te,
+                    'video_embedding': ve,
+                })
 
-            row_count += 1
-            if row_count % flush_interval == 0:
-                pd.DataFrame(buffer).to_pickle(
-                    os.path.join(save_dir, f"{save_name}_{row_count}.pkl"))
-                buffer.clear()
-
+                row_count += 1
+                if row_count % flush_interval == 0:
+                    pd.DataFrame(buffer).to_pickle(
+                        os.path.join(save_dir, f"{save_name}_{row_count}.pkl"))
+                    buffer.clear()
+            except Exception as e:
+                print(f"[WARNING] Skipping row {index} (ID={row.get('videoID', 'N/A')}): {e}")
+                continue  # move to the next row
     if buffer:
         pd.DataFrame(buffer).to_pickle(
             os.path.join(save_dir, f"{save_name}_final.pkl"))
@@ -108,9 +111,9 @@ def main(config: ConfigParser, model_name):
     test_df = load_dataset(test_path)
 
 
-    add_embedding(train_df, config, text_encoder, video_encoder, tokenizer, transform, save_dir= home, save_name = 'Train_embeddings', flush_interval=20)
-    add_embedding(val_df, config, text_encoder, video_encoder, tokenizer, transform, save_dir= home, save_name = 'Val_embeddings', flush_interval=20)
-    add_embedding(test_df, config, text_encoder, video_encoder, tokenizer, transform,  save_dir= home, save_name = 'Test_embeddings', flush_interval=20)
+    add_embedding(train_df, config, text_encoder, video_encoder, tokenizer, transform, save_dir= home, save_name = 'Train_embeddings', flush_interval=100)
+    add_embedding(val_df, config, text_encoder, video_encoder, tokenizer, transform, save_dir= home, save_name = 'Val_embeddings', flush_interval=100)
+    add_embedding(test_df, config, text_encoder, video_encoder, tokenizer, transform,  save_dir= home, save_name = 'Test_embeddings', flush_interval=100)
 
 
 
