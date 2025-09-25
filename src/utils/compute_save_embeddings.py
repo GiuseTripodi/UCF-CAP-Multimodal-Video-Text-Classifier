@@ -11,7 +11,6 @@ from PIL import Image
 if '' in sys.path:
     sys.path.remove('')
 from torchvision import transforms
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '')))
 from src.utils.utilis_combination_text_video import (
     extract_videos_embedding,
     extract_text_embeddings_weight,
