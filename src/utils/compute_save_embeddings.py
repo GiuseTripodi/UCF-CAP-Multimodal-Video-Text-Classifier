@@ -23,90 +23,47 @@ from src.utils.utilis_combination_text_video import (
 )
 
 def add_embedding(dataframe, config, text_encoder, video_encoder, tokenizer, transformer,
-                  save_dir, save_name='embeddings', flush_interval=100):
-    """
-    Extract embeddings for each row and save directly to Pickle without CSV.
-    """
-    ids, captions, paths, labels = [], [], [], []
-    text_embs, video_embs = [], []
-    row_count = 0
-
-    # Ensure save directory exists
+                  save_dir, save_name='embeddings', flush_interval=50):
     os.makedirs(save_dir, exist_ok=True)
-    pkl_path = os.path.join(save_dir, f"{save_name}.pkl")
+    row_count = 0
+    buffer = []
 
     with torch.no_grad():
-        for index, row in dataframe.iterrows():
+        for _, row in dataframe.iterrows():
             ID, caption, path, label = row['videoID'], row['caption'], row['path'], row['label']
 
-            # 1) Text embedding
-            tokens = tokenizer(caption,
-                               padding="max_length", truncation=True,
+            # Text embedding
+            tokens = tokenizer(caption, padding="max_length", truncation=True,
                                max_length=config.max_seq_len, return_tensors="pt")
             te = extract_text_embeddings_weight(text_encoder, tokenizer, tokens, config.max_seq_len)
             if isinstance(te, torch.Tensor):
-                te = te.cpu().detach().numpy().tolist()  # convert to list
-
-            # 2) Video embedding
+                te = te.cpu().detach().half().numpy()  # float16
+            # Video embedding
             frames = sorted(glob.glob(f"{path}/*.jpg"))[:config.num_frames]
             imgs = [transformer(Image.open(f).convert("RGB")) for f in frames]
             vt = torch.stack(imgs, dim=0).unsqueeze(0).to(video_encoder.device)
             ve = extract_videos_embedding(video_encoder, vt)
-            ve = ve.cpu().detach()
-            ve = ve.permute(0,2,1)
-            ve = F.adaptive_avg_pool1d(ve, 245)
-            ve = ve.permute(0,2,1).numpy().tolist()  # back to list
+            ve = F.adaptive_avg_pool1d(ve.permute(0,2,1), 245).permute(0,2,1)
+            ve = ve.cpu().detach().half().numpy()
 
-            # 3) Collect
-            ids.append(ID)
-            captions.append(caption)
-            paths.append(path)
-            labels.append(label)
-            text_embs.append(te)
-            video_embs.append(ve)
+            buffer.append({
+                'videoID': ID,
+                'caption': caption,
+                'video_path': path,
+                'label': label,
+                'text_embedding': te,
+                'video_embedding': ve,
+            })
 
             row_count += 1
-
-            # 4) Flush to Pickle every flush_interval
             if row_count % flush_interval == 0:
-                df_flush = pd.DataFrame({
-                    'videoID': ids,
-                    'caption': captions,
-                    'video_path': paths,
-                    'label': labels,
-                    'text_embedding': text_embs,
-                    'video_embedding': video_embs,
-                })
-                # Append or create pickle
-                if os.path.exists(pkl_path):
-                    full_df = pd.read_pickle(pkl_path)
-                    full_df = pd.concat([full_df, df_flush], ignore_index=True)
-                else:
-                    full_df = df_flush
-                full_df.to_pickle(pkl_path)
+                pd.DataFrame(buffer).to_pickle(
+                    os.path.join(save_dir, f"{save_name}_{row_count}.pkl"))
+                buffer.clear()
 
-                # Clear buffers
-                ids.clear(); captions.clear(); paths.clear(); labels.clear()
-                text_embs.clear(); video_embs.clear()
-
-    # 5) Final flush of remaining rows
-    if ids:
-        df_flush = pd.DataFrame({
-            'videoID': ids,
-            'caption': captions,
-            'video_path': paths,
-            'label': labels,
-            'text_embedding': text_embs,
-            'video_embedding': video_embs,
-        })
-        if os.path.exists(pkl_path):
-            full_df = pd.read_pickle(pkl_path)
-            full_df = pd.concat([full_df, df_flush], ignore_index=True)
-        else:
-            full_df = df_flush
-        full_df.to_pickle(pkl_path)
-
-    print(f"Finished. Embeddings saved to Pickle:\n  {pkl_path}")
+    if buffer:
+        pd.DataFrame(buffer).to_pickle(
+            os.path.join(save_dir, f"{save_name}_final.pkl"))
 
 def load_dataset(csv_file):
     data = []
