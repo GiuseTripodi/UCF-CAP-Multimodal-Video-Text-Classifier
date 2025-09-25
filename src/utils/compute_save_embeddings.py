@@ -1,6 +1,8 @@
 import csv
 import sys
 import os
+import html
+print("HTML module being used:", html.__file__)
 import argparse
 import torch
 import torch.nn.functional as F
@@ -10,9 +12,9 @@ from PIL import Image
 # Remove current working directory (".") from sys.path if it's there
 if '' in sys.path:
     sys.path.remove('')
+from torchvision import transforms
 import importlib.util
 html_parser = importlib.import_module("html.parser")
-from torchvision import transforms
 from src.utils.utilis_combination_text_video import (
     extract_videos_embedding,
     extract_text_embeddings_weight,
