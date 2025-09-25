@@ -10,6 +10,8 @@ from PIL import Image
 # Remove current working directory (".") from sys.path if it's there
 if '' in sys.path:
     sys.path.remove('')
+import importlib.util
+html_parser = importlib.import_module("html.parser")
 from torchvision import transforms
 from src.utils.utilis_combination_text_video import (
     extract_videos_embedding,
