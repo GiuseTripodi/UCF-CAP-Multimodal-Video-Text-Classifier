@@ -9,3 +9,6 @@
 2025-09-30 17:25:47,489 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
 2025-09-30 17:25:47,510 - Train - INFO - Device model: cpu
 2025-09-30 17:27:36,900 - train - INFO - Epoch 1/1, Train Loss: 2.0229
+2025-09-30 17:28:49,709 - train - INFO - Epoch 1/1, Validation Loss: 1.9899
+2025-09-30 17:28:51,582 - train - INFO - Model Test_30-09-25 saved to /Users/user/PycharmProjects/frozen-in-time/data/models
+2025-09-30 17:28:52,191 - train - INFO - Loss curve saved to /Users/user/PycharmProjects/frozen-in-time/data/models/train_plots/loss_curve_Test_30-09-25.png

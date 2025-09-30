@@ -1,8 +1,6 @@
 #!/bin/bash --login
-
-#SBATCH -p gpuA              # A100 (80GB) GPUs  [up to 12 CPU cores per GPU permitted]
-### Required flags
-#SBATCH -G 1                 # (or --gpus=N) Number of GPUs
+#SBATCH -p gpuV               # v100 GPUs
+#SBATCH -G 1                  # 1 GPU
 #SBATCH -t 1-0               # Wallclock timelimit (1-0 is one day, 4-0 is max permitted)
 
 # Latest version of CUDA
