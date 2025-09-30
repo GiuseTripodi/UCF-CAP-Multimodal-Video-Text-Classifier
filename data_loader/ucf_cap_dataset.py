@@ -77,7 +77,6 @@ def create_csv_splits(home_path):
     merged_df_train.to_csv(join(output_dir, "train_dataset.csv"), index=False)
 
 
-
 class UCF101Dataset(Dataset):
     def __init__(self, csv_file, transform=None, num_frames=8, num_samples=100,):
         self.num_frames = num_frames
@@ -143,7 +142,7 @@ class UCF101Dataset(Dataset):
 if __name__ == '__main__':
     # Run the function
     home_path = '/Users/user/PycharmProjects/frozen-in-time'
-    #home_path = '/mnt/iusers01/mace01/t08341gt/UCF_cap_mh'
+    home_path = '/mnt/iusers01/mace01/t08341gt/UCF_cap_mh'
     create_csv_splits(home_path)
 
     '''
