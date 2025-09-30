@@ -1,0 +1,11 @@
+2025-09-30 17:20:59,044 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_30-09-25
+2025-09-30 17:20:59,044 - Train - INFO - Loading model
+2025-09-30 17:21:01,428 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-09-30 17:21:01,451 - Train - INFO - Device model: cpu
+2025-09-30 17:23:34,901 - train - INFO - Epoch 1/100, Train Loss: 2.0573
+2025-09-30 17:24:38,261 - train - INFO - Epoch 1/100, Validation Loss: 1.9948
+2025-09-30 17:25:45,063 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_30-09-25
+2025-09-30 17:25:45,063 - Train - INFO - Loading model
+2025-09-30 17:25:47,489 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-09-30 17:25:47,510 - Train - INFO - Device model: cpu
+2025-09-30 17:27:36,900 - train - INFO - Epoch 1/1, Train Loss: 2.0229
