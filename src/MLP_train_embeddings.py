@@ -122,8 +122,8 @@ def run_training(config: ConfigParser, model_name, expt_name):
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ])
 
-    train_csv = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings.pkl'
-    val_csv = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings.pkl'
+    train_csv = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_all.pkl'
+    val_csv = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_all.pkl'
     logger.info(f'Loading training dataset from {train_csv}')
     logger.info(f'Loading validation dataset from {val_csv}')
     dataset_train = UCF101Dataset(train_csv, transform=transform, num_samples=1000)
@@ -133,7 +133,7 @@ def run_training(config: ConfigParser, model_name, expt_name):
 
     input_dim = 1536
     hidden_dim = 256
-    num_classes = config.num_classes
+    num_classes = 12
     classifier = MLPClassifier(input_dim, hidden_dim, num_classes).to(device)
 
     criterion = nn.CrossEntropyLoss()

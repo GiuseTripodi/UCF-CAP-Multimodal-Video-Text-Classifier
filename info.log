@@ -3485,3 +3485,1341 @@ weighted avg       1.00      1.00      1.00         5
    macro avg       1.00      1.00      1.00         5
 weighted avg       1.00      1.00      1.00         5
 
+2025-09-26 11:14:41,744 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-09-26 11:14:41,746 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_all.pkl
+2025-09-26 11:14:41,746 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_all.pkl
+2025-09-26 11:14:42,927 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-09-26 11:20:27,742 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-09-26 11:20:27,743 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_all.pkl
+2025-09-26 11:20:27,743 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_all.pkl
+2025-09-26 11:20:28,797 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-09-26 11:20:31,130 - TrainMLP - INFO - Train Loss: 2.4054, Train Accuracy: 20.38%
+2025-09-26 11:20:31,520 - TrainMLP - INFO - Validation Loss: 2.2322, Validation Accuracy: 46.02%
+2025-09-26 11:20:31,537 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:20:31,537 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:20:31,537 - TrainMLP - INFO - Epoch [2/5] Training...
+2025-09-26 11:20:33,238 - TrainMLP - INFO - Train Loss: 1.9677, Train Accuracy: 56.22%
+2025-09-26 11:20:33,518 - TrainMLP - INFO - Validation Loss: 1.6081, Validation Accuracy: 60.80%
+2025-09-26 11:20:33,528 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:20:33,528 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:20:33,528 - TrainMLP - INFO - Epoch [3/5] Training...
+2025-09-26 11:20:35,310 - TrainMLP - INFO - Train Loss: 1.3762, Train Accuracy: 66.57%
+2025-09-26 11:20:35,563 - TrainMLP - INFO - Validation Loss: 1.1577, Validation Accuracy: 67.61%
+2025-09-26 11:20:35,568 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:20:35,568 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:20:35,568 - TrainMLP - INFO - Epoch [4/5] Training...
+2025-09-26 11:20:37,178 - TrainMLP - INFO - Train Loss: 1.0581, Train Accuracy: 72.59%
+2025-09-26 11:20:37,461 - TrainMLP - INFO - Validation Loss: 0.9643, Validation Accuracy: 69.32%
+2025-09-26 11:20:37,466 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:20:37,466 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:20:37,466 - TrainMLP - INFO - Epoch [5/5] Training...
+2025-09-26 11:20:38,913 - TrainMLP - INFO - Train Loss: 0.8554, Train Accuracy: 76.51%
+2025-09-26 11:20:39,083 - TrainMLP - INFO - Validation Loss: 0.8473, Validation Accuracy: 72.16%
+2025-09-26 11:20:39,091 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:20:39,091 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:20:39,094 - TrainMLP - INFO - Final model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-09-25_final_MLP.pth
+2025-09-26 11:21:32,038 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-09-26 11:21:32,038 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_all.pkl
+2025-09-26 11:21:32,038 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_all.pkl
+2025-09-26 11:21:32,929 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-09-26 11:21:35,009 - TrainMLP - INFO - Train Loss: 2.3945, Train Accuracy: 21.89%
+2025-09-26 11:21:35,220 - TrainMLP - INFO - Validation Loss: 2.1847, Validation Accuracy: 44.89%
+2025-09-26 11:21:35,230 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:21:35,231 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:21:35,231 - TrainMLP - INFO - Epoch [2/5] Training...
+2025-09-26 11:21:36,540 - TrainMLP - INFO - Train Loss: 1.9802, Train Accuracy: 56.73%
+2025-09-26 11:21:36,768 - TrainMLP - INFO - Validation Loss: 1.6111, Validation Accuracy: 65.34%
+2025-09-26 11:21:36,775 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:21:36,775 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:21:36,775 - TrainMLP - INFO - Epoch [3/5] Training...
+2025-09-26 11:21:38,219 - TrainMLP - INFO - Train Loss: 1.4212, Train Accuracy: 68.27%
+2025-09-26 11:21:38,418 - TrainMLP - INFO - Validation Loss: 1.1741, Validation Accuracy: 64.77%
+2025-09-26 11:21:38,426 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:21:38,426 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:21:38,426 - TrainMLP - INFO - Epoch [4/5] Training...
+2025-09-26 11:21:40,057 - TrainMLP - INFO - Train Loss: 1.0515, Train Accuracy: 74.40%
+2025-09-26 11:21:40,272 - TrainMLP - INFO - Validation Loss: 0.9791, Validation Accuracy: 72.73%
+2025-09-26 11:21:40,280 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:21:40,280 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:21:40,280 - TrainMLP - INFO - Epoch [5/5] Training...
+2025-09-26 11:21:41,972 - TrainMLP - INFO - Train Loss: 0.8599, Train Accuracy: 76.20%
+2025-09-26 11:21:42,189 - TrainMLP - INFO - Validation Loss: 0.8399, Validation Accuracy: 76.14%
+2025-09-26 11:21:42,194 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:21:42,194 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:21:42,196 - TrainMLP - INFO - Final model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-09-25_final_MLP.pth
+2025-09-26 11:22:38,879 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-09-26 11:22:38,880 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_all.pkl
+2025-09-26 11:22:38,880 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_all.pkl
+2025-09-26 11:22:39,817 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-09-26 11:24:42,211 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-09-26 11:24:42,211 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_all.pkl
+2025-09-26 11:24:42,212 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_all.pkl
+2025-09-26 11:24:43,172 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-09-26 11:24:52,318 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-09-26 11:24:52,318 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_all.pkl
+2025-09-26 11:24:52,318 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_all.pkl
+2025-09-26 11:24:53,019 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-09-26 11:24:56,266 - TrainMLP - INFO - Train Loss: 2.4078, Train Accuracy: 20.98%
+2025-09-26 11:24:56,786 - TrainMLP - INFO - Validation Loss: 2.2367, Validation Accuracy: 44.32%
+2025-09-26 11:24:56,800 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:24:56,800 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:24:56,800 - TrainMLP - INFO - Epoch [2/5] Training...
+2025-09-26 11:24:58,828 - TrainMLP - INFO - Train Loss: 1.9950, Train Accuracy: 55.82%
+2025-09-26 11:24:59,147 - TrainMLP - INFO - Validation Loss: 1.6417, Validation Accuracy: 63.07%
+2025-09-26 11:24:59,156 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:24:59,156 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:24:59,156 - TrainMLP - INFO - Epoch [3/5] Training...
+2025-09-26 11:25:00,716 - TrainMLP - INFO - Train Loss: 1.4139, Train Accuracy: 68.88%
+2025-09-26 11:25:00,955 - TrainMLP - INFO - Validation Loss: 1.1792, Validation Accuracy: 67.61%
+2025-09-26 11:25:00,963 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:25:00,963 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:25:00,964 - TrainMLP - INFO - Epoch [4/5] Training...
+2025-09-26 11:25:02,815 - TrainMLP - INFO - Train Loss: 1.0473, Train Accuracy: 71.59%
+2025-09-26 11:25:02,994 - TrainMLP - INFO - Validation Loss: 0.9872, Validation Accuracy: 72.16%
+2025-09-26 11:25:02,999 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:25:02,999 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:25:02,999 - TrainMLP - INFO - Epoch [5/5] Training...
+2025-09-26 11:25:04,547 - TrainMLP - INFO - Train Loss: 0.8669, Train Accuracy: 75.60%
+2025-09-26 11:25:04,803 - TrainMLP - INFO - Validation Loss: 0.8589, Validation Accuracy: 74.43%
+2025-09-26 11:25:04,808 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:25:04,808 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:25:04,816 - TrainMLP - INFO - Final model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-09-25_final_MLP.pth
+2025-09-26 11:26:43,104 - TrainMLP - INFO - MLP_eval_started: space_time_ciccio_13-03-25
+2025-09-26 11:26:43,317 - TrainMLP - INFO - Loaded model from /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-09-25_final_MLP.pth
+2025-09-26 11:26:43,804 - TrainMLP - INFO - [INFO] Classification Metrics
+2025-09-26 11:26:43,806 - TrainMLP - INFO - Accuracy: 67.02%
+2025-09-26 11:26:43,808 - TrainMLP - INFO - Precision: 0.7090755580117283
+2025-09-26 11:26:43,808 - TrainMLP - INFO - Recall: 0.6702127659574468
+2025-09-26 11:26:43,809 - TrainMLP - INFO - F1 Score: 0.6625696497180589
+2025-09-26 11:26:43,811 - TrainMLP - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00         8
+           1       0.73      1.00      0.84         8
+           2       0.88      0.88      0.88         8
+           3       1.00      0.25      0.40         8
+           4       0.56      0.62      0.59         8
+           5       1.00      1.00      1.00         8
+           6       0.80      0.50      0.62         8
+           7       0.86      0.75      0.80         8
+           8       0.50      0.75      0.60         8
+           9       0.20      0.25      0.22         8
+          10       0.67      0.75      0.71         8
+          11       0.20      0.17      0.18         6
+
+    accuracy                           0.67        94
+   macro avg       0.70      0.66      0.65        94
+weighted avg       0.71      0.67      0.66        94
+
+2025-09-26 11:31:56,044 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-09-26 11:31:56,045 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_all.pkl
+2025-09-26 11:31:56,045 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_all.pkl
+2025-09-26 11:31:57,578 - TrainMLP - INFO - Epoch [1/5] Training...
+2025-09-26 11:32:00,773 - TrainMLP - INFO - Train Loss: 2.3917, Train Accuracy: 24.90%
+2025-09-26 11:32:01,008 - TrainMLP - INFO - Validation Loss: 2.1995, Validation Accuracy: 63.64%
+2025-09-26 11:32:01,018 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:01,018 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:32:01,018 - TrainMLP - INFO - Epoch [2/5] Training...
+2025-09-26 11:32:02,389 - TrainMLP - INFO - Train Loss: 1.9477, Train Accuracy: 62.25%
+2025-09-26 11:32:02,593 - TrainMLP - INFO - Validation Loss: 1.5680, Validation Accuracy: 67.05%
+2025-09-26 11:32:02,603 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:02,603 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:32:02,603 - TrainMLP - INFO - Epoch [3/5] Training...
+2025-09-26 11:32:04,021 - TrainMLP - INFO - Train Loss: 1.3715, Train Accuracy: 68.57%
+2025-09-26 11:32:04,207 - TrainMLP - INFO - Validation Loss: 1.1657, Validation Accuracy: 67.05%
+2025-09-26 11:32:04,212 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:04,212 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:32:04,212 - TrainMLP - INFO - Epoch [4/5] Training...
+2025-09-26 11:32:05,377 - TrainMLP - INFO - Train Loss: 1.0286, Train Accuracy: 72.89%
+2025-09-26 11:32:05,538 - TrainMLP - INFO - Validation Loss: 0.9729, Validation Accuracy: 72.16%
+2025-09-26 11:32:05,547 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:05,547 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:32:05,547 - TrainMLP - INFO - Epoch [5/5] Training...
+2025-09-26 11:32:06,700 - TrainMLP - INFO - Train Loss: 0.8539, Train Accuracy: 76.61%
+2025-09-26 11:32:07,180 - TrainMLP - INFO - Validation Loss: 0.8779, Validation Accuracy: 73.30%
+2025-09-26 11:32:07,185 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:07,185 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:32:07,188 - TrainMLP - INFO - Final model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-09-25_final_MLP.pth
+2025-09-26 11:32:34,496 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-09-26 11:32:34,496 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_all.pkl
+2025-09-26 11:32:34,496 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_all.pkl
+2025-09-26 11:32:35,620 - TrainMLP - INFO - Epoch [1/20] Training...
+2025-09-26 11:32:37,743 - TrainMLP - INFO - Train Loss: 2.3946, Train Accuracy: 24.50%
+2025-09-26 11:32:37,947 - TrainMLP - INFO - Validation Loss: 2.2006, Validation Accuracy: 59.09%
+2025-09-26 11:32:37,957 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:37,957 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:32:37,957 - TrainMLP - INFO - Epoch [2/20] Training...
+2025-09-26 11:32:39,433 - TrainMLP - INFO - Train Loss: 1.9687, Train Accuracy: 60.54%
+2025-09-26 11:32:39,632 - TrainMLP - INFO - Validation Loss: 1.5848, Validation Accuracy: 64.20%
+2025-09-26 11:32:39,644 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:39,644 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:32:39,644 - TrainMLP - INFO - Epoch [3/20] Training...
+2025-09-26 11:32:40,996 - TrainMLP - INFO - Train Loss: 1.3932, Train Accuracy: 68.37%
+2025-09-26 11:32:41,207 - TrainMLP - INFO - Validation Loss: 1.1552, Validation Accuracy: 64.77%
+2025-09-26 11:32:41,227 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:41,227 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:32:41,227 - TrainMLP - INFO - Epoch [4/20] Training...
+2025-09-26 11:32:42,553 - TrainMLP - INFO - Train Loss: 1.0430, Train Accuracy: 72.29%
+2025-09-26 11:32:42,731 - TrainMLP - INFO - Validation Loss: 0.9628, Validation Accuracy: 74.43%
+2025-09-26 11:32:42,739 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:42,739 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:32:42,739 - TrainMLP - INFO - Epoch [5/20] Training...
+2025-09-26 11:32:43,917 - TrainMLP - INFO - Train Loss: 0.8535, Train Accuracy: 76.20%
+2025-09-26 11:32:44,123 - TrainMLP - INFO - Validation Loss: 0.8561, Validation Accuracy: 74.43%
+2025-09-26 11:32:44,136 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:44,136 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:32:44,136 - TrainMLP - INFO - Epoch [6/20] Training...
+2025-09-26 11:32:45,280 - TrainMLP - INFO - Train Loss: 0.7354, Train Accuracy: 79.02%
+2025-09-26 11:32:45,468 - TrainMLP - INFO - Validation Loss: 0.7931, Validation Accuracy: 76.14%
+2025-09-26 11:32:45,481 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:45,481 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:32:45,482 - TrainMLP - INFO - Epoch [7/20] Training...
+2025-09-26 11:32:46,648 - TrainMLP - INFO - Train Loss: 0.6591, Train Accuracy: 81.93%
+2025-09-26 11:32:46,855 - TrainMLP - INFO - Validation Loss: 0.7100, Validation Accuracy: 80.11%
+2025-09-26 11:32:46,863 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:46,863 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:32:46,863 - TrainMLP - INFO - Epoch [8/20] Training...
+2025-09-26 11:32:48,193 - TrainMLP - INFO - Train Loss: 0.5801, Train Accuracy: 84.64%
+2025-09-26 11:32:48,413 - TrainMLP - INFO - Validation Loss: 0.6827, Validation Accuracy: 80.11%
+2025-09-26 11:32:48,420 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:48,420 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:32:48,420 - TrainMLP - INFO - Epoch [9/20] Training...
+2025-09-26 11:32:49,540 - TrainMLP - INFO - Train Loss: 0.4935, Train Accuracy: 86.14%
+2025-09-26 11:32:49,722 - TrainMLP - INFO - Validation Loss: 0.6146, Validation Accuracy: 83.52%
+2025-09-26 11:32:49,730 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:49,730 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:32:49,730 - TrainMLP - INFO - Epoch [10/20] Training...
+2025-09-26 11:32:50,885 - TrainMLP - INFO - Train Loss: 0.4396, Train Accuracy: 89.16%
+2025-09-26 11:32:51,048 - TrainMLP - INFO - Validation Loss: 0.5891, Validation Accuracy: 82.39%
+2025-09-26 11:32:51,056 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:51,056 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:32:51,056 - TrainMLP - INFO - Epoch [11/20] Training...
+2025-09-26 11:32:52,389 - TrainMLP - INFO - Train Loss: 0.3773, Train Accuracy: 91.57%
+2025-09-26 11:32:52,554 - TrainMLP - INFO - Validation Loss: 0.5710, Validation Accuracy: 83.52%
+2025-09-26 11:32:52,562 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:52,562 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:32:52,562 - TrainMLP - INFO - Epoch [12/20] Training...
+2025-09-26 11:32:53,720 - TrainMLP - INFO - Train Loss: 0.3722, Train Accuracy: 91.77%
+2025-09-26 11:32:53,921 - TrainMLP - INFO - Validation Loss: 0.5669, Validation Accuracy: 83.52%
+2025-09-26 11:32:53,930 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:53,930 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:32:53,930 - TrainMLP - INFO - Epoch [13/20] Training...
+2025-09-26 11:32:55,082 - TrainMLP - INFO - Train Loss: 0.3632, Train Accuracy: 91.87%
+2025-09-26 11:32:55,283 - TrainMLP - INFO - Validation Loss: 0.5592, Validation Accuracy: 83.52%
+2025-09-26 11:32:55,291 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:55,291 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:32:55,291 - TrainMLP - INFO - Epoch [14/20] Training...
+2025-09-26 11:32:56,452 - TrainMLP - INFO - Train Loss: 0.3565, Train Accuracy: 91.87%
+2025-09-26 11:32:56,636 - TrainMLP - INFO - Validation Loss: 0.5578, Validation Accuracy: 83.52%
+2025-09-26 11:32:56,654 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:56,654 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:32:56,655 - TrainMLP - INFO - Epoch [15/20] Training...
+2025-09-26 11:32:57,757 - TrainMLP - INFO - Train Loss: 0.3520, Train Accuracy: 92.27%
+2025-09-26 11:32:57,932 - TrainMLP - INFO - Validation Loss: 0.5569, Validation Accuracy: 83.52%
+2025-09-26 11:32:57,940 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:57,940 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:32:57,940 - TrainMLP - INFO - Epoch [16/20] Training...
+2025-09-26 11:32:59,240 - TrainMLP - INFO - Train Loss: 0.3479, Train Accuracy: 92.37%
+2025-09-26 11:32:59,439 - TrainMLP - INFO - Validation Loss: 0.5543, Validation Accuracy: 83.52%
+2025-09-26 11:32:59,447 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:32:59,447 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:32:59,447 - TrainMLP - INFO - Epoch [17/20] Training...
+2025-09-26 11:33:00,598 - TrainMLP - INFO - Train Loss: 0.3419, Train Accuracy: 92.37%
+2025-09-26 11:33:00,811 - TrainMLP - INFO - Validation Loss: 0.5472, Validation Accuracy: 84.09%
+2025-09-26 11:33:00,818 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:33:00,818 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:33:00,818 - TrainMLP - INFO - Epoch [18/20] Training...
+2025-09-26 11:33:02,044 - TrainMLP - INFO - Train Loss: 0.3452, Train Accuracy: 92.67%
+2025-09-26 11:33:02,280 - TrainMLP - INFO - Validation Loss: 0.5438, Validation Accuracy: 84.09%
+2025-09-26 11:33:02,287 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:33:02,287 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:33:02,287 - TrainMLP - INFO - Epoch [19/20] Training...
+2025-09-26 11:33:03,444 - TrainMLP - INFO - Train Loss: 0.3330, Train Accuracy: 92.77%
+2025-09-26 11:33:03,730 - TrainMLP - INFO - Validation Loss: 0.5415, Validation Accuracy: 84.66%
+2025-09-26 11:33:03,738 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:33:03,738 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:33:03,738 - TrainMLP - INFO - Epoch [20/20] Training...
+2025-09-26 11:33:04,851 - TrainMLP - INFO - Train Loss: 0.3276, Train Accuracy: 93.07%
+2025-09-26 11:33:05,036 - TrainMLP - INFO - Validation Loss: 0.5397, Validation Accuracy: 85.23%
+2025-09-26 11:33:05,044 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:33:05,044 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:33:05,052 - TrainMLP - INFO - Final model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-09-25_final_MLP.pth
+2025-09-26 11:33:23,684 - TrainMLP - INFO - MLP_eval_started: space_time_ciccio_13-03-25
+2025-09-26 11:33:23,814 - TrainMLP - INFO - Loaded model from /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-09-25_final_MLP.pth
+2025-09-26 11:33:24,241 - TrainMLP - INFO - [INFO] Classification Metrics
+2025-09-26 11:33:24,242 - TrainMLP - INFO - Accuracy: 70.21%
+2025-09-26 11:33:24,244 - TrainMLP - INFO - Precision: 0.7217494089834514
+2025-09-26 11:33:24,244 - TrainMLP - INFO - Recall: 0.7021276595744681
+2025-09-26 11:33:24,245 - TrainMLP - INFO - F1 Score: 0.6768043387567793
+2025-09-26 11:33:24,247 - TrainMLP - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.89      1.00      0.94         8
+           1       0.88      0.88      0.88         8
+           2       0.70      0.88      0.78         8
+           3       1.00      0.12      0.22         8
+           4       0.58      0.88      0.70         8
+           5       1.00      1.00      1.00         8
+           6       0.75      0.75      0.75         8
+           7       0.75      0.75      0.75         8
+           8       0.60      0.75      0.67         8
+           9       0.33      0.38      0.35         8
+          10       0.75      0.75      0.75         8
+          11       0.33      0.17      0.22         6
+
+    accuracy                           0.70        94
+   macro avg       0.71      0.69      0.67        94
+weighted avg       0.72      0.70      0.68        94
+
+2025-09-26 11:34:02,104 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-09-26 11:34:02,104 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_all.pkl
+2025-09-26 11:34:02,105 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_all.pkl
+2025-09-26 11:34:03,127 - TrainMLP - INFO - Epoch [1/50] Training...
+2025-09-26 11:34:05,194 - TrainMLP - INFO - Train Loss: 2.3863, Train Accuracy: 27.51%
+2025-09-26 11:34:05,423 - TrainMLP - INFO - Validation Loss: 2.1761, Validation Accuracy: 57.39%
+2025-09-26 11:34:05,433 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:05,434 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:34:05,434 - TrainMLP - INFO - Epoch [2/50] Training...
+2025-09-26 11:34:06,589 - TrainMLP - INFO - Train Loss: 1.9207, Train Accuracy: 60.04%
+2025-09-26 11:34:06,760 - TrainMLP - INFO - Validation Loss: 1.5505, Validation Accuracy: 60.80%
+2025-09-26 11:34:06,768 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:06,768 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:34:06,768 - TrainMLP - INFO - Epoch [3/50] Training...
+2025-09-26 11:34:08,037 - TrainMLP - INFO - Train Loss: 1.3332, Train Accuracy: 67.67%
+2025-09-26 11:34:08,198 - TrainMLP - INFO - Validation Loss: 1.1382, Validation Accuracy: 65.34%
+2025-09-26 11:34:08,210 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:08,210 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:34:08,210 - TrainMLP - INFO - Epoch [4/50] Training...
+2025-09-26 11:34:09,481 - TrainMLP - INFO - Train Loss: 1.0014, Train Accuracy: 71.99%
+2025-09-26 11:34:09,687 - TrainMLP - INFO - Validation Loss: 0.9507, Validation Accuracy: 71.02%
+2025-09-26 11:34:09,692 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:09,692 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:34:09,692 - TrainMLP - INFO - Epoch [5/50] Training...
+2025-09-26 11:34:10,953 - TrainMLP - INFO - Train Loss: 0.8427, Train Accuracy: 76.31%
+2025-09-26 11:34:11,154 - TrainMLP - INFO - Validation Loss: 0.8415, Validation Accuracy: 73.30%
+2025-09-26 11:34:11,162 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:11,162 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:34:11,163 - TrainMLP - INFO - Epoch [6/50] Training...
+2025-09-26 11:34:12,329 - TrainMLP - INFO - Train Loss: 0.7167, Train Accuracy: 80.02%
+2025-09-26 11:34:12,542 - TrainMLP - INFO - Validation Loss: 0.7888, Validation Accuracy: 76.70%
+2025-09-26 11:34:12,550 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:12,550 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:34:12,550 - TrainMLP - INFO - Epoch [7/50] Training...
+2025-09-26 11:34:13,819 - TrainMLP - INFO - Train Loss: 0.6267, Train Accuracy: 82.43%
+2025-09-26 11:34:14,018 - TrainMLP - INFO - Validation Loss: 0.7085, Validation Accuracy: 78.98%
+2025-09-26 11:34:14,026 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:14,026 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:34:14,026 - TrainMLP - INFO - Epoch [8/50] Training...
+2025-09-26 11:34:15,355 - TrainMLP - INFO - Train Loss: 0.5631, Train Accuracy: 84.64%
+2025-09-26 11:34:15,592 - TrainMLP - INFO - Validation Loss: 0.6530, Validation Accuracy: 80.11%
+2025-09-26 11:34:15,600 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:15,600 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:34:15,600 - TrainMLP - INFO - Epoch [9/50] Training...
+2025-09-26 11:34:16,784 - TrainMLP - INFO - Train Loss: 0.4939, Train Accuracy: 86.24%
+2025-09-26 11:34:16,973 - TrainMLP - INFO - Validation Loss: 0.6121, Validation Accuracy: 82.39%
+2025-09-26 11:34:16,983 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:16,983 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:34:16,983 - TrainMLP - INFO - Epoch [10/50] Training...
+2025-09-26 11:34:18,453 - TrainMLP - INFO - Train Loss: 0.4289, Train Accuracy: 88.65%
+2025-09-26 11:34:18,642 - TrainMLP - INFO - Validation Loss: 0.5552, Validation Accuracy: 84.09%
+2025-09-26 11:34:18,650 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:18,650 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:34:18,650 - TrainMLP - INFO - Epoch [11/50] Training...
+2025-09-26 11:34:19,919 - TrainMLP - INFO - Train Loss: 0.3638, Train Accuracy: 91.47%
+2025-09-26 11:34:20,162 - TrainMLP - INFO - Validation Loss: 0.5545, Validation Accuracy: 85.23%
+2025-09-26 11:34:20,170 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:20,170 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:34:20,170 - TrainMLP - INFO - Epoch [12/50] Training...
+2025-09-26 11:34:21,382 - TrainMLP - INFO - Train Loss: 0.3578, Train Accuracy: 91.67%
+2025-09-26 11:34:21,590 - TrainMLP - INFO - Validation Loss: 0.5527, Validation Accuracy: 85.80%
+2025-09-26 11:34:21,597 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:21,597 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:34:21,597 - TrainMLP - INFO - Epoch [13/50] Training...
+2025-09-26 11:34:22,790 - TrainMLP - INFO - Train Loss: 0.3549, Train Accuracy: 91.97%
+2025-09-26 11:34:22,973 - TrainMLP - INFO - Validation Loss: 0.5473, Validation Accuracy: 85.80%
+2025-09-26 11:34:22,981 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:22,981 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:34:22,981 - TrainMLP - INFO - Epoch [14/50] Training...
+2025-09-26 11:34:24,089 - TrainMLP - INFO - Train Loss: 0.3629, Train Accuracy: 92.17%
+2025-09-26 11:34:24,325 - TrainMLP - INFO - Validation Loss: 0.5435, Validation Accuracy: 85.80%
+2025-09-26 11:34:24,333 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:24,333 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:34:24,333 - TrainMLP - INFO - Epoch [15/50] Training...
+2025-09-26 11:34:25,432 - TrainMLP - INFO - Train Loss: 0.3420, Train Accuracy: 92.47%
+2025-09-26 11:34:25,766 - TrainMLP - INFO - Validation Loss: 0.5404, Validation Accuracy: 85.23%
+2025-09-26 11:34:25,774 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:25,774 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:34:25,774 - TrainMLP - INFO - Epoch [16/50] Training...
+2025-09-26 11:34:27,140 - TrainMLP - INFO - Train Loss: 0.3413, Train Accuracy: 92.47%
+2025-09-26 11:34:27,358 - TrainMLP - INFO - Validation Loss: 0.5380, Validation Accuracy: 85.80%
+2025-09-26 11:34:27,404 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:27,404 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:34:27,404 - TrainMLP - INFO - Epoch [17/50] Training...
+2025-09-26 11:34:29,761 - TrainMLP - INFO - Train Loss: 0.3336, Train Accuracy: 92.57%
+2025-09-26 11:34:30,167 - TrainMLP - INFO - Validation Loss: 0.5363, Validation Accuracy: 85.80%
+2025-09-26 11:34:30,259 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:30,259 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:34:30,259 - TrainMLP - INFO - Epoch [18/50] Training...
+2025-09-26 11:34:32,518 - TrainMLP - INFO - Train Loss: 0.3266, Train Accuracy: 93.07%
+2025-09-26 11:34:32,753 - TrainMLP - INFO - Validation Loss: 0.5306, Validation Accuracy: 85.80%
+2025-09-26 11:34:32,775 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:32,775 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:34:32,775 - TrainMLP - INFO - Epoch [19/50] Training...
+2025-09-26 11:34:34,308 - TrainMLP - INFO - Train Loss: 0.3235, Train Accuracy: 93.37%
+2025-09-26 11:34:34,592 - TrainMLP - INFO - Validation Loss: 0.5274, Validation Accuracy: 85.80%
+2025-09-26 11:34:34,597 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:34,597 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:34:34,597 - TrainMLP - INFO - Epoch [20/50] Training...
+2025-09-26 11:34:36,014 - TrainMLP - INFO - Train Loss: 0.3205, Train Accuracy: 93.47%
+2025-09-26 11:34:36,219 - TrainMLP - INFO - Validation Loss: 0.5232, Validation Accuracy: 86.36%
+2025-09-26 11:34:36,224 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:36,224 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:34:36,224 - TrainMLP - INFO - Epoch [21/50] Training...
+2025-09-26 11:34:38,353 - TrainMLP - INFO - Train Loss: 0.3149, Train Accuracy: 93.78%
+2025-09-26 11:34:38,708 - TrainMLP - INFO - Validation Loss: 0.5230, Validation Accuracy: 86.36%
+2025-09-26 11:34:38,713 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:38,714 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:34:38,714 - TrainMLP - INFO - Epoch [22/50] Training...
+2025-09-26 11:34:42,100 - TrainMLP - INFO - Train Loss: 0.3114, Train Accuracy: 93.78%
+2025-09-26 11:34:42,377 - TrainMLP - INFO - Validation Loss: 0.5227, Validation Accuracy: 86.36%
+2025-09-26 11:34:42,383 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:42,383 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:34:42,383 - TrainMLP - INFO - Epoch [23/50] Training...
+2025-09-26 11:34:44,672 - TrainMLP - INFO - Train Loss: 0.3141, Train Accuracy: 93.78%
+2025-09-26 11:34:44,928 - TrainMLP - INFO - Validation Loss: 0.5224, Validation Accuracy: 86.36%
+2025-09-26 11:34:44,933 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:44,933 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:34:44,933 - TrainMLP - INFO - Epoch [24/50] Training...
+2025-09-26 11:34:46,116 - TrainMLP - INFO - Train Loss: 0.3136, Train Accuracy: 93.78%
+2025-09-26 11:34:46,288 - TrainMLP - INFO - Validation Loss: 0.5228, Validation Accuracy: 86.36%
+2025-09-26 11:34:46,288 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:34:46,288 - TrainMLP - INFO - Epoch [25/50] Training...
+2025-09-26 11:34:47,574 - TrainMLP - INFO - Train Loss: 0.3177, Train Accuracy: 93.78%
+2025-09-26 11:34:47,837 - TrainMLP - INFO - Validation Loss: 0.5222, Validation Accuracy: 86.36%
+2025-09-26 11:34:47,845 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:47,845 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:34:47,845 - TrainMLP - INFO - Epoch [26/50] Training...
+2025-09-26 11:34:49,217 - TrainMLP - INFO - Train Loss: 0.3116, Train Accuracy: 93.78%
+2025-09-26 11:34:49,533 - TrainMLP - INFO - Validation Loss: 0.5225, Validation Accuracy: 86.36%
+2025-09-26 11:34:49,533 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:34:49,533 - TrainMLP - INFO - Epoch [27/50] Training...
+2025-09-26 11:34:51,029 - TrainMLP - INFO - Train Loss: 0.3107, Train Accuracy: 93.78%
+2025-09-26 11:34:51,204 - TrainMLP - INFO - Validation Loss: 0.5221, Validation Accuracy: 86.36%
+2025-09-26 11:34:51,222 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:51,222 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:34:51,222 - TrainMLP - INFO - Epoch [28/50] Training...
+2025-09-26 11:34:52,384 - TrainMLP - INFO - Train Loss: 0.3124, Train Accuracy: 93.78%
+2025-09-26 11:34:52,604 - TrainMLP - INFO - Validation Loss: 0.5220, Validation Accuracy: 86.36%
+2025-09-26 11:34:52,612 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:52,613 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:34:52,613 - TrainMLP - INFO - Epoch [29/50] Training...
+2025-09-26 11:34:53,623 - TrainMLP - INFO - Train Loss: 0.3127, Train Accuracy: 93.98%
+2025-09-26 11:34:53,768 - TrainMLP - INFO - Validation Loss: 0.5216, Validation Accuracy: 86.36%
+2025-09-26 11:34:53,777 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:53,777 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:34:53,777 - TrainMLP - INFO - Epoch [30/50] Training...
+2025-09-26 11:34:54,718 - TrainMLP - INFO - Train Loss: 0.3080, Train Accuracy: 93.98%
+2025-09-26 11:34:54,881 - TrainMLP - INFO - Validation Loss: 0.5215, Validation Accuracy: 86.36%
+2025-09-26 11:34:54,889 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:54,889 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:34:54,889 - TrainMLP - INFO - Epoch [31/50] Training...
+2025-09-26 11:34:55,864 - TrainMLP - INFO - Train Loss: 0.3080, Train Accuracy: 93.98%
+2025-09-26 11:34:56,019 - TrainMLP - INFO - Validation Loss: 0.5215, Validation Accuracy: 86.36%
+2025-09-26 11:34:56,027 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:56,027 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:34:56,027 - TrainMLP - INFO - Epoch [32/50] Training...
+2025-09-26 11:34:56,955 - TrainMLP - INFO - Train Loss: 0.3107, Train Accuracy: 93.98%
+2025-09-26 11:34:57,101 - TrainMLP - INFO - Validation Loss: 0.5215, Validation Accuracy: 86.36%
+2025-09-26 11:34:57,108 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:57,109 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:34:57,109 - TrainMLP - INFO - Epoch [33/50] Training...
+2025-09-26 11:34:58,049 - TrainMLP - INFO - Train Loss: 0.3087, Train Accuracy: 93.98%
+2025-09-26 11:34:58,196 - TrainMLP - INFO - Validation Loss: 0.5214, Validation Accuracy: 86.36%
+2025-09-26 11:34:58,203 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:58,203 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:34:58,203 - TrainMLP - INFO - Epoch [34/50] Training...
+2025-09-26 11:34:59,129 - TrainMLP - INFO - Train Loss: 0.3110, Train Accuracy: 93.98%
+2025-09-26 11:34:59,279 - TrainMLP - INFO - Validation Loss: 0.5214, Validation Accuracy: 86.36%
+2025-09-26 11:34:59,291 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:34:59,291 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:34:59,291 - TrainMLP - INFO - Epoch [35/50] Training...
+2025-09-26 11:35:00,240 - TrainMLP - INFO - Train Loss: 0.3089, Train Accuracy: 93.98%
+2025-09-26 11:35:00,397 - TrainMLP - INFO - Validation Loss: 0.5214, Validation Accuracy: 86.36%
+2025-09-26 11:35:00,397 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:35:00,397 - TrainMLP - INFO - Epoch [36/50] Training...
+2025-09-26 11:35:01,319 - TrainMLP - INFO - Train Loss: 0.3134, Train Accuracy: 93.98%
+2025-09-26 11:35:01,464 - TrainMLP - INFO - Validation Loss: 0.5213, Validation Accuracy: 86.36%
+2025-09-26 11:35:01,472 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:35:01,472 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:35:01,472 - TrainMLP - INFO - Epoch [37/50] Training...
+2025-09-26 11:35:02,410 - TrainMLP - INFO - Train Loss: 0.3096, Train Accuracy: 93.98%
+2025-09-26 11:35:02,564 - TrainMLP - INFO - Validation Loss: 0.5213, Validation Accuracy: 86.36%
+2025-09-26 11:35:02,564 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:35:02,564 - TrainMLP - INFO - Epoch [38/50] Training...
+2025-09-26 11:35:03,537 - TrainMLP - INFO - Train Loss: 0.3114, Train Accuracy: 93.98%
+2025-09-26 11:35:03,690 - TrainMLP - INFO - Validation Loss: 0.5213, Validation Accuracy: 86.36%
+2025-09-26 11:35:03,700 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:35:03,701 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:35:03,701 - TrainMLP - INFO - Epoch [39/50] Training...
+2025-09-26 11:35:04,680 - TrainMLP - INFO - Train Loss: 0.3099, Train Accuracy: 93.98%
+2025-09-26 11:35:04,834 - TrainMLP - INFO - Validation Loss: 0.5213, Validation Accuracy: 86.36%
+2025-09-26 11:35:04,834 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:35:04,834 - TrainMLP - INFO - Epoch [40/50] Training...
+2025-09-26 11:35:05,923 - TrainMLP - INFO - Train Loss: 0.3102, Train Accuracy: 93.98%
+2025-09-26 11:35:06,099 - TrainMLP - INFO - Validation Loss: 0.5212, Validation Accuracy: 86.36%
+2025-09-26 11:35:06,107 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:35:06,107 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:35:06,107 - TrainMLP - INFO - Epoch [41/50] Training...
+2025-09-26 11:35:07,216 - TrainMLP - INFO - Train Loss: 0.3092, Train Accuracy: 93.98%
+2025-09-26 11:35:07,453 - TrainMLP - INFO - Validation Loss: 0.5212, Validation Accuracy: 86.36%
+2025-09-26 11:35:07,460 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:35:07,461 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:35:07,461 - TrainMLP - INFO - Epoch [42/50] Training...
+2025-09-26 11:35:08,780 - TrainMLP - INFO - Train Loss: 0.3142, Train Accuracy: 93.98%
+2025-09-26 11:35:08,992 - TrainMLP - INFO - Validation Loss: 0.5212, Validation Accuracy: 86.36%
+2025-09-26 11:35:08,999 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:35:08,999 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:35:08,999 - TrainMLP - INFO - Epoch [43/50] Training...
+2025-09-26 11:35:10,303 - TrainMLP - INFO - Train Loss: 0.3119, Train Accuracy: 93.98%
+2025-09-26 11:35:10,556 - TrainMLP - INFO - Validation Loss: 0.5212, Validation Accuracy: 86.36%
+2025-09-26 11:35:10,556 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:35:10,556 - TrainMLP - INFO - Epoch [44/50] Training...
+2025-09-26 11:35:12,080 - TrainMLP - INFO - Train Loss: 0.3077, Train Accuracy: 93.98%
+2025-09-26 11:35:12,240 - TrainMLP - INFO - Validation Loss: 0.5212, Validation Accuracy: 86.36%
+2025-09-26 11:35:12,250 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:35:12,251 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:35:12,251 - TrainMLP - INFO - Epoch [45/50] Training...
+2025-09-26 11:35:13,258 - TrainMLP - INFO - Train Loss: 0.3069, Train Accuracy: 93.98%
+2025-09-26 11:35:13,475 - TrainMLP - INFO - Validation Loss: 0.5212, Validation Accuracy: 86.36%
+2025-09-26 11:35:13,484 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:35:13,484 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:35:13,484 - TrainMLP - INFO - Epoch [46/50] Training...
+2025-09-26 11:35:14,437 - TrainMLP - INFO - Train Loss: 0.3079, Train Accuracy: 93.98%
+2025-09-26 11:35:14,586 - TrainMLP - INFO - Validation Loss: 0.5212, Validation Accuracy: 86.36%
+2025-09-26 11:35:14,594 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:35:14,594 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:35:14,594 - TrainMLP - INFO - Epoch [47/50] Training...
+2025-09-26 11:35:15,586 - TrainMLP - INFO - Train Loss: 0.3082, Train Accuracy: 93.98%
+2025-09-26 11:35:15,757 - TrainMLP - INFO - Validation Loss: 0.5212, Validation Accuracy: 86.36%
+2025-09-26 11:35:15,765 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:35:15,765 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:35:15,765 - TrainMLP - INFO - Epoch [48/50] Training...
+2025-09-26 11:35:16,708 - TrainMLP - INFO - Train Loss: 0.3089, Train Accuracy: 93.98%
+2025-09-26 11:35:16,857 - TrainMLP - INFO - Validation Loss: 0.5212, Validation Accuracy: 86.36%
+2025-09-26 11:35:16,865 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:35:16,865 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:35:16,865 - TrainMLP - INFO - Epoch [49/50] Training...
+2025-09-26 11:35:17,819 - TrainMLP - INFO - Train Loss: 0.3105, Train Accuracy: 93.98%
+2025-09-26 11:35:17,981 - TrainMLP - INFO - Validation Loss: 0.5212, Validation Accuracy: 86.36%
+2025-09-26 11:35:17,989 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:35:17,989 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:35:17,989 - TrainMLP - INFO - Epoch [50/50] Training...
+2025-09-26 11:35:18,970 - TrainMLP - INFO - Train Loss: 0.3089, Train Accuracy: 93.98%
+2025-09-26 11:35:19,117 - TrainMLP - INFO - Validation Loss: 0.5212, Validation Accuracy: 86.36%
+2025-09-26 11:35:19,125 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:35:19,125 - TrainMLP - INFO - Learning Rate: 1.0000000000000005e-09
+2025-09-26 11:35:19,128 - TrainMLP - INFO - Final model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-09-25_final_MLP.pth
+2025-09-26 11:35:37,779 - TrainMLP - INFO - MLP_eval_started: space_time_ciccio_13-03-25
+2025-09-26 11:35:37,913 - TrainMLP - INFO - Loaded model from /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-09-25_final_MLP.pth
+2025-09-26 11:35:38,297 - TrainMLP - INFO - [INFO] Classification Metrics
+2025-09-26 11:35:38,298 - TrainMLP - INFO - Accuracy: 71.28%
+2025-09-26 11:35:38,310 - TrainMLP - INFO - Precision: 0.6557381153125834
+2025-09-26 11:35:38,311 - TrainMLP - INFO - Recall: 0.7127659574468085
+2025-09-26 11:35:38,312 - TrainMLP - INFO - F1 Score: 0.6747925299272378
+2025-09-26 11:35:38,314 - TrainMLP - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.89      1.00      0.94         8
+           1       1.00      0.88      0.93         8
+           2       0.70      0.88      0.78         8
+           3       0.00      0.00      0.00         8
+           4       0.62      1.00      0.76         8
+           5       1.00      1.00      1.00         8
+           6       0.62      0.62      0.62         8
+           7       0.88      0.88      0.88         8
+           8       0.71      0.62      0.67         8
+           9       0.40      0.50      0.44         8
+          10       0.64      0.88      0.74         8
+          11       0.33      0.17      0.22         6
+
+    accuracy                           0.71        94
+   macro avg       0.65      0.70      0.67        94
+weighted avg       0.66      0.71      0.67        94
+
+2025-09-26 11:37:12,363 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-09-26 11:37:12,363 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_all.pkl
+2025-09-26 11:37:12,363 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_all.pkl
+2025-09-26 11:37:13,340 - TrainMLP - INFO - Epoch [1/50] Training...
+2025-09-26 11:37:15,515 - TrainMLP - INFO - Train Loss: 2.3857, Train Accuracy: 28.31%
+2025-09-26 11:37:15,735 - TrainMLP - INFO - Validation Loss: 2.1790, Validation Accuracy: 60.80%
+2025-09-26 11:37:15,750 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:15,750 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:37:15,750 - TrainMLP - INFO - Epoch [2/50] Training...
+2025-09-26 11:37:16,971 - TrainMLP - INFO - Train Loss: 1.9319, Train Accuracy: 61.35%
+2025-09-26 11:37:17,193 - TrainMLP - INFO - Validation Loss: 1.5341, Validation Accuracy: 67.05%
+2025-09-26 11:37:17,201 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:17,201 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:37:17,201 - TrainMLP - INFO - Epoch [3/50] Training...
+2025-09-26 11:37:18,536 - TrainMLP - INFO - Train Loss: 1.3329, Train Accuracy: 68.07%
+2025-09-26 11:37:18,790 - TrainMLP - INFO - Validation Loss: 1.1219, Validation Accuracy: 69.89%
+2025-09-26 11:37:18,799 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:18,799 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:37:18,799 - TrainMLP - INFO - Epoch [4/50] Training...
+2025-09-26 11:37:20,265 - TrainMLP - INFO - Train Loss: 0.9999, Train Accuracy: 73.49%
+2025-09-26 11:37:20,457 - TrainMLP - INFO - Validation Loss: 0.9419, Validation Accuracy: 73.86%
+2025-09-26 11:37:20,475 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:20,475 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:37:20,475 - TrainMLP - INFO - Epoch [5/50] Training...
+2025-09-26 11:37:21,654 - TrainMLP - INFO - Train Loss: 0.8294, Train Accuracy: 77.41%
+2025-09-26 11:37:21,838 - TrainMLP - INFO - Validation Loss: 0.8275, Validation Accuracy: 77.27%
+2025-09-26 11:37:21,846 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:21,846 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:37:21,846 - TrainMLP - INFO - Epoch [6/50] Training...
+2025-09-26 11:37:23,163 - TrainMLP - INFO - Train Loss: 0.7139, Train Accuracy: 79.02%
+2025-09-26 11:37:23,385 - TrainMLP - INFO - Validation Loss: 0.7693, Validation Accuracy: 78.98%
+2025-09-26 11:37:23,390 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:23,390 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:37:23,390 - TrainMLP - INFO - Epoch [7/50] Training...
+2025-09-26 11:37:24,547 - TrainMLP - INFO - Train Loss: 0.6092, Train Accuracy: 82.93%
+2025-09-26 11:37:24,729 - TrainMLP - INFO - Validation Loss: 0.6841, Validation Accuracy: 81.25%
+2025-09-26 11:37:24,745 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:24,745 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:37:24,745 - TrainMLP - INFO - Epoch [8/50] Training...
+2025-09-26 11:37:25,831 - TrainMLP - INFO - Train Loss: 0.5436, Train Accuracy: 84.74%
+2025-09-26 11:37:26,004 - TrainMLP - INFO - Validation Loss: 0.6402, Validation Accuracy: 81.25%
+2025-09-26 11:37:26,012 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:26,012 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:37:26,012 - TrainMLP - INFO - Epoch [9/50] Training...
+2025-09-26 11:37:27,111 - TrainMLP - INFO - Train Loss: 0.4767, Train Accuracy: 87.75%
+2025-09-26 11:37:27,289 - TrainMLP - INFO - Validation Loss: 0.5948, Validation Accuracy: 84.09%
+2025-09-26 11:37:27,296 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:27,296 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:37:27,296 - TrainMLP - INFO - Epoch [10/50] Training...
+2025-09-26 11:37:28,410 - TrainMLP - INFO - Train Loss: 0.4140, Train Accuracy: 89.36%
+2025-09-26 11:37:28,604 - TrainMLP - INFO - Validation Loss: 0.6031, Validation Accuracy: 82.95%
+2025-09-26 11:37:28,604 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:37:28,604 - TrainMLP - INFO - Epoch [11/50] Training...
+2025-09-26 11:37:29,698 - TrainMLP - INFO - Train Loss: 0.3622, Train Accuracy: 91.77%
+2025-09-26 11:37:29,908 - TrainMLP - INFO - Validation Loss: 0.5765, Validation Accuracy: 82.39%
+2025-09-26 11:37:29,916 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:29,916 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:37:29,917 - TrainMLP - INFO - Epoch [12/50] Training...
+2025-09-26 11:37:31,037 - TrainMLP - INFO - Train Loss: 0.3578, Train Accuracy: 91.97%
+2025-09-26 11:37:31,249 - TrainMLP - INFO - Validation Loss: 0.5675, Validation Accuracy: 82.39%
+2025-09-26 11:37:31,257 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:31,257 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:37:31,257 - TrainMLP - INFO - Epoch [13/50] Training...
+2025-09-26 11:37:32,563 - TrainMLP - INFO - Train Loss: 0.3455, Train Accuracy: 92.37%
+2025-09-26 11:37:32,726 - TrainMLP - INFO - Validation Loss: 0.5584, Validation Accuracy: 82.95%
+2025-09-26 11:37:32,733 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:32,733 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:37:32,733 - TrainMLP - INFO - Epoch [14/50] Training...
+2025-09-26 11:37:33,998 - TrainMLP - INFO - Train Loss: 0.3410, Train Accuracy: 92.17%
+2025-09-26 11:37:34,207 - TrainMLP - INFO - Validation Loss: 0.5562, Validation Accuracy: 83.52%
+2025-09-26 11:37:34,212 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:34,212 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:37:34,212 - TrainMLP - INFO - Epoch [15/50] Training...
+2025-09-26 11:37:35,311 - TrainMLP - INFO - Train Loss: 0.3362, Train Accuracy: 92.87%
+2025-09-26 11:37:35,499 - TrainMLP - INFO - Validation Loss: 0.5525, Validation Accuracy: 83.52%
+2025-09-26 11:37:35,505 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:35,505 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:37:35,505 - TrainMLP - INFO - Epoch [16/50] Training...
+2025-09-26 11:37:36,968 - TrainMLP - INFO - Train Loss: 0.3308, Train Accuracy: 93.07%
+2025-09-26 11:37:37,136 - TrainMLP - INFO - Validation Loss: 0.5500, Validation Accuracy: 83.52%
+2025-09-26 11:37:37,145 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:37,145 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:37:37,145 - TrainMLP - INFO - Epoch [17/50] Training...
+2025-09-26 11:37:38,367 - TrainMLP - INFO - Train Loss: 0.3274, Train Accuracy: 92.97%
+2025-09-26 11:37:38,601 - TrainMLP - INFO - Validation Loss: 0.5459, Validation Accuracy: 83.52%
+2025-09-26 11:37:38,609 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:38,609 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:37:38,609 - TrainMLP - INFO - Epoch [18/50] Training...
+2025-09-26 11:37:39,833 - TrainMLP - INFO - Train Loss: 0.3231, Train Accuracy: 93.27%
+2025-09-26 11:37:40,030 - TrainMLP - INFO - Validation Loss: 0.5405, Validation Accuracy: 84.09%
+2025-09-26 11:37:40,038 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:40,038 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:37:40,038 - TrainMLP - INFO - Epoch [19/50] Training...
+2025-09-26 11:37:41,318 - TrainMLP - INFO - Train Loss: 0.3207, Train Accuracy: 93.37%
+2025-09-26 11:37:41,496 - TrainMLP - INFO - Validation Loss: 0.5361, Validation Accuracy: 84.09%
+2025-09-26 11:37:41,508 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:41,508 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:37:41,508 - TrainMLP - INFO - Epoch [20/50] Training...
+2025-09-26 11:37:42,636 - TrainMLP - INFO - Train Loss: 0.3182, Train Accuracy: 93.67%
+2025-09-26 11:37:42,822 - TrainMLP - INFO - Validation Loss: 0.5347, Validation Accuracy: 84.09%
+2025-09-26 11:37:42,830 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:42,831 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:37:42,831 - TrainMLP - INFO - Epoch [21/50] Training...
+2025-09-26 11:37:44,126 - TrainMLP - INFO - Train Loss: 0.3057, Train Accuracy: 93.88%
+2025-09-26 11:37:44,332 - TrainMLP - INFO - Validation Loss: 0.5347, Validation Accuracy: 84.09%
+2025-09-26 11:37:44,332 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:37:44,332 - TrainMLP - INFO - Epoch [22/50] Training...
+2025-09-26 11:37:45,474 - TrainMLP - INFO - Train Loss: 0.3051, Train Accuracy: 93.78%
+2025-09-26 11:37:45,686 - TrainMLP - INFO - Validation Loss: 0.5342, Validation Accuracy: 84.09%
+2025-09-26 11:37:45,694 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:45,694 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:37:45,695 - TrainMLP - INFO - Epoch [23/50] Training...
+2025-09-26 11:37:46,946 - TrainMLP - INFO - Train Loss: 0.3060, Train Accuracy: 93.88%
+2025-09-26 11:37:47,215 - TrainMLP - INFO - Validation Loss: 0.5343, Validation Accuracy: 84.09%
+2025-09-26 11:37:47,215 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:37:47,215 - TrainMLP - INFO - Epoch [24/50] Training...
+2025-09-26 11:37:48,422 - TrainMLP - INFO - Train Loss: 0.3061, Train Accuracy: 93.88%
+2025-09-26 11:37:48,616 - TrainMLP - INFO - Validation Loss: 0.5335, Validation Accuracy: 84.09%
+2025-09-26 11:37:48,624 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:48,624 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:37:48,624 - TrainMLP - INFO - Epoch [25/50] Training...
+2025-09-26 11:37:49,880 - TrainMLP - INFO - Train Loss: 0.3063, Train Accuracy: 93.98%
+2025-09-26 11:37:50,042 - TrainMLP - INFO - Validation Loss: 0.5332, Validation Accuracy: 84.09%
+2025-09-26 11:37:50,050 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:50,050 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:37:50,050 - TrainMLP - INFO - Epoch [26/50] Training...
+2025-09-26 11:37:51,353 - TrainMLP - INFO - Train Loss: 0.3083, Train Accuracy: 93.88%
+2025-09-26 11:37:51,545 - TrainMLP - INFO - Validation Loss: 0.5334, Validation Accuracy: 84.09%
+2025-09-26 11:37:51,546 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:37:51,546 - TrainMLP - INFO - Epoch [27/50] Training...
+2025-09-26 11:37:52,695 - TrainMLP - INFO - Train Loss: 0.3031, Train Accuracy: 93.98%
+2025-09-26 11:37:52,872 - TrainMLP - INFO - Validation Loss: 0.5326, Validation Accuracy: 84.09%
+2025-09-26 11:37:52,890 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:52,890 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:37:52,890 - TrainMLP - INFO - Epoch [28/50] Training...
+2025-09-26 11:37:54,059 - TrainMLP - INFO - Train Loss: 0.3040, Train Accuracy: 93.98%
+2025-09-26 11:37:54,252 - TrainMLP - INFO - Validation Loss: 0.5327, Validation Accuracy: 84.09%
+2025-09-26 11:37:54,252 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:37:54,253 - TrainMLP - INFO - Epoch [29/50] Training...
+2025-09-26 11:37:55,416 - TrainMLP - INFO - Train Loss: 0.3028, Train Accuracy: 93.98%
+2025-09-26 11:37:55,649 - TrainMLP - INFO - Validation Loss: 0.5324, Validation Accuracy: 84.09%
+2025-09-26 11:37:55,658 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:55,658 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:37:55,658 - TrainMLP - INFO - Epoch [30/50] Training...
+2025-09-26 11:37:56,981 - TrainMLP - INFO - Train Loss: 0.3079, Train Accuracy: 93.98%
+2025-09-26 11:37:57,176 - TrainMLP - INFO - Validation Loss: 0.5318, Validation Accuracy: 84.09%
+2025-09-26 11:37:57,184 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:57,184 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:37:57,184 - TrainMLP - INFO - Epoch [31/50] Training...
+2025-09-26 11:37:58,527 - TrainMLP - INFO - Train Loss: 0.3023, Train Accuracy: 94.08%
+2025-09-26 11:37:58,745 - TrainMLP - INFO - Validation Loss: 0.5318, Validation Accuracy: 84.09%
+2025-09-26 11:37:58,753 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:37:58,754 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:37:58,754 - TrainMLP - INFO - Epoch [32/50] Training...
+2025-09-26 11:38:00,178 - TrainMLP - INFO - Train Loss: 0.3023, Train Accuracy: 94.08%
+2025-09-26 11:38:00,403 - TrainMLP - INFO - Validation Loss: 0.5318, Validation Accuracy: 84.09%
+2025-09-26 11:38:00,403 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:38:00,403 - TrainMLP - INFO - Epoch [33/50] Training...
+2025-09-26 11:38:01,705 - TrainMLP - INFO - Train Loss: 0.3029, Train Accuracy: 94.08%
+2025-09-26 11:38:01,912 - TrainMLP - INFO - Validation Loss: 0.5318, Validation Accuracy: 84.09%
+2025-09-26 11:38:01,920 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:01,920 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:38:01,920 - TrainMLP - INFO - Epoch [34/50] Training...
+2025-09-26 11:38:03,509 - TrainMLP - INFO - Train Loss: 0.3022, Train Accuracy: 94.08%
+2025-09-26 11:38:03,787 - TrainMLP - INFO - Validation Loss: 0.5317, Validation Accuracy: 84.09%
+2025-09-26 11:38:03,792 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:03,792 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:38:03,792 - TrainMLP - INFO - Epoch [35/50] Training...
+2025-09-26 11:38:05,576 - TrainMLP - INFO - Train Loss: 0.3047, Train Accuracy: 94.08%
+2025-09-26 11:38:05,735 - TrainMLP - INFO - Validation Loss: 0.5317, Validation Accuracy: 84.09%
+2025-09-26 11:38:05,743 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:05,743 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:38:05,743 - TrainMLP - INFO - Epoch [36/50] Training...
+2025-09-26 11:38:06,999 - TrainMLP - INFO - Train Loss: 0.3011, Train Accuracy: 94.08%
+2025-09-26 11:38:07,197 - TrainMLP - INFO - Validation Loss: 0.5317, Validation Accuracy: 84.09%
+2025-09-26 11:38:07,205 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:07,205 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:38:07,205 - TrainMLP - INFO - Epoch [37/50] Training...
+2025-09-26 11:38:08,436 - TrainMLP - INFO - Train Loss: 0.3051, Train Accuracy: 94.08%
+2025-09-26 11:38:08,628 - TrainMLP - INFO - Validation Loss: 0.5316, Validation Accuracy: 84.09%
+2025-09-26 11:38:08,645 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:08,645 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:38:08,645 - TrainMLP - INFO - Epoch [38/50] Training...
+2025-09-26 11:38:09,714 - TrainMLP - INFO - Train Loss: 0.3043, Train Accuracy: 94.08%
+2025-09-26 11:38:09,895 - TrainMLP - INFO - Validation Loss: 0.5317, Validation Accuracy: 84.09%
+2025-09-26 11:38:09,895 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:38:09,895 - TrainMLP - INFO - Epoch [39/50] Training...
+2025-09-26 11:38:11,138 - TrainMLP - INFO - Train Loss: 0.3049, Train Accuracy: 94.08%
+2025-09-26 11:38:11,315 - TrainMLP - INFO - Validation Loss: 0.5316, Validation Accuracy: 84.09%
+2025-09-26 11:38:11,323 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:11,323 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:38:11,323 - TrainMLP - INFO - Epoch [40/50] Training...
+2025-09-26 11:38:12,521 - TrainMLP - INFO - Train Loss: 0.3022, Train Accuracy: 94.08%
+2025-09-26 11:38:12,730 - TrainMLP - INFO - Validation Loss: 0.5315, Validation Accuracy: 84.09%
+2025-09-26 11:38:12,738 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:12,738 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:38:12,738 - TrainMLP - INFO - Epoch [41/50] Training...
+2025-09-26 11:38:14,283 - TrainMLP - INFO - Train Loss: 0.3010, Train Accuracy: 94.08%
+2025-09-26 11:38:14,554 - TrainMLP - INFO - Validation Loss: 0.5315, Validation Accuracy: 84.09%
+2025-09-26 11:38:14,562 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:14,562 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:38:14,562 - TrainMLP - INFO - Epoch [42/50] Training...
+2025-09-26 11:38:16,434 - TrainMLP - INFO - Train Loss: 0.3033, Train Accuracy: 94.08%
+2025-09-26 11:38:16,682 - TrainMLP - INFO - Validation Loss: 0.5315, Validation Accuracy: 84.09%
+2025-09-26 11:38:16,805 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:16,805 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:38:16,805 - TrainMLP - INFO - Epoch [43/50] Training...
+2025-09-26 11:38:18,988 - TrainMLP - INFO - Train Loss: 0.3014, Train Accuracy: 94.08%
+2025-09-26 11:38:19,177 - TrainMLP - INFO - Validation Loss: 0.5315, Validation Accuracy: 84.09%
+2025-09-26 11:38:19,237 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:19,237 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:38:19,237 - TrainMLP - INFO - Epoch [44/50] Training...
+2025-09-26 11:38:22,328 - TrainMLP - INFO - Train Loss: 0.3022, Train Accuracy: 94.08%
+2025-09-26 11:38:22,578 - TrainMLP - INFO - Validation Loss: 0.5315, Validation Accuracy: 84.09%
+2025-09-26 11:38:22,578 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:38:22,578 - TrainMLP - INFO - Epoch [45/50] Training...
+2025-09-26 11:38:24,120 - TrainMLP - INFO - Train Loss: 0.3024, Train Accuracy: 94.08%
+2025-09-26 11:38:24,370 - TrainMLP - INFO - Validation Loss: 0.5315, Validation Accuracy: 84.09%
+2025-09-26 11:38:24,378 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:24,378 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:38:24,378 - TrainMLP - INFO - Epoch [46/50] Training...
+2025-09-26 11:38:25,637 - TrainMLP - INFO - Train Loss: 0.3047, Train Accuracy: 94.08%
+2025-09-26 11:38:25,817 - TrainMLP - INFO - Validation Loss: 0.5315, Validation Accuracy: 84.09%
+2025-09-26 11:38:25,837 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:25,837 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:38:25,837 - TrainMLP - INFO - Epoch [47/50] Training...
+2025-09-26 11:38:26,976 - TrainMLP - INFO - Train Loss: 0.3011, Train Accuracy: 94.08%
+2025-09-26 11:38:27,135 - TrainMLP - INFO - Validation Loss: 0.5315, Validation Accuracy: 84.09%
+2025-09-26 11:38:27,143 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:27,143 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:38:27,143 - TrainMLP - INFO - Epoch [48/50] Training...
+2025-09-26 11:38:28,333 - TrainMLP - INFO - Train Loss: 0.3028, Train Accuracy: 94.08%
+2025-09-26 11:38:28,524 - TrainMLP - INFO - Validation Loss: 0.5315, Validation Accuracy: 84.09%
+2025-09-26 11:38:28,531 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:28,532 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:38:28,532 - TrainMLP - INFO - Epoch [49/50] Training...
+2025-09-26 11:38:29,732 - TrainMLP - INFO - Train Loss: 0.3044, Train Accuracy: 94.08%
+2025-09-26 11:38:29,887 - TrainMLP - INFO - Validation Loss: 0.5315, Validation Accuracy: 84.09%
+2025-09-26 11:38:29,895 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:29,895 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:38:29,895 - TrainMLP - INFO - Epoch [50/50] Training...
+2025-09-26 11:38:30,968 - TrainMLP - INFO - Train Loss: 0.3025, Train Accuracy: 94.08%
+2025-09-26 11:38:31,255 - TrainMLP - INFO - Validation Loss: 0.5315, Validation Accuracy: 84.09%
+2025-09-26 11:38:31,261 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:38:31,261 - TrainMLP - INFO - Learning Rate: 1.0000000000000005e-09
+2025-09-26 11:38:31,264 - TrainMLP - INFO - Final model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-09-25_final_MLP.pth
+2025-09-26 11:39:32,070 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-09-26 11:39:32,070 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_all.pkl
+2025-09-26 11:39:32,070 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_all.pkl
+2025-09-26 11:39:33,125 - TrainMLP - INFO - Epoch [1/100] Training...
+2025-09-26 11:39:35,310 - TrainMLP - INFO - Train Loss: 2.4041, Train Accuracy: 24.50%
+2025-09-26 11:39:35,760 - TrainMLP - INFO - Validation Loss: 2.2153, Validation Accuracy: 63.07%
+2025-09-26 11:39:35,823 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:39:35,823 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:39:35,823 - TrainMLP - INFO - Epoch [2/100] Training...
+2025-09-26 11:39:37,962 - TrainMLP - INFO - Train Loss: 1.9815, Train Accuracy: 61.75%
+2025-09-26 11:39:38,270 - TrainMLP - INFO - Validation Loss: 1.5807, Validation Accuracy: 63.64%
+2025-09-26 11:39:38,320 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:39:38,320 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:39:38,320 - TrainMLP - INFO - Epoch [3/100] Training...
+2025-09-26 11:39:40,466 - TrainMLP - INFO - Train Loss: 1.3837, Train Accuracy: 65.96%
+2025-09-26 11:39:40,689 - TrainMLP - INFO - Validation Loss: 1.1345, Validation Accuracy: 67.61%
+2025-09-26 11:39:40,698 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:39:40,698 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:39:40,698 - TrainMLP - INFO - Epoch [4/100] Training...
+2025-09-26 11:39:42,035 - TrainMLP - INFO - Train Loss: 1.0342, Train Accuracy: 72.39%
+2025-09-26 11:39:42,236 - TrainMLP - INFO - Validation Loss: 0.9712, Validation Accuracy: 72.73%
+2025-09-26 11:39:42,245 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:39:42,245 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:39:42,245 - TrainMLP - INFO - Epoch [5/100] Training...
+2025-09-26 11:39:43,309 - TrainMLP - INFO - Train Loss: 0.8621, Train Accuracy: 75.60%
+2025-09-26 11:39:43,487 - TrainMLP - INFO - Validation Loss: 0.8585, Validation Accuracy: 75.00%
+2025-09-26 11:39:43,492 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:39:43,492 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:39:43,492 - TrainMLP - INFO - Epoch [6/100] Training...
+2025-09-26 11:39:44,678 - TrainMLP - INFO - Train Loss: 0.7422, Train Accuracy: 78.82%
+2025-09-26 11:39:44,889 - TrainMLP - INFO - Validation Loss: 0.7703, Validation Accuracy: 77.84%
+2025-09-26 11:39:44,894 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:39:44,894 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:39:44,894 - TrainMLP - INFO - Epoch [7/100] Training...
+2025-09-26 11:39:46,330 - TrainMLP - INFO - Train Loss: 0.6406, Train Accuracy: 81.43%
+2025-09-26 11:39:46,572 - TrainMLP - INFO - Validation Loss: 0.6971, Validation Accuracy: 80.68%
+2025-09-26 11:39:46,577 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:39:46,577 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:39:46,577 - TrainMLP - INFO - Epoch [8/100] Training...
+2025-09-26 11:39:48,540 - TrainMLP - INFO - Train Loss: 0.5630, Train Accuracy: 85.24%
+2025-09-26 11:39:48,784 - TrainMLP - INFO - Validation Loss: 0.6329, Validation Accuracy: 79.55%
+2025-09-26 11:39:48,792 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:39:48,792 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:39:48,792 - TrainMLP - INFO - Epoch [9/100] Training...
+2025-09-26 11:39:50,710 - TrainMLP - INFO - Train Loss: 0.4926, Train Accuracy: 87.35%
+2025-09-26 11:39:50,908 - TrainMLP - INFO - Validation Loss: 0.5895, Validation Accuracy: 82.39%
+2025-09-26 11:39:50,919 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:39:50,919 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:39:50,919 - TrainMLP - INFO - Epoch [10/100] Training...
+2025-09-26 11:39:52,191 - TrainMLP - INFO - Train Loss: 0.4346, Train Accuracy: 89.26%
+2025-09-26 11:39:52,366 - TrainMLP - INFO - Validation Loss: 0.6065, Validation Accuracy: 82.95%
+2025-09-26 11:39:52,367 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:39:52,367 - TrainMLP - INFO - Epoch [11/100] Training...
+2025-09-26 11:39:53,588 - TrainMLP - INFO - Train Loss: 0.3803, Train Accuracy: 91.97%
+2025-09-26 11:39:53,790 - TrainMLP - INFO - Validation Loss: 0.5713, Validation Accuracy: 82.95%
+2025-09-26 11:39:53,797 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:39:53,798 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:39:53,798 - TrainMLP - INFO - Epoch [12/100] Training...
+2025-09-26 11:39:55,232 - TrainMLP - INFO - Train Loss: 0.3720, Train Accuracy: 92.67%
+2025-09-26 11:39:55,437 - TrainMLP - INFO - Validation Loss: 0.5596, Validation Accuracy: 83.52%
+2025-09-26 11:39:55,445 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:39:55,445 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:39:55,445 - TrainMLP - INFO - Epoch [13/100] Training...
+2025-09-26 11:39:56,802 - TrainMLP - INFO - Train Loss: 0.3566, Train Accuracy: 92.67%
+2025-09-26 11:39:57,268 - TrainMLP - INFO - Validation Loss: 0.5518, Validation Accuracy: 83.52%
+2025-09-26 11:39:57,276 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:39:57,276 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:39:57,276 - TrainMLP - INFO - Epoch [14/100] Training...
+2025-09-26 11:39:59,375 - TrainMLP - INFO - Train Loss: 0.3531, Train Accuracy: 92.67%
+2025-09-26 11:39:59,595 - TrainMLP - INFO - Validation Loss: 0.5506, Validation Accuracy: 84.09%
+2025-09-26 11:39:59,603 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:39:59,603 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:39:59,603 - TrainMLP - INFO - Epoch [15/100] Training...
+2025-09-26 11:40:00,969 - TrainMLP - INFO - Train Loss: 0.3519, Train Accuracy: 92.77%
+2025-09-26 11:40:01,187 - TrainMLP - INFO - Validation Loss: 0.5442, Validation Accuracy: 84.09%
+2025-09-26 11:40:01,196 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:01,196 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:40:01,196 - TrainMLP - INFO - Epoch [16/100] Training...
+2025-09-26 11:40:02,361 - TrainMLP - INFO - Train Loss: 0.3463, Train Accuracy: 92.97%
+2025-09-26 11:40:02,622 - TrainMLP - INFO - Validation Loss: 0.5429, Validation Accuracy: 84.66%
+2025-09-26 11:40:02,630 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:02,630 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:40:02,630 - TrainMLP - INFO - Epoch [17/100] Training...
+2025-09-26 11:40:04,110 - TrainMLP - INFO - Train Loss: 0.3373, Train Accuracy: 92.97%
+2025-09-26 11:40:04,351 - TrainMLP - INFO - Validation Loss: 0.5398, Validation Accuracy: 84.66%
+2025-09-26 11:40:04,358 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:04,358 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:40:04,359 - TrainMLP - INFO - Epoch [18/100] Training...
+2025-09-26 11:40:05,635 - TrainMLP - INFO - Train Loss: 0.3340, Train Accuracy: 93.07%
+2025-09-26 11:40:05,852 - TrainMLP - INFO - Validation Loss: 0.5354, Validation Accuracy: 85.23%
+2025-09-26 11:40:05,859 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:05,859 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:40:05,859 - TrainMLP - INFO - Epoch [19/100] Training...
+2025-09-26 11:40:07,271 - TrainMLP - INFO - Train Loss: 0.3326, Train Accuracy: 93.47%
+2025-09-26 11:40:07,492 - TrainMLP - INFO - Validation Loss: 0.5337, Validation Accuracy: 85.23%
+2025-09-26 11:40:07,498 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:07,498 - TrainMLP - INFO - Learning Rate: 1e-05
+2025-09-26 11:40:07,498 - TrainMLP - INFO - Epoch [20/100] Training...
+2025-09-26 11:40:08,786 - TrainMLP - INFO - Train Loss: 0.3320, Train Accuracy: 93.67%
+2025-09-26 11:40:08,994 - TrainMLP - INFO - Validation Loss: 0.5338, Validation Accuracy: 85.80%
+2025-09-26 11:40:08,994 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:40:08,994 - TrainMLP - INFO - Epoch [21/100] Training...
+2025-09-26 11:40:10,295 - TrainMLP - INFO - Train Loss: 0.3219, Train Accuracy: 93.98%
+2025-09-26 11:40:10,508 - TrainMLP - INFO - Validation Loss: 0.5330, Validation Accuracy: 85.80%
+2025-09-26 11:40:10,516 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:10,516 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:40:10,516 - TrainMLP - INFO - Epoch [22/100] Training...
+2025-09-26 11:40:11,666 - TrainMLP - INFO - Train Loss: 0.3202, Train Accuracy: 93.98%
+2025-09-26 11:40:11,908 - TrainMLP - INFO - Validation Loss: 0.5325, Validation Accuracy: 85.80%
+2025-09-26 11:40:11,916 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:11,916 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:40:11,916 - TrainMLP - INFO - Epoch [23/100] Training...
+2025-09-26 11:40:13,125 - TrainMLP - INFO - Train Loss: 0.3186, Train Accuracy: 93.98%
+2025-09-26 11:40:13,338 - TrainMLP - INFO - Validation Loss: 0.5320, Validation Accuracy: 85.80%
+2025-09-26 11:40:13,346 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:13,346 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:40:13,346 - TrainMLP - INFO - Epoch [24/100] Training...
+2025-09-26 11:40:14,633 - TrainMLP - INFO - Train Loss: 0.3210, Train Accuracy: 93.98%
+2025-09-26 11:40:14,870 - TrainMLP - INFO - Validation Loss: 0.5311, Validation Accuracy: 85.80%
+2025-09-26 11:40:14,877 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:14,878 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:40:14,878 - TrainMLP - INFO - Epoch [25/100] Training...
+2025-09-26 11:40:16,055 - TrainMLP - INFO - Train Loss: 0.3190, Train Accuracy: 94.08%
+2025-09-26 11:40:16,285 - TrainMLP - INFO - Validation Loss: 0.5305, Validation Accuracy: 85.80%
+2025-09-26 11:40:16,303 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:16,303 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:40:16,303 - TrainMLP - INFO - Epoch [26/100] Training...
+2025-09-26 11:40:17,541 - TrainMLP - INFO - Train Loss: 0.3172, Train Accuracy: 94.08%
+2025-09-26 11:40:17,773 - TrainMLP - INFO - Validation Loss: 0.5302, Validation Accuracy: 85.80%
+2025-09-26 11:40:17,783 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:17,783 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:40:17,783 - TrainMLP - INFO - Epoch [27/100] Training...
+2025-09-26 11:40:19,020 - TrainMLP - INFO - Train Loss: 0.3182, Train Accuracy: 94.08%
+2025-09-26 11:40:19,238 - TrainMLP - INFO - Validation Loss: 0.5300, Validation Accuracy: 85.80%
+2025-09-26 11:40:19,246 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:19,246 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:40:19,246 - TrainMLP - INFO - Epoch [28/100] Training...
+2025-09-26 11:40:20,544 - TrainMLP - INFO - Train Loss: 0.3153, Train Accuracy: 94.08%
+2025-09-26 11:40:20,757 - TrainMLP - INFO - Validation Loss: 0.5292, Validation Accuracy: 85.80%
+2025-09-26 11:40:20,778 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:20,778 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:40:20,778 - TrainMLP - INFO - Epoch [29/100] Training...
+2025-09-26 11:40:21,969 - TrainMLP - INFO - Train Loss: 0.3150, Train Accuracy: 94.08%
+2025-09-26 11:40:22,171 - TrainMLP - INFO - Validation Loss: 0.5289, Validation Accuracy: 85.80%
+2025-09-26 11:40:22,178 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:22,178 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-06
+2025-09-26 11:40:22,178 - TrainMLP - INFO - Epoch [30/100] Training...
+2025-09-26 11:40:23,391 - TrainMLP - INFO - Train Loss: 0.3204, Train Accuracy: 94.08%
+2025-09-26 11:40:23,583 - TrainMLP - INFO - Validation Loss: 0.5286, Validation Accuracy: 85.80%
+2025-09-26 11:40:23,591 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:23,592 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:40:23,592 - TrainMLP - INFO - Epoch [31/100] Training...
+2025-09-26 11:40:24,887 - TrainMLP - INFO - Train Loss: 0.3157, Train Accuracy: 94.08%
+2025-09-26 11:40:25,086 - TrainMLP - INFO - Validation Loss: 0.5285, Validation Accuracy: 85.80%
+2025-09-26 11:40:25,094 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:25,094 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:40:25,094 - TrainMLP - INFO - Epoch [32/100] Training...
+2025-09-26 11:40:26,242 - TrainMLP - INFO - Train Loss: 0.3136, Train Accuracy: 94.08%
+2025-09-26 11:40:26,438 - TrainMLP - INFO - Validation Loss: 0.5285, Validation Accuracy: 85.80%
+2025-09-26 11:40:26,446 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:26,446 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:40:26,446 - TrainMLP - INFO - Epoch [33/100] Training...
+2025-09-26 11:40:27,751 - TrainMLP - INFO - Train Loss: 0.3134, Train Accuracy: 94.08%
+2025-09-26 11:40:27,949 - TrainMLP - INFO - Validation Loss: 0.5284, Validation Accuracy: 85.80%
+2025-09-26 11:40:27,956 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:27,956 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:40:27,956 - TrainMLP - INFO - Epoch [34/100] Training...
+2025-09-26 11:40:29,177 - TrainMLP - INFO - Train Loss: 0.3215, Train Accuracy: 94.08%
+2025-09-26 11:40:29,396 - TrainMLP - INFO - Validation Loss: 0.5284, Validation Accuracy: 85.80%
+2025-09-26 11:40:29,404 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:29,404 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:40:29,404 - TrainMLP - INFO - Epoch [35/100] Training...
+2025-09-26 11:40:30,652 - TrainMLP - INFO - Train Loss: 0.3308, Train Accuracy: 94.08%
+2025-09-26 11:40:30,883 - TrainMLP - INFO - Validation Loss: 0.5284, Validation Accuracy: 85.80%
+2025-09-26 11:40:30,890 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:30,890 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:40:30,890 - TrainMLP - INFO - Epoch [36/100] Training...
+2025-09-26 11:40:32,272 - TrainMLP - INFO - Train Loss: 0.3128, Train Accuracy: 94.08%
+2025-09-26 11:40:32,500 - TrainMLP - INFO - Validation Loss: 0.5283, Validation Accuracy: 85.80%
+2025-09-26 11:40:32,508 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:32,508 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:40:32,508 - TrainMLP - INFO - Epoch [37/100] Training...
+2025-09-26 11:40:33,721 - TrainMLP - INFO - Train Loss: 0.3129, Train Accuracy: 94.08%
+2025-09-26 11:40:33,924 - TrainMLP - INFO - Validation Loss: 0.5282, Validation Accuracy: 85.80%
+2025-09-26 11:40:33,941 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:33,941 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:40:33,941 - TrainMLP - INFO - Epoch [38/100] Training...
+2025-09-26 11:40:35,317 - TrainMLP - INFO - Train Loss: 0.3145, Train Accuracy: 94.08%
+2025-09-26 11:40:35,557 - TrainMLP - INFO - Validation Loss: 0.5282, Validation Accuracy: 85.80%
+2025-09-26 11:40:35,565 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:35,565 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:40:35,565 - TrainMLP - INFO - Epoch [39/100] Training...
+2025-09-26 11:40:36,700 - TrainMLP - INFO - Train Loss: 0.3145, Train Accuracy: 94.08%
+2025-09-26 11:40:36,899 - TrainMLP - INFO - Validation Loss: 0.5282, Validation Accuracy: 85.80%
+2025-09-26 11:40:36,907 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:36,907 - TrainMLP - INFO - Learning Rate: 1.0000000000000002e-07
+2025-09-26 11:40:36,907 - TrainMLP - INFO - Epoch [40/100] Training...
+2025-09-26 11:40:38,320 - TrainMLP - INFO - Train Loss: 0.3161, Train Accuracy: 94.08%
+2025-09-26 11:40:38,524 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:40:38,530 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:38,530 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:40:38,530 - TrainMLP - INFO - Epoch [41/100] Training...
+2025-09-26 11:40:39,820 - TrainMLP - INFO - Train Loss: 0.3149, Train Accuracy: 94.08%
+2025-09-26 11:40:40,024 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:40:40,032 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:40,032 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:40:40,032 - TrainMLP - INFO - Epoch [42/100] Training...
+2025-09-26 11:40:41,345 - TrainMLP - INFO - Train Loss: 0.3153, Train Accuracy: 94.08%
+2025-09-26 11:40:41,559 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:40:41,559 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:40:41,559 - TrainMLP - INFO - Epoch [43/100] Training...
+2025-09-26 11:40:42,722 - TrainMLP - INFO - Train Loss: 0.3141, Train Accuracy: 94.08%
+2025-09-26 11:40:42,954 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:40:42,962 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:42,962 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:40:42,962 - TrainMLP - INFO - Epoch [44/100] Training...
+2025-09-26 11:40:44,234 - TrainMLP - INFO - Train Loss: 0.3128, Train Accuracy: 94.08%
+2025-09-26 11:40:44,485 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:40:44,493 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:44,493 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:40:44,493 - TrainMLP - INFO - Epoch [45/100] Training...
+2025-09-26 11:40:45,702 - TrainMLP - INFO - Train Loss: 0.3131, Train Accuracy: 94.08%
+2025-09-26 11:40:45,922 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:40:45,930 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:45,930 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:40:45,930 - TrainMLP - INFO - Epoch [46/100] Training...
+2025-09-26 11:40:47,381 - TrainMLP - INFO - Train Loss: 0.3146, Train Accuracy: 94.08%
+2025-09-26 11:40:47,806 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:40:47,812 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:47,812 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:40:47,812 - TrainMLP - INFO - Epoch [47/100] Training...
+2025-09-26 11:40:49,662 - TrainMLP - INFO - Train Loss: 0.3131, Train Accuracy: 94.08%
+2025-09-26 11:40:49,935 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:40:50,005 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:50,006 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:40:50,006 - TrainMLP - INFO - Epoch [48/100] Training...
+2025-09-26 11:40:52,160 - TrainMLP - INFO - Train Loss: 0.3142, Train Accuracy: 94.08%
+2025-09-26 11:40:52,492 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:40:52,545 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:52,545 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:40:52,545 - TrainMLP - INFO - Epoch [49/100] Training...
+2025-09-26 11:40:55,300 - TrainMLP - INFO - Train Loss: 0.3146, Train Accuracy: 94.08%
+2025-09-26 11:40:55,961 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:40:55,966 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:55,966 - TrainMLP - INFO - Learning Rate: 1.0000000000000004e-08
+2025-09-26 11:40:55,966 - TrainMLP - INFO - Epoch [50/100] Training...
+2025-09-26 11:40:57,198 - TrainMLP - INFO - Train Loss: 0.3141, Train Accuracy: 94.08%
+2025-09-26 11:40:57,460 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:40:57,468 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:57,468 - TrainMLP - INFO - Learning Rate: 1.0000000000000005e-09
+2025-09-26 11:40:57,468 - TrainMLP - INFO - Epoch [51/100] Training...
+2025-09-26 11:40:58,829 - TrainMLP - INFO - Train Loss: 0.3156, Train Accuracy: 94.08%
+2025-09-26 11:40:59,012 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:40:59,020 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:40:59,020 - TrainMLP - INFO - Learning Rate: 1.0000000000000005e-09
+2025-09-26 11:40:59,020 - TrainMLP - INFO - Epoch [52/100] Training...
+2025-09-26 11:41:00,298 - TrainMLP - INFO - Train Loss: 0.3135, Train Accuracy: 94.08%
+2025-09-26 11:41:00,497 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:00,504 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:41:00,504 - TrainMLP - INFO - Learning Rate: 1.0000000000000005e-09
+2025-09-26 11:41:00,504 - TrainMLP - INFO - Epoch [53/100] Training...
+2025-09-26 11:41:01,753 - TrainMLP - INFO - Train Loss: 0.3134, Train Accuracy: 94.08%
+2025-09-26 11:41:01,941 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:01,959 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:41:01,959 - TrainMLP - INFO - Learning Rate: 1.0000000000000005e-09
+2025-09-26 11:41:01,959 - TrainMLP - INFO - Epoch [54/100] Training...
+2025-09-26 11:41:03,543 - TrainMLP - INFO - Train Loss: 0.3202, Train Accuracy: 94.08%
+2025-09-26 11:41:03,780 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:03,786 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:41:03,786 - TrainMLP - INFO - Learning Rate: 1.0000000000000005e-09
+2025-09-26 11:41:03,786 - TrainMLP - INFO - Epoch [55/100] Training...
+2025-09-26 11:41:05,073 - TrainMLP - INFO - Train Loss: 0.3165, Train Accuracy: 94.08%
+2025-09-26 11:41:05,367 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:05,378 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:41:05,378 - TrainMLP - INFO - Learning Rate: 1.0000000000000005e-09
+2025-09-26 11:41:05,378 - TrainMLP - INFO - Epoch [56/100] Training...
+2025-09-26 11:41:08,511 - TrainMLP - INFO - Train Loss: 0.3129, Train Accuracy: 94.08%
+2025-09-26 11:41:09,076 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:09,082 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:41:09,083 - TrainMLP - INFO - Learning Rate: 1.0000000000000005e-09
+2025-09-26 11:41:09,083 - TrainMLP - INFO - Epoch [57/100] Training...
+2025-09-26 11:41:10,637 - TrainMLP - INFO - Train Loss: 0.3167, Train Accuracy: 94.08%
+2025-09-26 11:41:10,848 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:10,856 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:41:10,856 - TrainMLP - INFO - Learning Rate: 1.0000000000000005e-09
+2025-09-26 11:41:10,856 - TrainMLP - INFO - Epoch [58/100] Training...
+2025-09-26 11:41:12,660 - TrainMLP - INFO - Train Loss: 0.3131, Train Accuracy: 94.08%
+2025-09-26 11:41:12,850 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:12,857 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:41:12,857 - TrainMLP - INFO - Learning Rate: 1.0000000000000005e-09
+2025-09-26 11:41:12,857 - TrainMLP - INFO - Epoch [59/100] Training...
+2025-09-26 11:41:14,088 - TrainMLP - INFO - Train Loss: 0.3130, Train Accuracy: 94.08%
+2025-09-26 11:41:14,299 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:14,309 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:41:14,309 - TrainMLP - INFO - Learning Rate: 1.0000000000000005e-09
+2025-09-26 11:41:14,309 - TrainMLP - INFO - Epoch [60/100] Training...
+2025-09-26 11:41:15,479 - TrainMLP - INFO - Train Loss: 0.3172, Train Accuracy: 94.08%
+2025-09-26 11:41:15,703 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:15,711 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:41:15,711 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-10
+2025-09-26 11:41:15,711 - TrainMLP - INFO - Epoch [61/100] Training...
+2025-09-26 11:41:17,283 - TrainMLP - INFO - Train Loss: 0.3193, Train Accuracy: 94.08%
+2025-09-26 11:41:17,497 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:17,497 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-10
+2025-09-26 11:41:17,497 - TrainMLP - INFO - Epoch [62/100] Training...
+2025-09-26 11:41:18,680 - TrainMLP - INFO - Train Loss: 0.3139, Train Accuracy: 94.08%
+2025-09-26 11:41:18,871 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:18,880 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:41:18,881 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-10
+2025-09-26 11:41:18,881 - TrainMLP - INFO - Epoch [63/100] Training...
+2025-09-26 11:41:20,754 - TrainMLP - INFO - Train Loss: 0.3216, Train Accuracy: 94.08%
+2025-09-26 11:41:21,146 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:21,155 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:41:21,155 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-10
+2025-09-26 11:41:21,155 - TrainMLP - INFO - Epoch [64/100] Training...
+2025-09-26 11:41:22,656 - TrainMLP - INFO - Train Loss: 0.3150, Train Accuracy: 94.08%
+2025-09-26 11:41:22,838 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:22,838 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-10
+2025-09-26 11:41:22,838 - TrainMLP - INFO - Epoch [65/100] Training...
+2025-09-26 11:41:24,165 - TrainMLP - INFO - Train Loss: 0.3126, Train Accuracy: 94.08%
+2025-09-26 11:41:24,374 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:24,383 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:41:24,383 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-10
+2025-09-26 11:41:24,383 - TrainMLP - INFO - Epoch [66/100] Training...
+2025-09-26 11:41:25,913 - TrainMLP - INFO - Train Loss: 0.3194, Train Accuracy: 94.08%
+2025-09-26 11:41:26,104 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:26,104 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-10
+2025-09-26 11:41:26,104 - TrainMLP - INFO - Epoch [67/100] Training...
+2025-09-26 11:41:27,428 - TrainMLP - INFO - Train Loss: 0.3151, Train Accuracy: 94.08%
+2025-09-26 11:41:27,634 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:27,634 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-10
+2025-09-26 11:41:27,634 - TrainMLP - INFO - Epoch [68/100] Training...
+2025-09-26 11:41:28,916 - TrainMLP - INFO - Train Loss: 0.3132, Train Accuracy: 94.08%
+2025-09-26 11:41:29,158 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:29,166 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:41:29,166 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-10
+2025-09-26 11:41:29,166 - TrainMLP - INFO - Epoch [69/100] Training...
+2025-09-26 11:41:30,565 - TrainMLP - INFO - Train Loss: 0.3174, Train Accuracy: 94.08%
+2025-09-26 11:41:30,782 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:30,790 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:41:30,790 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-10
+2025-09-26 11:41:30,790 - TrainMLP - INFO - Epoch [70/100] Training...
+2025-09-26 11:41:32,054 - TrainMLP - INFO - Train Loss: 0.3137, Train Accuracy: 94.08%
+2025-09-26 11:41:32,275 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:32,275 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-11
+2025-09-26 11:41:32,275 - TrainMLP - INFO - Epoch [71/100] Training...
+2025-09-26 11:41:33,446 - TrainMLP - INFO - Train Loss: 0.3143, Train Accuracy: 94.08%
+2025-09-26 11:41:33,688 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:33,688 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-11
+2025-09-26 11:41:33,688 - TrainMLP - INFO - Epoch [72/100] Training...
+2025-09-26 11:41:35,053 - TrainMLP - INFO - Train Loss: 0.3127, Train Accuracy: 94.08%
+2025-09-26 11:41:35,254 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:35,254 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-11
+2025-09-26 11:41:35,254 - TrainMLP - INFO - Epoch [73/100] Training...
+2025-09-26 11:41:36,611 - TrainMLP - INFO - Train Loss: 0.3143, Train Accuracy: 94.08%
+2025-09-26 11:41:36,848 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:36,848 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-11
+2025-09-26 11:41:36,848 - TrainMLP - INFO - Epoch [74/100] Training...
+2025-09-26 11:41:38,226 - TrainMLP - INFO - Train Loss: 0.3130, Train Accuracy: 94.08%
+2025-09-26 11:41:38,419 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:38,419 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-11
+2025-09-26 11:41:38,419 - TrainMLP - INFO - Epoch [75/100] Training...
+2025-09-26 11:41:39,658 - TrainMLP - INFO - Train Loss: 0.3128, Train Accuracy: 94.08%
+2025-09-26 11:41:39,914 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:39,914 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-11
+2025-09-26 11:41:39,914 - TrainMLP - INFO - Epoch [76/100] Training...
+2025-09-26 11:41:41,158 - TrainMLP - INFO - Train Loss: 0.3151, Train Accuracy: 94.08%
+2025-09-26 11:41:41,380 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:41,381 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-11
+2025-09-26 11:41:41,381 - TrainMLP - INFO - Epoch [77/100] Training...
+2025-09-26 11:41:42,568 - TrainMLP - INFO - Train Loss: 0.3140, Train Accuracy: 94.08%
+2025-09-26 11:41:42,789 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:42,789 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-11
+2025-09-26 11:41:42,789 - TrainMLP - INFO - Epoch [78/100] Training...
+2025-09-26 11:41:44,093 - TrainMLP - INFO - Train Loss: 0.3148, Train Accuracy: 94.08%
+2025-09-26 11:41:44,332 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:44,332 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-11
+2025-09-26 11:41:44,332 - TrainMLP - INFO - Epoch [79/100] Training...
+2025-09-26 11:41:45,623 - TrainMLP - INFO - Train Loss: 0.3140, Train Accuracy: 94.08%
+2025-09-26 11:41:45,828 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:45,828 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-11
+2025-09-26 11:41:45,828 - TrainMLP - INFO - Epoch [80/100] Training...
+2025-09-26 11:41:46,996 - TrainMLP - INFO - Train Loss: 0.3175, Train Accuracy: 94.08%
+2025-09-26 11:41:47,309 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:47,317 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:41:47,317 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-12
+2025-09-26 11:41:47,317 - TrainMLP - INFO - Epoch [81/100] Training...
+2025-09-26 11:41:49,146 - TrainMLP - INFO - Train Loss: 0.3141, Train Accuracy: 94.08%
+2025-09-26 11:41:49,351 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:49,352 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-12
+2025-09-26 11:41:49,352 - TrainMLP - INFO - Epoch [82/100] Training...
+2025-09-26 11:41:50,718 - TrainMLP - INFO - Train Loss: 0.3129, Train Accuracy: 94.08%
+2025-09-26 11:41:50,962 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:50,962 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-12
+2025-09-26 11:41:50,962 - TrainMLP - INFO - Epoch [83/100] Training...
+2025-09-26 11:41:52,293 - TrainMLP - INFO - Train Loss: 0.3199, Train Accuracy: 94.08%
+2025-09-26 11:41:52,480 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:52,480 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-12
+2025-09-26 11:41:52,480 - TrainMLP - INFO - Epoch [84/100] Training...
+2025-09-26 11:41:53,932 - TrainMLP - INFO - Train Loss: 0.3225, Train Accuracy: 94.08%
+2025-09-26 11:41:54,149 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:54,150 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-12
+2025-09-26 11:41:54,150 - TrainMLP - INFO - Epoch [85/100] Training...
+2025-09-26 11:41:55,527 - TrainMLP - INFO - Train Loss: 0.3131, Train Accuracy: 94.08%
+2025-09-26 11:41:55,726 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:55,726 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-12
+2025-09-26 11:41:55,726 - TrainMLP - INFO - Epoch [86/100] Training...
+2025-09-26 11:41:56,932 - TrainMLP - INFO - Train Loss: 0.3203, Train Accuracy: 94.08%
+2025-09-26 11:41:57,138 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:57,138 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-12
+2025-09-26 11:41:57,138 - TrainMLP - INFO - Epoch [87/100] Training...
+2025-09-26 11:41:58,377 - TrainMLP - INFO - Train Loss: 0.3139, Train Accuracy: 94.08%
+2025-09-26 11:41:58,618 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:41:58,618 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-12
+2025-09-26 11:41:58,619 - TrainMLP - INFO - Epoch [88/100] Training...
+2025-09-26 11:41:59,838 - TrainMLP - INFO - Train Loss: 0.3132, Train Accuracy: 94.08%
+2025-09-26 11:42:00,065 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:42:00,065 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-12
+2025-09-26 11:42:00,065 - TrainMLP - INFO - Epoch [89/100] Training...
+2025-09-26 11:42:01,238 - TrainMLP - INFO - Train Loss: 0.3164, Train Accuracy: 94.08%
+2025-09-26 11:42:01,466 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:42:01,466 - TrainMLP - INFO - Learning Rate: 1.0000000000000006e-12
+2025-09-26 11:42:01,466 - TrainMLP - INFO - Epoch [90/100] Training...
+2025-09-26 11:42:02,846 - TrainMLP - INFO - Train Loss: 0.3127, Train Accuracy: 94.08%
+2025-09-26 11:42:03,062 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:42:03,071 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:42:03,071 - TrainMLP - INFO - Learning Rate: 1.0000000000000007e-13
+2025-09-26 11:42:03,071 - TrainMLP - INFO - Epoch [91/100] Training...
+2025-09-26 11:42:04,338 - TrainMLP - INFO - Train Loss: 0.3129, Train Accuracy: 94.08%
+2025-09-26 11:42:04,594 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:42:04,594 - TrainMLP - INFO - Learning Rate: 1.0000000000000007e-13
+2025-09-26 11:42:04,594 - TrainMLP - INFO - Epoch [92/100] Training...
+2025-09-26 11:42:06,095 - TrainMLP - INFO - Train Loss: 0.3128, Train Accuracy: 94.08%
+2025-09-26 11:42:06,423 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:42:06,423 - TrainMLP - INFO - Learning Rate: 1.0000000000000007e-13
+2025-09-26 11:42:06,423 - TrainMLP - INFO - Epoch [93/100] Training...
+2025-09-26 11:42:08,096 - TrainMLP - INFO - Train Loss: 0.3236, Train Accuracy: 94.08%
+2025-09-26 11:42:08,405 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:42:08,406 - TrainMLP - INFO - Learning Rate: 1.0000000000000007e-13
+2025-09-26 11:42:08,406 - TrainMLP - INFO - Epoch [94/100] Training...
+2025-09-26 11:42:11,361 - TrainMLP - INFO - Train Loss: 0.3153, Train Accuracy: 94.08%
+2025-09-26 11:42:11,727 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:42:11,727 - TrainMLP - INFO - Learning Rate: 1.0000000000000007e-13
+2025-09-26 11:42:11,727 - TrainMLP - INFO - Epoch [95/100] Training...
+2025-09-26 11:42:13,448 - TrainMLP - INFO - Train Loss: 0.3156, Train Accuracy: 94.08%
+2025-09-26 11:42:13,691 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:42:13,691 - TrainMLP - INFO - Learning Rate: 1.0000000000000007e-13
+2025-09-26 11:42:13,691 - TrainMLP - INFO - Epoch [96/100] Training...
+2025-09-26 11:42:15,015 - TrainMLP - INFO - Train Loss: 0.3151, Train Accuracy: 94.08%
+2025-09-26 11:42:15,182 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:42:15,183 - TrainMLP - INFO - Learning Rate: 1.0000000000000007e-13
+2025-09-26 11:42:15,183 - TrainMLP - INFO - Epoch [97/100] Training...
+2025-09-26 11:42:16,322 - TrainMLP - INFO - Train Loss: 0.3149, Train Accuracy: 94.08%
+2025-09-26 11:42:16,490 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:42:16,490 - TrainMLP - INFO - Learning Rate: 1.0000000000000007e-13
+2025-09-26 11:42:16,490 - TrainMLP - INFO - Epoch [98/100] Training...
+2025-09-26 11:42:17,541 - TrainMLP - INFO - Train Loss: 0.3147, Train Accuracy: 94.08%
+2025-09-26 11:42:17,695 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:42:17,695 - TrainMLP - INFO - Learning Rate: 1.0000000000000007e-13
+2025-09-26 11:42:17,695 - TrainMLP - INFO - Epoch [99/100] Training...
+2025-09-26 11:42:18,698 - TrainMLP - INFO - Train Loss: 0.3148, Train Accuracy: 94.08%
+2025-09-26 11:42:18,873 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:42:18,873 - TrainMLP - INFO - Learning Rate: 1.0000000000000007e-13
+2025-09-26 11:42:18,873 - TrainMLP - INFO - Epoch [100/100] Training...
+2025-09-26 11:42:19,924 - TrainMLP - INFO - Train Loss: 0.3152, Train Accuracy: 94.08%
+2025-09-26 11:42:20,095 - TrainMLP - INFO - Validation Loss: 0.5281, Validation Accuracy: 85.80%
+2025-09-26 11:42:20,095 - TrainMLP - INFO - Learning Rate: 1.0000000000000008e-14
+2025-09-26 11:42:20,106 - TrainMLP - INFO - Final model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-09-25_final_MLP.pth
+2025-09-26 11:43:28,591 - TrainMLP - INFO - MLP_eval_started: space_time_ciccio_13-03-25
+2025-09-26 11:43:28,764 - TrainMLP - INFO - Loaded model from /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-09-25_final_MLP.pth
+2025-09-26 11:43:29,118 - TrainMLP - INFO - [INFO] Classification Metrics
+2025-09-26 11:43:29,118 - TrainMLP - INFO - Accuracy: 69.15%
+2025-09-26 11:43:29,166 - TrainMLP - INFO - Precision: 0.6353427895981087
+2025-09-26 11:43:29,167 - TrainMLP - INFO - Recall: 0.6914893617021277
+2025-09-26 11:43:29,168 - TrainMLP - INFO - F1 Score: 0.6576629878256912
+2025-09-26 11:43:29,170 - TrainMLP - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.89      1.00      0.94         8
+           1       0.88      0.88      0.88         8
+           2       0.78      0.88      0.82         8
+           3       0.00      0.00      0.00         8
+           4       0.50      0.88      0.64         8
+           5       1.00      1.00      1.00         8
+           6       0.62      0.62      0.62         8
+           7       0.88      0.88      0.88         8
+           8       0.62      0.62      0.62         8
+           9       0.44      0.50      0.47         8
+          10       0.67      0.75      0.71         8
+          11       0.25      0.17      0.20         6
+
+    accuracy                           0.69        94
+   macro avg       0.63      0.68      0.65        94
+weighted avg       0.64      0.69      0.66        94
+
+2025-09-26 11:44:19,137 - TrainMLP - INFO - Starting training: space_time_ciccio_13-03-25
+2025-09-26 11:44:19,137 - TrainMLP - INFO - Loading training dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Train_embeddings_all.pkl
+2025-09-26 11:44:19,137 - TrainMLP - INFO - Loading validation dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Val_embeddings_all.pkl
+2025-09-26 11:44:20,180 - TrainMLP - INFO - Epoch [1/100] Training...
+2025-09-26 11:44:22,970 - TrainMLP - INFO - Train Loss: 2.3880, Train Accuracy: 25.80%
+2025-09-26 11:44:23,359 - TrainMLP - INFO - Validation Loss: 2.1669, Validation Accuracy: 64.20%
+2025-09-26 11:44:23,372 - TrainMLP - INFO - Best model saved at /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_best_MLP.pth
+2025-09-26 11:44:23,372 - TrainMLP - INFO - Learning Rate: 0.0001
+2025-09-26 11:44:23,372 - TrainMLP - INFO - Epoch [2/100] Training...
+2025-09-26 11:45:26,605 - TrainMLP - INFO - MLP_eval_started: space_time_ciccio_13-03-25
+2025-09-26 11:45:26,777 - TrainMLP - INFO - Loaded model from /Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-09-25_final_MLP.pth
+2025-09-26 11:45:27,226 - TrainMLP - INFO - [INFO] Classification Metrics
+2025-09-26 11:45:27,228 - TrainMLP - INFO - Accuracy: 69.15%
+2025-09-26 11:45:27,231 - TrainMLP - INFO - Precision: 0.6353427895981087
+2025-09-26 11:45:27,232 - TrainMLP - INFO - Recall: 0.6914893617021277
+2025-09-26 11:45:27,232 - TrainMLP - INFO - F1 Score: 0.6576629878256912
+2025-09-26 11:45:27,235 - TrainMLP - INFO - Classification Report: 
+              precision    recall  f1-score   support
+
+           0       0.89      1.00      0.94         8
+           1       0.88      0.88      0.88         8
+           2       0.78      0.88      0.82         8
+           3       0.00      0.00      0.00         8
+           4       0.50      0.88      0.64         8
+           5       1.00      1.00      1.00         8
+           6       0.62      0.62      0.62         8
+           7       0.88      0.88      0.88         8
+           8       0.62      0.62      0.62         8
+           9       0.44      0.50      0.47         8
+          10       0.67      0.75      0.71         8
+          11       0.25      0.17      0.20         6
+
+    accuracy                           0.69        94
+   macro avg       0.63      0.68      0.65        94
+weighted avg       0.64      0.69      0.66        94
+

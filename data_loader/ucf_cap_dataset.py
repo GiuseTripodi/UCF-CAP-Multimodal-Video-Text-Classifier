@@ -121,18 +121,18 @@ class UCF101Dataset(Dataset):
             text_embedding = np.array(self.data.iloc[idx]['text_embedding'])
             video_embedding = np.array(self.data.iloc[idx]['video_embedding'])
 
-        frames = sorted(glob.glob(os.path.join(path, '*.jpg')))
-        selected_frames = frames[:self.num_frames] # Choose first N frames
-        images = [Image.open(frame).convert("RGB") for frame in selected_frames]
+        #frames = sorted(glob.glob(os.path.join(path, '*.jpg')))
+        #selected_frames = frames[:self.num_frames] # Choose first N frames
+        #images = [Image.open(frame).convert("RGB") for frame in selected_frames]
         # Check pixel values for the first image
-        if self.transform:
-            images = [self.transform(img) for img in images]
+        #if self.transform:
+            #images = [self.transform(img) for img in images]
 
-        try:
-            video_tensor = torch.stack(images, dim=0)  # Shape: [num_frames, C, H, W]
-        except:
-            video_tensor = torch.tensor(np.zeros((self.num_frames, 3, 224, 224)), dtype=torch.float32)
-            print(f"Using placeholder volume for: {idx}")
+        #try:
+            #video_tensor = torch.stack(images, dim=0)  # Shape: [num_frames, C, H, W]
+        #except Exception as e:
+        video_tensor = torch.tensor(np.zeros((self.num_frames, 3, 224, 224)), dtype=torch.float32)
+        #print(f"Using placeholder volume for: {idx} - Error: {e}")
 
         # Convert label to integer using label_encoder
         label_idx = self.label_encoder.transform([label])[0]  # Convert string label to integer index

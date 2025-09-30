@@ -93,7 +93,7 @@ def run_eval(config: ConfigParser, model_name):
     ])
 
     # Load test file
-    test_path = "/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Test_embeddings.pkl"
+    test_path = "/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/Test_embeddings_all.pkl"
     test_dataset = UCF101Dataset(test_path, transform=transform)
     test_dataloader = DataLoader(test_dataset, 1, config.shuffle)
 
@@ -101,8 +101,8 @@ def run_eval(config: ConfigParser, model_name):
     #TODO check dimension combination and mofigy
     input_dim = 1536
     hidden_dim = 256
-    num_classes = config.num_classes
-    model_path = "/Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_08-09-25_final_MLP.pth"
+    num_classes = 12
+    model_path = "/Users/user/PycharmProjects/frozen-in-time/data/models/ciccio_26-09-25_final_MLP.pth"
     classifier = MLPClassifier(input_dim, hidden_dim, num_classes).to(device)
     classifier.load_state_dict(torch.load(model_path, map_location=device))
     logger.info(f'Loaded model from {model_path}')

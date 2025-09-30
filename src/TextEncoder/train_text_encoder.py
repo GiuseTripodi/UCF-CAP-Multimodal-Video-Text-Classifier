@@ -181,7 +181,7 @@ def print_embeddings(model, X_data, output_layer_name="tf_distil_bert_model"):
     print(embeddings)
 
 
-def main_train_text_embedding(config: ConfigParser):
+def main_train_text_embedding(config: ConfigParser, mode='train'):
     # ================= Configurazione ====================
     SAVE_DIR = config.save_dir
 
@@ -200,7 +200,8 @@ def main_train_text_embedding(config: ConfigParser):
     model = create_model(MAX_SEQ_LEN, num_classes, BERT_NAME)
 
     # Selezione modalità
-    mode = input("Scegli la modalità (train/eval/continue/embeddings): ").strip().lower()
+    if not mode:
+        mode = input("Scegli la modalità (train/eval/continue/embeddings): ").strip().lower()
 
     if mode == "train":
         print("Avvio del training...")
@@ -248,10 +249,11 @@ def main_train_text_embedding(config: ConfigParser):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Script to train model")
-    parser.add_argument('--config', default=None, help='Path to configuration file')
-    parser.add_argument('--model_name',default=None, help='Path to CSV file with dataset information to eval the model')
+    parser.add_argument('--config', default='/Users/user/PycharmProjects/frozen-in-time/configs/ucf-cap.json', help='Path to configuration file')
+    parser.add_argument('--model_name',default='TestModel', help='Path to CSV file with dataset information to eval the model')
     parser.add_argument('--name', default=None, help='Name of the experiment (used for saving the model)')
-    parser.add_argument('--save_dir', default=None, help='Path to where get the saves file')
+    parser.add_argument('--save_dir', default='/Users/user/PycharmProjects/frozen-in-time/data', help='Path to where get the saves file')
+    parser.add_argument('--mode', default='train', help='Path to where get the saves file')
     args = parser.parse_args()
 
 
@@ -262,4 +264,4 @@ if __name__ == "__main__":
     else:
         model_name = args.model_name
 
-    main_train_text_embedding(config)
+    main_train_text_embedding(config, args.mode)
