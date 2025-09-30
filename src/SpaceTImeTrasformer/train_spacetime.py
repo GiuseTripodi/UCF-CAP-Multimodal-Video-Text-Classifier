@@ -1,22 +1,22 @@
 import sys
 import os
 import collections
-
-from sklearn.utils import compute_class_weight
-from transformers import AutoImageProcessor, TimesformerForVideoClassification, TimesformerConfig
-
-from parse_config import ConfigParser
-from trainer.trainer_video import *
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '')))
+import os
+import sys
+from datetime import date
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import argparse
 import torch.optim as optim
 import torch.nn as nn
 from tqdm import tqdm
 from model.video_transformer import *
 from data_loader.ucf_cap_dataset import *
-
 from sklearn.metrics import accuracy_score
-
+from sklearn.utils import compute_class_weight
+from transformers import AutoImageProcessor, TimesformerForVideoClassification, TimesformerConfig
+from parse_config import ConfigParser
+from trainer.trainer_video import *
 def load_model(config: ConfigParser):
     if config.modality == 0:
         # Initialize model
