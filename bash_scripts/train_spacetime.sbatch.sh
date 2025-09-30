@@ -1,14 +1,13 @@
 #!/bin/bash --login
 
-#$ -l v100
-#$ -cwd
+#SBATCH -p gpuA              # A100 (80GB) GPUs  [up to 12 CPU cores per GPU permitted]
+### Required flags
+#SBATCH -G 1                 # (or --gpus=N) Number of GPUs
+#SBATCH -t 1-0               # Wallclock timelimit (1-0 is one day, 4-0 is max permitted)
 
 # Latest version of CUDA
 module load libs/cuda
-
 echo "Job is using $NGPUS GPU(s) with ID(s) $CUDA_VISIBLE_DEVICES and $NSLOTS CPU core(s)"
-
-
 source /mnt/iusers01/mace01/t08341gt/env_phd/bin/activate
 
 # Default values arg parameters

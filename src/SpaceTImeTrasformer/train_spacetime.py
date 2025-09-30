@@ -14,9 +14,7 @@ import torch.nn as nn
 from tqdm import tqdm
 from model.video_transformer import *
 from data_loader.ucf_cap_dataset import *
-import logging
-from logger import setup_logging
-import model.metric as module_metric
+
 from sklearn.metrics import accuracy_score
 
 def load_model(config: ConfigParser):
@@ -118,9 +116,9 @@ def training(config: ConfigParser):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Script to train model")
-    parser.add_argument('--name', default=None, help='Name of the experiment (used for saving the model)')
-    parser.add_argument('--config', default=None, help='Path to configuration file')
-    parser.add_argument('--save_dir', default=None, help='Path to where get the saves file')
+    parser.add_argument('--name', default='Test', help='Name of the experiment (used for saving the model)')
+    parser.add_argument('--config', default='/Users/user/PycharmProjects/frozen-in-time/configs/ucf-cap.json', help='Path to configuration file')
+    parser.add_argument('--save_dir', default='/Users/user/PycharmProjects/frozen-in-time/data', help='Path to where get the saves file')
     args = parser.parse_args()
 
     config = ConfigParser(args)

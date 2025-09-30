@@ -12,11 +12,6 @@ import argparse
 from data_loader.ucf_cap_dataset import *
 from model.video_transformer import *
 import logging
-from logger import setup_logging
-from torch.utils.data import DataLoader
-from torch.utils.data import Dataset
-import torchvision.transforms as transforms
-
 from parse_config import ConfigParser
 
 # Configure and create a logger
