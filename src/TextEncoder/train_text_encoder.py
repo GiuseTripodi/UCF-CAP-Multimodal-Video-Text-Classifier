@@ -1,7 +1,9 @@
 import argparse
 import os
+import sys
 from datetime import date
-
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
