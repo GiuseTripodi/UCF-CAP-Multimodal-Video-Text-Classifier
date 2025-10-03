@@ -96,7 +96,7 @@ class UCF101Dataset(Dataset):
             df = pd.read_csv(csv_file)
         else:
             df = pd.read_pickle(csv_file)
-        self.data = shuffle(df, random_state=42)[:10]
+        self.data = shuffle(df, random_state=42)
 
         # Initialize a LabelEncoder to convert string labels to integer indices
         self.label_encoder = LabelEncoder()
