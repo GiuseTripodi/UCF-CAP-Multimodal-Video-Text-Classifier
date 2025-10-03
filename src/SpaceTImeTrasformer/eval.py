@@ -1,36 +1,20 @@
 import sys
 import os
 from datetime import date
-
-from sklearn.decomposition import PCA
-from sklearn.manifold import TSNE
 from sklearn.metrics import precision_score, recall_score, f1_score, classification_report, confusion_matrix
-import torch
-
-from data_loader.ucf_cap_dataset import UCF101Dataset
-
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 import numpy as np
 from parse_config import ConfigParser
 import argparse
-import logging
-import torch
-import torch.optim as optim
-import torch.nn as nn
-from torch.utils.data import DataLoader
-from tqdm import tqdm
-from torchvision import transforms
 from model.video_transformer import SpaceTimeTransformer
 import pandas as pd
 import torch
 import numpy as np
-from sklearn.decomposition import PCA
-from sklearn.manifold import TSNE
-import matplotlib.pyplot as plt
 from torchvision import transforms
 from torch.utils.data import DataLoader
 from transformers import AutoImageProcessor, TimesformerForVideoClassification
+from data_loader.ucf_cap_dataset import UCF101Dataset
 
 
 # Define a function to compute classification metrics
