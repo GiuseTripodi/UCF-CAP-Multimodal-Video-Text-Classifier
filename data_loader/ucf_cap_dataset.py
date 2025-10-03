@@ -1,30 +1,15 @@
-import ast
 from os.path import join
-
 import pandas as pd
-import os
-import csv
-import re
-
 from sklearn.utils import shuffle
-from torchvision import transforms
-from torch.utils.data import Dataset, DataLoader
-import os
-import glob
-import torch
-from PIL import Image
 from sklearn.preprocessing import LabelEncoder
-from torchvision import transforms
 from torch.utils.data import Dataset, DataLoader
-import os
-import glob
-from PIL import Image
-import os
 import re
-import csv
-from sklearn.model_selection import train_test_split
 import numpy as np
-import torchvision.io as io
+import torch
+import torch.nn.functional as F
+from torchvision import transforms
+from PIL import Image
+import glob, os
 
 def create_csv_splits(home_path):
     # Paths to the UCF101 dataset
@@ -77,6 +62,30 @@ def create_csv_splits(home_path):
     merged_df_train.to_csv(join(output_dir, "train_dataset.csv"), index=False)
 
 
+def load_video(path, num_frames=16, out_size=(16, 224, 224)):
+    # 1. Load frames
+    frames = sorted(glob.glob(os.path.join(path, '*.jpg')))
+
+    transform = transforms.ToTensor()
+    images = [transform(Image.open(f).convert("RGB")) for f in frames]  # each (C,H,W)
+
+    # 2. Stack into (D, C, H, W)
+    video = torch.stack(images)  # (D, C, H, W)
+
+    # 3. Rearrange to (1, C, D, H, W) for interpolate
+    video = video.permute(1, 0, 2, 3).unsqueeze(0)  # (1, C, D, H, W)
+
+    # 4. Interpolate to fixed (D,H,W)
+    target_shape = (out_size[0], out_size[1], out_size[2])  # (D,H,W)
+    video = F.interpolate(video, size=target_shape, mode="trilinear", align_corners=False)
+
+    # 5. Rearrange back to model input: (1, D, C, H, W)
+    video = video.squeeze(0).permute(1, 0, 2, 3)
+
+    return video  # (frames=D, channels=C, H, W)
+
+
+
 class UCF101Dataset(Dataset):
     def __init__(self, csv_file, transform=None, num_frames=8, num_samples=100,):
         self.num_frames = num_frames
@@ -87,21 +96,7 @@ class UCF101Dataset(Dataset):
             df = pd.read_csv(csv_file)
         else:
             df = pd.read_pickle(csv_file)
-        print(df.info())
-
-        # Get all unique classes
-        classes = df['label'].unique()
-        print(classes)
-        num_classes = len(classes)
-        samples_per_class = num_samples // num_classes
-
-        # Sample evenly from each class
-        df = df.groupby('label', group_keys=False).apply(lambda x: x.sample(min(len(x), samples_per_class), random_state=42))
-        self.data = shuffle(df, random_state=42)
-        # print number of classes per sample
-        # Count how many samples per class
-        print(f"Labels distributions for: {csv_file} \\n {self.data['label'].value_counts().sort_index()}")
-
+        self.data = shuffle(df, random_state=42)[:10]
 
         # Initialize a LabelEncoder to convert string labels to integer indices
         self.label_encoder = LabelEncoder()
@@ -120,18 +115,8 @@ class UCF101Dataset(Dataset):
             text_embedding = np.array(self.data.iloc[idx]['text_embedding'])
             video_embedding = np.array(self.data.iloc[idx]['video_embedding'])
 
-        #frames = sorted(glob.glob(os.path.join(path, '*.jpg')))
-        #selected_frames = frames[:self.num_frames] # Choose first N frames
-        #images = [Image.open(frame).convert("RGB") for frame in selected_frames]
-        # Check pixel values for the first image
-        #if self.transform:
-            #images = [self.transform(img) for img in images]
+        video_tensor = load_video(path, num_frames=self.num_frames)
 
-        #try:
-            #video_tensor = torch.stack(images, dim=0)  # Shape: [num_frames, C, H, W]
-        #except Exception as e:
-        video_tensor = torch.tensor(np.zeros((self.num_frames, 3, 224, 224)), dtype=torch.float32)
-        #print(f"Using placeholder volume for: {idx} - Error: {e}")
 
         # Convert label to integer using label_encoder
         label_idx = self.label_encoder.transform([label])[0]  # Convert string label to integer index
