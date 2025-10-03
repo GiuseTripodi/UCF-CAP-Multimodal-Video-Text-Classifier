@@ -183,7 +183,7 @@ def print_embeddings(model, X_data, output_layer_name="tf_distil_bert_model"):
     print(embeddings)
 
 
-def main_train_text_embedding(config: ConfigParser, mode='train'):
+def main_train_text_embedding(config: ConfigParser, mode='eval'):
     # ================= Configurazione ====================
     SAVE_DIR = config.save_dir
 
