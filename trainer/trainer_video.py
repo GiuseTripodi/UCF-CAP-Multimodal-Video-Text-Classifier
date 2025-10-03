@@ -96,6 +96,10 @@ class Trainer:
         plt.legend()
         plt.grid(True)
 
+        # Ensure directory exists
+        plot_dir = join(self.save_path, "train_plots")
+        os.makedirs(plot_dir, exist_ok=True)
+
         # Save the plot
         plot_path = join(self.save_path, "train_plots",  f"loss_curve_{self.exper_name}_{date.today().strftime('%d-%m-%y')}.png")
         plt.savefig(plot_path)
