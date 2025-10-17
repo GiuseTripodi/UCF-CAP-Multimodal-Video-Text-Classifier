@@ -255,7 +255,7 @@ if __name__ == "__main__":
     parser.add_argument('--model_name',default='TestModel', help='Path to CSV file with dataset information to eval the model')
     parser.add_argument('--name', default=None, help='Name of the experiment (used for saving the model)')
     parser.add_argument('--save_dir', default='/Users/user/PycharmProjects/frozen-in-time/data', help='Path to where get the saves file')
-    parser.add_argument('--mode', default='train', help='Path to where get the saves file')
+    parser.add_argument('--mode', default='eval', help='Path to where get the saves file')
     args = parser.parse_args()
 
 
