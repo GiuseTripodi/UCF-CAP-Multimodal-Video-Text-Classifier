@@ -187,7 +187,8 @@ def main_train_text_embedding(config: ConfigParser, mode='eval'):
     # ================= Configurazione ====================
     SAVE_DIR = config.save_dir
 
-    WEIGHTS_FILE = f"{SAVE_DIR}/weights_multiclass_{date.today().strftime('%d-%m-%y')}_{config.exper_name}.h5"
+    #WEIGHTS_FILE = f"{SAVE_DIR}/weights_multiclass_{date.today().strftime('%d-%m-%y')}_{config.exper_name}.h5"
+    WEIGHTS_FILE = f"{SAVE_DIR}/weights_multiclass_03-10-25_TESTFRAMCESCP.h5"
     MAX_SEQ_LEN = config.max_seq_len
     BERT_NAME = "distilbert-base-uncased"
     TOTAL_EPOCHS = config.num_epochs
