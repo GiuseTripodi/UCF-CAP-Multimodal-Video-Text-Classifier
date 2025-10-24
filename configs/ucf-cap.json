@@ -12,7 +12,7 @@
         }
     },
     "trainer": {
-        "epochs": 50,
+        "epochs": 20,
         "early_stop": 10,
         "num_frames": 32,
         "num_classes":12,
