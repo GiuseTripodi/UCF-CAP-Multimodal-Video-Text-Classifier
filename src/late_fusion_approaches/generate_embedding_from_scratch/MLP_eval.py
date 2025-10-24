@@ -5,7 +5,7 @@ from sklearn.metrics import precision_score, recall_score, f1_score, classificat
 import torch
 import torch.nn.functional as F
 
-from data_loader.ucf_cap_dataset import UCF101Dataset
+from data_loader.ucf_cap_dataset_embeddings import UCF101Dataset
 from eval import load_model
 from model.MLP_classifier import MLPClassifier
 from utils.utilis_combination_text_video import extract_text_embeddings, extract_text_embeddings_weight, \

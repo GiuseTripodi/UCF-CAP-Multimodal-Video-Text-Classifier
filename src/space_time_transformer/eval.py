@@ -14,7 +14,7 @@ import numpy as np
 from torchvision import transforms
 from torch.utils.data import DataLoader
 from transformers import AutoImageProcessor, TimesformerForVideoClassification
-from data_loader.ucf_cap_dataset import UCF101Dataset
+from data_loader.ucf_cap_dataset_embeddings import UCF101Dataset
 
 
 # Define a function to compute classification metrics

@@ -28,7 +28,7 @@ from tensorflow.keras.callbacks import ModelCheckpoint
 from model.MLP_classifier import MLPClassifier
 from model.video_transformer import SpaceTimeTransformer
 from transformers import TimesformerForVideoClassification
-from data_loader.ucf_cap_dataset import UCF101Dataset
+from data_loader.ucf_cap_dataset_embeddings import UCF101Dataset
 from parse_config import ConfigParser
 
 

@@ -1,64 +1,51 @@
-import sys
-import os
-import collections
 import os
 import sys
 from datetime import date
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import argparse
+
+import numpy as np
 import torch.optim as optim
-import torch.nn as nn
-from tqdm import tqdm
+from torch.utils.data import DataLoader
+from torchvision import transforms
+from data_loader.ucf_cap_loader import UCF101Dataset
 from model.video_transformer import *
-from data_loader.ucf_cap_dataset import *
 from sklearn.metrics import accuracy_score
 from sklearn.utils import compute_class_weight
 from transformers import AutoImageProcessor, TimesformerForVideoClassification, TimesformerConfig
-from parse_config import ConfigParser
-from trainer.trainer_video import *
+from src.trainers.trainer_video import Trainer
+from src.utils.parse_config import ConfigParser
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 def load_model(config: ConfigParser):
-    if config.modality == 0:
-        # Initialize model
-        model = SpaceTimeTransformer(
-            img_size=config.img_size,
-            num_frames=config.num_frames,
-            in_chans=config.in_chans,
-            num_classes=config.num_classes,
-            depth=config.depth,
-            num_heads=config.num_heads,
-            embed_dim=768,
-            attention_style='frozen-in-time'
-        )
-        processor = None
-
-    elif config.modality == 1:
-        model = TimesformerForVideoClassification.from_pretrained(
-            config.model_name,
-            num_labels=config.num_classes,
+    model_name = "facebook/timesformer-base-finetuned-k400"
+    model = TimesformerForVideoClassification.from_pretrained(
+            model_name,
+            num_labels=7,
             ignore_mismatched_sizes=True
-        )
+    )
 
-        # Unfreeze the last few layers of the transformer backbone
-        for name, param in model.named_parameters():
-            if 'encoder.layer.10' in name or 'encoder.layer.11' in name:  # Adjust this based on your model depth
-                param.requires_grad = True
-            else:
-                param.requires_grad = False
-
-        # Unfreeze the classification head
-        for param in model.classifier.parameters():
+    # Unfreeze the last few layers of the transformer backbone
+    for name, param in model.named_parameters():
+        if 'encoder.layer.10' in name or 'encoder.layer.11' in name:  # Adjust this based on your model depth
             param.requires_grad = True
+        else:
+            param.requires_grad = False
 
-        total_params = sum(p.numel() for p in model.parameters())  # Total parameters
-        trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)  # Trainable parameters
-        frozen_params = total_params - trainable_params  # Frozen parameters
+    # Unfreeze the classification head
+    for param in model.classifier.parameters():
+        param.requires_grad = True
 
-        print(f"Total Parameters: {total_params:,}")
-        print(f"Trainable Parameters: {trainable_params:,}")
-        print(f"Frozen Parameters: {frozen_params:,}")
+    total_params = sum(p.numel() for p in model.parameters())  # Total parameters
+    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)  # Trainable parameters
+    frozen_params = total_params - trainable_params  # Frozen parameters
 
-        processor = AutoImageProcessor.from_pretrained(config.model_name)
+    print(f"Total Parameters: {total_params:,}")
+    print(f"Trainable Parameters: {trainable_params:,}")
+    print(f"Frozen Parameters: {frozen_params:,}")
+
+    processor = AutoImageProcessor.from_pretrained(model_name)
     return model, processor
 
 # Define a simple function to compute accuracy
@@ -86,9 +73,9 @@ def training(config: ConfigParser):
     # Load dataset
     csv_train_file_path, csv_val_file_path = config.train_path
     logger.info(f'Loading dataset from {csv_train_file_path}')
-    dataset_train = UCF101Dataset(csv_train_file_path, transform=transform)
+    dataset_train = UCF101Dataset(csv_train_file_path)
     train_dataloader = DataLoader(dataset_train, config.batch_size, config.shuffle)
-    dataset_val = UCF101Dataset(csv_val_file_path, transform=transform)
+    dataset_val = UCF101Dataset(csv_val_file_path)
     val_dataloader = DataLoader(dataset_val, config.batch_size, config.shuffle)
 
     # Device configuration
@@ -109,7 +96,6 @@ def training(config: ConfigParser):
     criterion = nn.CrossEntropyLoss(weight=class_weights)
     optimizer = optim.Adam(model.parameters(), lr=config.learning_rate)
 
-    # Initialize Trainer class and start training
     trainer = Trainer(model, train_dataloader, val_dataloader, criterion, optimizer, device, config)
     trainer.train()
 

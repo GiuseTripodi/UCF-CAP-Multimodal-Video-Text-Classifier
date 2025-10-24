@@ -13,7 +13,7 @@ source /mnt/iusers01/mace01/t08341gt/env_phd/bin/activate
 # Default values arg parameters
 DEFAULT_CONFIG="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/configs/ucf-cap.json"
 DEFAULT_SAVE_DIR="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data"
-DEFAULT_NAME="TESTFRAMCESCP"
+DEFAULT_NAME="Test_interpolation"
 
 # Usage function to display help
 usage() {
