@@ -91,8 +91,6 @@ def training(config: ConfigParser):
     model, processor = load_model(config, num_classes=len(class_weights))
     model = model.to(device)
 
-
-
     criterion = nn.CrossEntropyLoss(weight=class_weights)
     optimizer = optim.Adam(model.parameters(), lr=config.learning_rate)
 

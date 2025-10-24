@@ -137,7 +137,7 @@ class UCF101Dataset(Dataset):
         else:
             df = pd.read_pickle(csv_file)
 
-        self.data = shuffle(df, random_state=42)[:20]
+        self.data = shuffle(df, random_state=42)
 
         # Encode labels
         self.label_encoder = LabelEncoder()
