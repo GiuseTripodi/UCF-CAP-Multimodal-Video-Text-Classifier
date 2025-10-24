@@ -71,9 +71,9 @@ def training(config: ConfigParser):
     # Load dataset
     csv_train_file_path, csv_val_file_path = config.train_path
     logger.info(f'Loading dataset from {csv_train_file_path}')
-    dataset_train = UCF101Dataset(csv_train_file_path)
+    dataset_train = UCF101Dataset(csv_train_file_path, sampling_method='uniform')
     train_dataloader = DataLoader(dataset_train, config.batch_size, config.shuffle)
-    dataset_val = UCF101Dataset(csv_val_file_path)
+    dataset_val = UCF101Dataset(csv_val_file_path, sampling_method='uniform')
     val_dataloader = DataLoader(dataset_val, config.batch_size, config.shuffle)
 
     # Define loss and optimizer and test class labels
