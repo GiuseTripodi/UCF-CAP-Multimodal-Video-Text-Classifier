@@ -18,11 +18,11 @@ from src.utils.parse_config import ConfigParser
 
 
 
-def load_model(config: ConfigParser):
+def load_model(config: ConfigParser, num_classes):
     model_name = "facebook/timesformer-base-finetuned-k400"
     model = TimesformerForVideoClassification.from_pretrained(
             model_name,
-            num_labels=7,
+            num_labels=num_classes,
             ignore_mismatched_sizes=True
     )
 
@@ -58,10 +58,8 @@ def compute_metrics(p):
 def training(config: ConfigParser):
     logger = config.get_logger('Train')
     logger.info(f'Training started for model: space_time_{config.model_name}_{date.today().strftime("%d-%m-%y")}')
-
-    # Load the model
-    logger.info(f'Loading model')
-    model, processor = load_model(config)
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    logger.info(f"Device model: {device}")
 
     # Data transformation
     transform = transforms.Compose([
@@ -78,11 +76,6 @@ def training(config: ConfigParser):
     dataset_val = UCF101Dataset(csv_val_file_path)
     val_dataloader = DataLoader(dataset_val, config.batch_size, config.shuffle)
 
-    # Device configuration
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    logger.info(f"Device model: {device}")
-    model = model.to(device)
-
     # Define loss and optimizer and test class labels
     # Get class labels from the dataset
     train_labels = [label for _, _, label, *_ in dataset_train]  # Extract labels
@@ -92,6 +85,13 @@ def training(config: ConfigParser):
     class_weights = compute_class_weight(class_weight='balanced', classes=unique_labels, y=train_labels)
     class_weights = torch.tensor(class_weights, dtype=torch.float).to(device)
     print(class_weights)
+
+    # Load the model
+    logger.info(f'Loading model')
+    model, processor = load_model(config, num_classes=len(class_weights))
+    model = model.to(device)
+
+
 
     criterion = nn.CrossEntropyLoss(weight=class_weights)
     optimizer = optim.Adam(model.parameters(), lr=config.learning_rate)

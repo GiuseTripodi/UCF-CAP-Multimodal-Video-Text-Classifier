@@ -90,3 +90,8 @@
 2025-10-24 12:32:17,190 - Train - INFO - Device model: cpu
 2025-10-24 12:32:51,323 - train - INFO - Epoch 1/50, Train Loss: 2.3074
 2025-10-24 12:33:08,525 - train - INFO - Epoch 1/50, Val Loss: 2.1935, Acc: 0.0500, Prec: 0.0200, Rec: 0.0500, F1: 0.0286
+2025-10-24 15:05:09,558 - Train - INFO - Training started for model: space_time_facebook/timesformer-base-finetuned-k400_24-10-25
+2025-10-24 15:05:09,559 - Train - INFO - Device model: cpu
+2025-10-24 15:05:09,559 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
+2025-10-24 15:05:17,761 - Train - INFO - Loading model
+2025-10-24 15:05:51,117 - train - INFO - Epoch 1/50, Train Loss: 2.1275
