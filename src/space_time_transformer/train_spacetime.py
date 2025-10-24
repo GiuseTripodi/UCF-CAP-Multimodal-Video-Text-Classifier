@@ -1,8 +1,9 @@
 import os
 import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from datetime import date
 import argparse
-
 import numpy as np
 import torch.optim as optim
 from torch.utils.data import DataLoader
@@ -15,8 +16,7 @@ from transformers import AutoImageProcessor, TimesformerForVideoClassification, 
 from src.trainers.trainer_video import Trainer
 from src.utils.parse_config import ConfigParser
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 
 def load_model(config: ConfigParser):
     model_name = "facebook/timesformer-base-finetuned-k400"
