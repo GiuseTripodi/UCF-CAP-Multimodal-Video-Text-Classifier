@@ -49,4 +49,4 @@ while [ "$#" -gt 0 ]; do
 done
 
 # Run the Python script with the provided or default arguments
-python3 /mnt/iusers01/mace01/t08341gt/UCF_cap_mh/src/SpaceTImeTrasformer/train_spacetime.py  --config="$CONFIG" --save_dir="$SAVE_DIR" --name="$NAME"
+python3 /mnt/iusers01/mace01/t08341gt/UCF_cap_mh/src/space_time_transformer/train_spacetime.py  --config="$CONFIG" --save_dir="$SAVE_DIR" --name="$NAME"
