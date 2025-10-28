@@ -59,7 +59,7 @@ def extract_embeddings_and_predictions(model, processor, dataloader, device):
 
 def load_model(config: ConfigParser, model_name, logger):
     # Use model pre_trained and the fine_tuned
-    model_path = os.path.join(config.save_dir, f'models/{model_name}')
+    model_path = os.path.join(config.save_dir, f'{model_name}')
     logger.info(f"[INFO] Loaded fine_tuned model from: {model_path}")
     model = TimesformerForVideoClassification.from_pretrained(model_path)
     processor = AutoImageProcessor.from_pretrained(model_path)
