@@ -62,7 +62,8 @@ def load_model(config: ConfigParser, model_name, logger):
     model_path = os.path.join(config.save_dir, f'{model_name}')
     logger.info(f"[INFO] Loaded fine_tuned model from: {model_path}")
     model = TimesformerForVideoClassification.from_pretrained(model_path)
-    processor = AutoImageProcessor.from_pretrained(model_path)
+    #processor = AutoImageProcessor.from_pretrained(model_path)
+    processor = None
     print(model.config)
     return model, processor
 
