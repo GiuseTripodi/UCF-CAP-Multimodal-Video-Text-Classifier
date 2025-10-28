@@ -14,7 +14,7 @@ source /mnt/iusers01/mace01/t08341gt/env_phd/bin/activate
 DEFAULT_CONFIG="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/configs/ucf-cap.json"
 DEFAULT_SAVE_DIR="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data"
 DEFAULT_NAME="TESTATRICES"
-DEFAULT_MODEL_NAME="/mnt/iusers01/mace01/t08341gt/UCF_cap_mh/data/models/space_time_TESTFRAMCESCP_30-09-25"
+DEFAULT_MODEL_NAME="space_time_Test_interpolation_25-10-25"
 
 # Usage function to display help
 usage() {
@@ -55,4 +55,4 @@ while [ "$#" -gt 0 ]; do
 done
 
 # Run the Python script with the provided or default arguments
-python3 /mnt/iusers01/mace01/t08341gt/UCF_cap_mh/src/SpaceTImeTrasformer/eval.py  --model_name="$MODEL_NAME" --save_dir="$SAVE_DIR" --config="$CONFIG" --name="$NAME"
+python3 /mnt/iusers01/mace01/t08341gt/UCF_cap_mh/src/space_time_transformer/eval.py  --model_name="$MODEL_NAME" --save_dir="$SAVE_DIR" --config="$CONFIG" --name="$NAME"
