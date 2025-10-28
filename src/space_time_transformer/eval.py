@@ -2,9 +2,6 @@ import sys
 import os
 from datetime import date
 from sklearn.metrics import precision_score, recall_score, f1_score, classification_report, confusion_matrix
-
-from src.utils.parse_config import ConfigParser
-
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 import numpy as np
@@ -17,6 +14,7 @@ from torchvision import transforms
 from torch.utils.data import DataLoader
 from transformers import AutoImageProcessor, TimesformerForVideoClassification
 from data_loader.ucf_cap_dataset_embeddings import UCF101Dataset
+from src.utils.parse_config import ConfigParser
 
 
 # Define a function to compute classification metrics
