@@ -2,10 +2,12 @@ import sys
 import os
 from datetime import date
 from sklearn.metrics import precision_score, recall_score, f1_score, classification_report, confusion_matrix
+
+from src.utils.parse_config import ConfigParser
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 import numpy as np
-from parse_config import ConfigParser
 import argparse
 from model.video_transformer import SpaceTimeTransformer
 import pandas as pd
@@ -43,7 +45,7 @@ def extract_embeddings_and_predictions(model, processor, dataloader, device):
 
             # Get the embeddings and predicted classes
             outputs = model(inputs)
-            if config.modality == 1:
+            if not isinstance(outputs, torch.Tensor):
                 outputs = outputs.logits
             predicted_labels = torch.argmax(outputs, dim=1)  # Get the predicted class
 
@@ -58,30 +60,12 @@ def extract_embeddings_and_predictions(model, processor, dataloader, device):
 
 
 def load_model(config: ConfigParser, model_name, logger):
-    if config.modality == 0:
-        model_path = os.path.join(config.save_dir, f'{model_name}')
-        model = SpaceTimeTransformer(
-            img_size=config.img_size,
-            num_frames=config.num_frames,
-            in_chans=config.in_chans,
-            num_classes=config.num_classes,
-            depth=config.depth,
-            num_heads=config.num_heads,
-            embed_dim=768,
-            attention_style='frozen-in-time'
-        )
-        model.load_state_dict(torch.load(model_path))
-        processor = None
-
-    elif config.modality == 1:
-        # Use model pre_trained and the fine_tuned
-        model_path = os.path.join(config.save_dir, f'{model_name}')
-        logger.info(f"[INFO] Loaded fine_tuned model from: {model_path}")
-        model = TimesformerForVideoClassification.from_pretrained(model_path)
-        # processor = AutoImageProcessor.from_pretrained(model_path)
-        processor = None
-        print(model.config)
-
+    # Use model pre_trained and the fine_tuned
+    model_path = os.path.join(config.save_dir, f'{model_name}')
+    logger.info(f"[INFO] Loaded fine_tuned model from: {model_path}")
+    model = TimesformerForVideoClassification.from_pretrained(model_path)
+    processor = AutoImageProcessor.from_pretrained(model_path)
+    print(model.config)
     return model, processor
 
 
@@ -98,7 +82,7 @@ def eval_spacetime(config: ConfigParser, model_name):
     # Load dataset and dataloader
     test_path = config.test_path
     logger.info(f'Loading dataset from {test_path}')
-    test_dataset = UCF101Dataset(test_path, transform=transform)
+    test_dataset = UCF101Dataset(test_path, sampling_method='interpolate')
     test_dataloader = DataLoader(test_dataset, 1, config.shuffle)
     print('Test dataset:', len(test_dataset), 'samples')
 

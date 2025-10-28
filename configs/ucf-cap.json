@@ -20,7 +20,7 @@
         "in_chans":3,
         "depth": 12,
         "num_heads":12,
-        "model_name": "facebook/timesformer-base-finetuned-k400",
+        "model_name": "space_time_Test_interpolation_25-10-25",
         "modality": 1,
         "max_seq_len": 245
     }
