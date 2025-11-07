@@ -41,6 +41,9 @@ class TextEncoder(nn.Module):
             return_tensors='pt'
         )
 
+        device = next(self.model.parameters()).device
+        encoded = {k: v.to(device) for k, v in encoded.items()}
+
         with torch.no_grad():
             output = self.model(**encoded)
 
