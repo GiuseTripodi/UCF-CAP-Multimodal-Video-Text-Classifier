@@ -4,49 +4,29 @@ from datetime import date
 import argparse
 import numpy as np
 from collections import Counter
-
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from sklearn.utils import compute_class_weight
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 import matplotlib.pyplot as plt
+
+from model.multi_vit import MultimodalSpaceTimeTransformer
+from src.utils.parse_config import ConfigParser
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from data_loader.ucf_cap_loader import UCF101Dataset
+from monai.transforms import (
+    Compose, LoadImage, EnsureChannelFirst,
+    ScaleIntensity, Resize, RandRotate90, RandFlip, RandZoom
+)
 
-from parse_config import ConfigParser
-from multimodal_vit import MultimodalSpaceTimeTransformer
-from data_loader.lung_pet_ct import DICOMVolumeDataset
-
-
-class MultimodalDataset(torch.utils.data.Dataset):
-    """Wrapper to load video and text pairs"""
-
-    def __init__(self, dicom_dataset, text_descriptions):
-        self.dicom_dataset = dicom_dataset
-        self.text_descriptions = text_descriptions
-        assert len(dicom_dataset) == len(text_descriptions), "Dataset and text descriptions must have same length"
-
-    def __len__(self):
-        return len(self.dicom_dataset)
-
-    def __getitem__(self, idx):
-        video, label = self.dicom_dataset[idx]
-        text = self.text_descriptions[idx]
-        return video, text, label
-
-
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 def load_dataset(config):
     """Load DICOM videos and associated text descriptions"""
-    csv_train_file_path, csv_val_file_path, csv_test_file_path = config.datasets_path(
-        label=config.label_experiments, num_frames=config.num_frames
-    )
-
-    # Load video datasets
-    from monai.transforms import (
-        Compose, LoadImage, EnsureChannelFirst,
-        ScaleIntensity, Resize, RandRotate90, RandFlip, RandZoom
-    )
+    csv_train_file_path, csv_val_file_path = config.train_path
 
     train_transforms = Compose([
         LoadImage(image_only=True, reader="ITKReader"),
@@ -65,17 +45,9 @@ def load_dataset(config):
         Resize((96, 96, 96)),
     ])
 
-    dataset_train = DICOMVolumeDataset(csv_train_file_path, transform=train_transforms)
-    dataset_val = DICOMVolumeDataset(csv_val_file_path, transform=val_transforms)
+    dataset_train = UCF101Dataset(csv_train_file_path, sampling_method='uniform')
+    dataset_val = UCF101Dataset(csv_val_file_path, sampling_method='uniform')
 
-    # TODO: Load text descriptions from file or generate them
-    # For now, using placeholder descriptions
-    train_texts = [f"CT scan sample {i}" for i in range(len(dataset_train))]
-    val_texts = [f"CT scan sample {i}" for i in range(len(dataset_val))]
-
-    # Wrap with text
-    dataset_train = MultimodalDataset(dataset_train, train_texts)
-    dataset_val = MultimodalDataset(dataset_val, val_texts)
 
     train_loader = DataLoader(
         dataset_train, batch_size=config.batch_size, shuffle=True,
@@ -87,7 +59,18 @@ def load_dataset(config):
         num_workers=0, collate_fn=multimodal_collate_fn
     )
 
-    return train_loader, val_loader
+    # Define loss and optimizer and test class labels
+    # Get class labels from the dataset
+    train_labels = [label for _, _, label, *_ in dataset_train]  # Extract labels
+
+    # Calculate class weights (inversely proportional to class frequencies)
+    unique_labels = np.unique(train_labels)
+    class_weights = compute_class_weight(class_weight='balanced', classes=unique_labels, y=train_labels)
+    class_weights = torch.tensor(class_weights, dtype=torch.float).to(device)
+    print(class_weights)
+
+
+    return train_loader, val_loader, class_weights
 
 
 def multimodal_collate_fn(batch):
@@ -156,45 +139,16 @@ def validate(model, val_loader, criterion, device):
 
 def training(config: ConfigParser):
     logger = config.get_logger('Train')
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
     logger.info(f'Training started: multimodal_{config.exper_name}_{date.today().strftime("%d-%m-%y")}')
 
     # Load datasets
     logger.info('Loading datasets...')
-    train_loader, val_loader = load_dataset(config)
-
-    # Get number of classes
-    num_classes = len(train_loader.dataset.dicom_dataset.label_to_idx)
-    print(f"Training with {num_classes} classes: {train_loader.dataset.dicom_dataset.label_to_idx}")
-
-    # Calculate class weights for imbalance
-    train_labels = [train_loader.dataset.dicom_dataset.data.iloc[i]['CancerType']
-                    for i in range(len(train_loader.dataset.dicom_dataset))]
-    label_counts = Counter(train_labels)
-
-    print("\n=== Class Distribution ===")
-    total_samples = len(train_labels)
-    class_weights = []
-    for i in range(num_classes):
-        label_name = [k for k, v in train_loader.dataset.dicom_dataset.label_to_idx.items() if v == i][0]
-        count = label_counts[label_name]
-        weight = total_samples / (num_classes * count)
-        class_weights.append(weight)
-        print(f"  {label_name} ({i}): {count} samples ({100 * count / total_samples:.1f}%) - weight: {weight:.2f}")
-
-    class_weights = torch.tensor(class_weights, dtype=torch.float32).to(device)
+    train_loader, val_loader, class_weights = load_dataset(config)
 
     # Initialize model
     logger.info('Loading model...')
     model = MultimodalSpaceTimeTransformer(
-        img_size=96,
-        patch_size=16,
-        in_chans=1,
-        num_classes=num_classes,
-        embed_dim=768,
-        depth=12,
-        num_heads=12,
-        num_frames=8,
+        num_classes=len(class_weights),
         text_model='distilbert-base-uncased',
         fusion_method='concat'
     ).to(device)
@@ -202,7 +156,7 @@ def training(config: ConfigParser):
     # Loss and optimizer
     criterion = nn.CrossEntropyLoss(weight=class_weights)
     optimizer = optim.AdamW(model.parameters(), lr=config.learning_rate, weight_decay=1e-4)
-    scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=config.epochs)
+    scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=config.num_epochs)
 
     # Training loop
     train_losses = []
@@ -211,8 +165,8 @@ def training(config: ConfigParser):
     best_accuracy = 0
     best_model_path = 'best_multimodal_model.pth'
 
-    for epoch in range(config.epochs):
-        print(f"\nEpoch {epoch + 1}/{config.epochs}")
+    for epoch in range(config.num_epochs):
+        print(f"\nEpoch {epoch + 1}/{config.num_epochs}")
 
         # Train
         train_loss = train_epoch(model, train_loader, criterion, optimizer, device)
@@ -265,8 +219,8 @@ def training(config: ConfigParser):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Multimodal training script")
     parser.add_argument('--name', default='Test', help='Experiment name')
-    parser.add_argument('--config', default='config/lung_pet.json', help='Config file path')
-    parser.add_argument('--save_dir', default='saves', help='Save directory')
+    parser.add_argument('--config', default='/Users/user/PycharmProjects/frozen-in-time/configs/ucf-cap.json', help='Config file path')
+    parser.add_argument('--save_dir', default='/Users/user/PycharmProjects/frozen-in-time/data', help='Save directory')
     parser.add_argument('--label_experiments', default='ALL', help='Label type')
     parser.add_argument('--dataset_samples', default=100, help='Number of samples')
     args = parser.parse_args()

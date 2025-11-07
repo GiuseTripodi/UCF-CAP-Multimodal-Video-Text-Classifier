@@ -1,7 +1,9 @@
 import torch
 import torch.nn as nn
 from transformers import AutoTokenizer, AutoModel
-from video_transformer import SpaceTimeTransformer
+
+from model.video_transformer import SpaceTimeTransformer
+from src.space_time_transformer.train_spacetime import load_model
 
 
 class TextEncoder(nn.Module):
@@ -47,52 +49,34 @@ class MultimodalSpaceTimeTransformer(nn.Module):
     """Combines video and text for multimodal classification"""
 
     def __init__(self,
-                 img_size=96,
-                 patch_size=16,
-                 in_chans=1,
                  num_classes=4,
-                 embed_dim=768,
-                 depth=12,
-                 num_heads=12,
-                 num_frames=8,
                  text_model='distilbert-base-uncased',
                  fusion_method='concat'):
         super().__init__()
 
-        self.embed_dim = embed_dim
+        self.embed_dim = 768
         self.fusion_method = fusion_method
 
-        # Video encoder (simplified SpaceTimeTransformer)
-        self.video_encoder = SpaceTimeTransformer(
-            img_size=img_size,
-            patch_size=patch_size,
-            in_chans=in_chans,
-            num_classes=0,  # No classification head yet
-            embed_dim=embed_dim,
-            depth=depth,
-            num_heads=num_heads,
-            num_frames=num_frames
-        )
-
+        self.video_encoder, self.processor = load_model(num_classes)
         # Text encoder
-        self.text_encoder = TextEncoder(model_name=text_model, embed_dim=embed_dim)
+        self.text_encoder = TextEncoder(model_name=text_model, embed_dim=self.embed_dim)
 
         # Fusion layer
         if fusion_method == 'concat':
-            fusion_dim = embed_dim * 2
+            fusion_dim = self.embed_dim * 2
         elif fusion_method == 'add':
-            fusion_dim = embed_dim
+            fusion_dim = self.embed_dim
         elif fusion_method == 'cross_attention':
-            fusion_dim = embed_dim
+            fusion_dim = self.embed_dim
         else:
             raise ValueError(f"Unknown fusion method: {fusion_method}")
 
         # MLP head for classification
         self.classifier = nn.Sequential(
-            nn.Linear(fusion_dim, embed_dim),
+            nn.Linear(fusion_dim, self.embed_dim),
             nn.GELU(),
             nn.Dropout(0.1),
-            nn.Linear(embed_dim, num_classes)
+            nn.Linear(self.embed_dim, num_classes)
         )
 
     def forward(self, video_input, text_input):
@@ -104,7 +88,8 @@ class MultimodalSpaceTimeTransformer(nn.Module):
             logits: (batch_size, num_classes)
         """
         # Extract embeddings
-        video_emb = self.video_encoder.forward_features(video_input)  # (batch_size, embed_dim)
+        last_hidden = self.video_encoder(video_input).hidden_states[-1] # (batch_size, embed_dim)
+        video_emb = last_hidden[:, 0, :]  # CLS token
         text_emb = self.text_encoder(text_input)  # (batch_size, embed_dim)
 
         # Fuse modalities

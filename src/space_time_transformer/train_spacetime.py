@@ -18,12 +18,14 @@ from src.utils.parse_config import ConfigParser
 
 
 
-def load_model(config: ConfigParser, num_classes):
+def load_model(num_classes):
     model_name = "facebook/timesformer-base-finetuned-k400"
     model = TimesformerForVideoClassification.from_pretrained(
             model_name,
             num_labels=num_classes,
-            ignore_mismatched_sizes=True
+            ignore_mismatched_sizes=True,
+            output_hidden_states=True
+
     )
 
     # Unfreeze the last few layers of the transformer backbone
@@ -88,7 +90,7 @@ def training(config: ConfigParser):
 
     # Load the model
     logger.info(f'Loading model')
-    model, processor = load_model(config, num_classes=len(class_weights))
+    model, processor = load_model(num_classes=len(class_weights))
     model = model.to(device)
 
     criterion = nn.CrossEntropyLoss(weight=class_weights)
