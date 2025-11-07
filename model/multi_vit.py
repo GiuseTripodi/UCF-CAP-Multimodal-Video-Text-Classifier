@@ -1,6 +1,10 @@
 import torch
 import torch.nn as nn
+import sys
+import os
 from transformers import AutoTokenizer, AutoModel
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from model.video_transformer import SpaceTimeTransformer
 from src.space_time_transformer.train_spacetime import load_model

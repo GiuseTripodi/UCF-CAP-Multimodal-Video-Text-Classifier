@@ -12,8 +12,6 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 
-from model.multi_vit import MultimodalSpaceTimeTransformer
-from src.utils.parse_config import ConfigParser
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -22,6 +20,8 @@ from monai.transforms import (
     Compose, LoadImage, EnsureChannelFirst,
     ScaleIntensity, Resize, RandRotate90, RandFlip, RandZoom
 )
+from model.multi_vit import MultimodalSpaceTimeTransformer
+from src.utils.parse_config import ConfigParser
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 def load_dataset(config):
