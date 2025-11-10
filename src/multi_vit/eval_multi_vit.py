@@ -8,14 +8,14 @@ import torch
 import torch.nn as nn
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support, confusion_matrix, classification_report
 
-from data_loader.ucf_cap_loader import UCF101Dataset
-from src.multi_vit.train_multi_vit import multimodal_collate_fn
-
 # Local imports
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.utils.parse_config import ConfigParser
 from model.multi_vit import MultimodalSpaceTimeTransformer
+
+from data_loader.ucf_cap_loader import UCF101Dataset
+from src.multi_vit.train_multi_vit import multimodal_collate_fn
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
