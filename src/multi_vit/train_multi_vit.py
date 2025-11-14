@@ -45,8 +45,8 @@ def load_dataset(config):
         Resize((96, 96, 96)),
     ])
 
-    dataset_train = UCF101Dataset(csv_train_file_path, sampling_method='interpolate')
-    dataset_val = UCF101Dataset(csv_val_file_path, sampling_method='interpolate')
+    dataset_train = UCF101Dataset(csv_train_file_path, sampling_method='interpolate', num_frames=32)
+    dataset_val = UCF101Dataset(csv_val_file_path, sampling_method='interpolate', num_frames=32)
 
 
     train_loader = DataLoader(
