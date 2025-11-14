@@ -99,3 +99,6 @@
 2025-10-24 15:20:03,061 - Train - INFO - Device model: cpu
 2025-10-24 15:20:03,061 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
 2025-10-24 15:20:32,391 - Train - INFO - Loading model
+2025-11-10 16:03:40,993 - Train - INFO - Training started for model: space_time_space_time_Test_interpolation_25-10-25_10-11-25
+2025-11-10 16:03:40,993 - Train - INFO - Device model: cpu
+2025-11-10 16:03:40,993 - Train - INFO - Loading dataset from /Users/user/PycharmProjects/frozen-in-time/data/UcfCap/train_dataset.csv
