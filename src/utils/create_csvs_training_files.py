@@ -2,9 +2,12 @@ from os.path import join
 import pandas as pd
 import re
 import os
+import sys
 import matplotlib.pyplot as plt
 import seaborn as sns
 from collections import Counter
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.utils.plotting_functions import analyze_dataset_statistics, plot_class_distribution, plot_samples_per_class, \
     plot_split_distribution, plot_caption_length_distribution, plot_class_distribution_per_split
