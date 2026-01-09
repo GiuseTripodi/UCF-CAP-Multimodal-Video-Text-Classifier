@@ -12,12 +12,12 @@ import glob
 from PIL import Image
 from torchvision import transforms
 
-from src.utils.utilis_combination_text_video import (
+from src.support_functions.utilis_combination_text_video import (
     extract_videos_embedding,
     extract_text_embeddings_weight,
 )
 from parse_config import ConfigParser
-from src.utils.utilis_combination_text_video import (
+from src.support_functions.utilis_combination_text_video import (
     load_model_embeddings,
     load_pretrained_text_model_with_embeddings,
 )

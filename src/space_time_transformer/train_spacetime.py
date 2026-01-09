@@ -1,5 +1,9 @@
 import os
 import sys
+
+from src.utils.parse_config import ConfigParser
+from src.utils.support_functions import load_dataset
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from datetime import date
@@ -14,8 +18,10 @@ from sklearn.metrics import accuracy_score
 from sklearn.utils import compute_class_weight
 from transformers import AutoImageProcessor, TimesformerForVideoClassification, TimesformerConfig
 from src.trainers.trainer_video import Trainer
-from src.utils.parse_config import ConfigParser
-
+from monai.transforms import (
+    Compose, LoadImage, EnsureChannelFirst,
+    ScaleIntensity, Resize, RandRotate90, RandFlip, RandZoom
+)
 
 
 def load_model(num_classes):
@@ -63,30 +69,10 @@ def training(config: ConfigParser):
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     logger.info(f"Device model: {device}")
 
-    # Data transformation
-    transform = transforms.Compose([
-        transforms.Resize((224, 224)),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    ])
+    # Load datasets
+    logger.info('Loading datasets...')
+    train_loader, val_loader, class_weights = load_dataset(config)
 
-    # Load dataset
-    csv_train_file_path, csv_val_file_path = config.train_path
-    logger.info(f'Loading dataset from {csv_train_file_path}')
-    dataset_train = UCF101Dataset(csv_train_file_path, sampling_method='uniform', num_frames=32)
-    train_dataloader = DataLoader(dataset_train, config.batch_size, config.shuffle)
-    dataset_val = UCF101Dataset(csv_val_file_path, sampling_method='uniform', num_frames=32)
-    val_dataloader = DataLoader(dataset_val, config.batch_size, config.shuffle)
-
-    # Define loss and optimizer and test class labels
-    # Get class labels from the dataset
-    train_labels = [label for _, _, label, *_ in dataset_train]  # Extract labels
-
-    # Calculate class weights (inversely proportional to class frequencies)
-    unique_labels = np.unique(train_labels)
-    class_weights = compute_class_weight(class_weight='balanced', classes=unique_labels, y=train_labels)
-    class_weights = torch.tensor(class_weights, dtype=torch.float).to(device)
-    print(class_weights)
 
     # Load the model
     logger.info(f'Loading model')
@@ -96,7 +82,7 @@ def training(config: ConfigParser):
     criterion = nn.CrossEntropyLoss(weight=class_weights)
     optimizer = optim.Adam(model.parameters(), lr=config.learning_rate)
 
-    trainer = Trainer(model, train_dataloader, val_dataloader, criterion, optimizer, device, config)
+    trainer = Trainer(model, train_loader, val_loader, criterion, optimizer, device, config)
     trainer.train()
 
 

@@ -11,7 +11,7 @@ from sklearn.metrics import accuracy_score, precision_recall_fscore_support, con
 # Local imports
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from src.utils.parse_config import ConfigParser
+from src.support_functions.parse_config import ConfigParser
 from model.multi_vit import MultimodalSpaceTimeTransformer
 
 from data_loader.ucf_cap_loader import UCF101Dataset

@@ -13,7 +13,7 @@ import numpy as np
 from torchvision import transforms
 from torch.utils.data import DataLoader
 from transformers import AutoImageProcessor, TimesformerForVideoClassification
-from src.utils.parse_config import ConfigParser
+from src.support_functions.parse_config import ConfigParser
 from data_loader.ucf_cap_loader import UCF101Dataset
 
 

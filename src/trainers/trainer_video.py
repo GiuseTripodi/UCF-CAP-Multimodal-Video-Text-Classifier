@@ -6,8 +6,8 @@ from matplotlib import pyplot as plt
 from tqdm import tqdm
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 import torch
-from src.utils.parse_config import ConfigParser
 
+from src.utils.parse_config import ConfigParser
 
 logger = logging.getLogger('train')
 
