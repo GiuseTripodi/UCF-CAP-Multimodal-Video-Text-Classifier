@@ -1,22 +1,17 @@
 import torch
 import torch.nn as nn
-import sys
-import os
-from transformers import AutoTokenizer, AutoModel
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from model.video_transformer import SpaceTimeTransformer
-from src.space_time_transformer.train_spacetime import load_model
+from transformers import AutoTokenizer, AutoModel, AutoConfig
 
 
 class TextEncoder(nn.Module):
     """Extract text embeddings using a pre-trained transformer"""
 
-    def __init__(self, model_name='distilbert-base-uncased', embed_dim=768):
+    def __init__(self, model_name='distilbert-base-uncased', embed_dim=768, trainable=False):
         super().__init__()
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModel.from_pretrained(model_name)
         self.embed_dim = embed_dim
+        self.trainable = trainable
 
         # Project to match video embedding dimension if needed
         model_dim = self.model.config.hidden_size
@@ -43,12 +38,37 @@ class TextEncoder(nn.Module):
         device = next(self.model.parameters()).device
         encoded = {k: v.to(device) for k, v in encoded.items()}
 
-        with torch.no_grad():
+        if self.trainable:
             output = self.model(**encoded)
+        else:
+            with torch.no_grad():
+                output = self.model(**encoded)
 
         # Use [CLS] token as sentence representation
         cls_embeddings = output.last_hidden_state[:, 0, :]
         return self.proj(cls_embeddings)
+
+
+def _load_video_encoder(model_name: str) -> nn.Module:
+    config = AutoConfig.from_pretrained(model_name)
+    config.output_hidden_states = True
+    return AutoModel.from_pretrained(model_name, config=config)
+
+
+def _freeze_video_backbone(model: nn.Module, trainable_layers: int) -> None:
+    for param in model.parameters():
+        param.requires_grad = False
+
+    if trainable_layers <= 0:
+        return
+
+    encoder = getattr(model, 'encoder', None)
+    if encoder is None or not hasattr(encoder, 'layer'):
+        return
+
+    for layer in encoder.layer[-trainable_layers:]:
+        for param in layer.parameters():
+            param.requires_grad = True
 
 
 class MultimodalSpaceTimeTransformer(nn.Module):
@@ -56,23 +76,27 @@ class MultimodalSpaceTimeTransformer(nn.Module):
 
     def __init__(self,
                  num_classes=4,
+                 video_model_name='facebook/timesformer-base-finetuned-k400',
                  text_model='distilbert-base-uncased',
-                 fusion_method='concat'):
+                 fusion_method='concat',
+                 freeze_video_backbone=True,
+                 trainable_layers=2):
         super().__init__()
 
-        self.embed_dim = 768
+        self.video_encoder = _load_video_encoder(video_model_name)
+        self.embed_dim = self.video_encoder.config.hidden_size
         self.fusion_method = fusion_method
 
-        self.video_encoder, self.processor = load_model(num_classes)
+        if freeze_video_backbone:
+            _freeze_video_backbone(self.video_encoder, trainable_layers)
+
         # Text encoder
         self.text_encoder = TextEncoder(model_name=text_model, embed_dim=self.embed_dim)
 
         # Fusion layer
         if fusion_method == 'concat':
             fusion_dim = self.embed_dim * 2
-        elif fusion_method == 'add':
-            fusion_dim = self.embed_dim
-        elif fusion_method == 'cross_attention':
+        elif fusion_method in {'add', 'cross_attention'}:
             fusion_dim = self.embed_dim
         else:
             raise ValueError(f"Unknown fusion method: {fusion_method}")
@@ -93,8 +117,8 @@ class MultimodalSpaceTimeTransformer(nn.Module):
         Returns:
             logits: (batch_size, num_classes)
         """
-        # Extract embeddings
-        last_hidden = self.video_encoder(video_input).hidden_states[-1] # (batch_size, embed_dim)
+        outputs = self.video_encoder(video_input, output_hidden_states=True)
+        last_hidden = outputs.hidden_states[-1] if outputs.hidden_states else outputs.last_hidden_state
         video_emb = last_hidden[:, 0, :]  # CLS token
         text_emb = self.text_encoder(text_input)  # (batch_size, embed_dim)
 
@@ -104,50 +128,11 @@ class MultimodalSpaceTimeTransformer(nn.Module):
         elif self.fusion_method == 'add':
             fused = video_emb + text_emb
         elif self.fusion_method == 'cross_attention':
-            # Simple cross-attention: video attends to text
             attn_weights = torch.softmax(torch.bmm(
                 video_emb.unsqueeze(1),
                 text_emb.unsqueeze(2)
             ), dim=-1)
             fused = video_emb + attn_weights.squeeze() * text_emb
 
-        # Classification
         logits = self.classifier(fused)
         return logits
-
-
-# ============ USAGE EXAMPLE ============
-if __name__ == '__main__':
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
-
-    # Initialize model
-    model = MultimodalSpaceTimeTransformer(
-        img_size=96,
-        patch_size=16,
-        in_chans=1,
-        num_classes=4,
-        embed_dim=768,
-        depth=12,
-        num_heads=12,
-        num_frames=8,
-        text_model='distilbert-base-uncased',
-        fusion_method='concat'  # or 'add', 'cross_attention'
-    ).to(device)
-
-    # Dummy input
-    batch_size = 2
-    video = torch.randn(batch_size, 8, 1, 96, 96).to(device)
-    text = [
-        "CT scan showing nodule in right upper lobe",
-        "Normal chest CT examination"
-    ]
-
-    # Forward pass
-    logits = model(video, text)
-    print(f"Output shape: {logits.shape}")  # (2, 4)
-
-    # Loss and optimization
-    labels = torch.tensor([0, 1]).to(device)
-    loss_fn = nn.CrossEntropyLoss()
-    loss = loss_fn(logits, labels)
-    print(f"Loss: {loss.item()}")

@@ -1,12 +1,6 @@
-import inspect
 import logging
 import logging.config
 import os
-import time
-from datetime import datetime
-from functools import reduce
-from operator import getitem
-from pathlib import Path
 import json
 
 class ConfigParser:
@@ -88,6 +82,13 @@ class ConfigParser:
     def shuffle(self):
         return self.config['data_loader']['shuffle']
 
+    @property
+    def num_workers(self):
+        return self.config.get('data_loader', {}).get('num_workers', 0)
+
+    @property
+    def sampling_method(self):
+        return self.config.get('data_loader', {}).get('sampling_method', 'interpolate')
 
     @property
     def train_path(self):
@@ -112,26 +113,14 @@ class ConfigParser:
     def img_size(self):
         return self.config['trainer']['img_size']
     @property
-    def in_chans(self):
-        return self.config['trainer']['in_chans']
-    @property
     def num_frames(self):
         return self.config['trainer']['num_frames']
     @property
     def num_classes(self):
         return self.config['trainer']['num_classes']
     @property
-    def depth(self):
-        return self.config['trainer']['depth']
-    @property
-    def num_heads(self):
-        return self.config['trainer']['num_heads']
-    @property
     def num_epochs(self):
         return self.config['trainer']['epochs']
-    @property
-    def max_seq_len(self):
-        return self.config['trainer']['max_seq_len']
 
     @property
     def learning_rate(self):
@@ -141,13 +130,6 @@ class ConfigParser:
     def exper_name(self):
         return self._exper_name
 
-    @property
-    def model_name(self):
-        return self.config['trainer']['model_name']
-    @property
-    def modality(self):
-        return self.config['trainer']['modality']
-
     @model_parameters.setter
     def model_parameters(self, value):
         self._model_parameters = value
@@ -155,3 +137,29 @@ class ConfigParser:
     @config.setter
     def config(self, value):
         self._config = value
+
+    @property
+    def video_model_name(self):
+        return self.config.get('model', {}).get(
+            'video_model_name',
+            'facebook/timesformer-base-finetuned-k400'
+        )
+
+    @property
+    def text_model_name(self):
+        return self.config.get('model', {}).get(
+            'text_model_name',
+            'distilbert-base-uncased'
+        )
+
+    @property
+    def fusion_method(self):
+        return self.config.get('model', {}).get('fusion_method', 'concat')
+
+    @property
+    def freeze_video_backbone(self):
+        return self.config.get('model', {}).get('freeze_video_backbone', True)
+
+    @property
+    def trainable_layers(self):
+        return self.config.get('model', {}).get('trainable_layers', 2)

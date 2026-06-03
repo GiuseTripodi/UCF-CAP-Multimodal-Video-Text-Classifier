@@ -1,27 +1,29 @@
 {
     "name": "lung_pet",
     "n_gpu": 1,
-    "data_loader":{
-      "shuffle": true,
-      "batch_size": 16
+    "data_loader": {
+        "shuffle": true,
+        "batch_size": 16,
+        "num_workers": 0,
+        "sampling_method": "interpolate"
     },
     "optimizer": {
         "type": "AdamW",
-        "args":{
+        "args": {
             "lr": 1e-4
         }
     },
+    "model": {
+        "video_model_name": "facebook/timesformer-base-finetuned-k400",
+        "text_model_name": "distilbert-base-uncased",
+        "fusion_method": "concat",
+        "freeze_video_backbone": true,
+        "trainable_layers": 2
+    },
     "trainer": {
         "epochs": 10,
-        "early_stop": 10,
         "num_frames": 32,
-        "num_classes":12,
-        "img_size":224,
-        "in_chans":3,
-        "depth": 12,
-        "num_heads":12,
-        "model_name": "space_time_",
-        "modality": 1,
-        "max_seq_len": 245
+        "num_classes": 12,
+        "img_size": 224
     }
 }

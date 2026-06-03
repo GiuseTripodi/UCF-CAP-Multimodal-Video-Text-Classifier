@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.utils import shuffle
 from sklearn.preprocessing import LabelEncoder
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset
 from torchvision import transforms
 import numpy as np
 import torch
@@ -194,67 +194,3 @@ def collate_video_batch(batch):
 
     return videos, captions, labels
 
-
-# ============ USAGE EXAMPLES ============
-
-if __name__ == '__main__':
-    csv_file = '/Users/user/PycharmProjects/frozen-in-time/data/UcfCap/val_dataset.csv'
-
-    # Example 1: Interpolation (recommended for transformers)
-    print("=" * 60)
-    print("Testing with INTERPOLATION")
-    print("=" * 60)
-    dataset_interp = UCF101Dataset(
-        csv_file,
-        num_frames=16,
-        img_size=224,
-        sampling_method='interpolate'
-    )
-
-    dataloader_interp = DataLoader(
-        dataset_interp,
-        batch_size=4,
-        shuffle=True,
-        collate_fn=collate_video_batch,
-        num_workers=2
-    )
-
-    # Test batch
-    videos, captions, labels = next(iter(dataloader_interp))
-    print(f"\nBatch shapes:")
-    print(f"  Videos: {videos.shape}")  # (4, 16, 3, 224, 224)
-    print(f"  Captions: {len(captions)} strings")
-    print(f"  Labels: {labels.shape}")  # (4,)
-
-    # Example 2: Uniform sampling (faster, simpler)
-    print("\n" + "=" * 60)
-    print("Testing with UNIFORM SAMPLING")
-    print("=" * 60)
-    dataset_uniform = UCF101Dataset(
-        csv_file,
-        num_frames=16,
-        img_size=224,
-        sampling_method='uniform'
-    )
-
-    dataloader_uniform = DataLoader(
-        dataset_uniform,
-        batch_size=4,
-        shuffle=True,
-        collate_fn=collate_video_batch
-    )
-
-    videos, captions, labels = next(iter(dataloader_uniform))
-    print(f"\nBatch shapes:")
-    print(f"  Videos: {videos.shape}")
-    print(f"  Captions: {len(captions)} strings")
-    print(f"  Labels: {labels.shape}")
-
-    # Example 3: For SpaceTimeTransformer input format
-    print("\n" + "=" * 60)
-    print("SpaceTimeTransformer Input Format")
-    print("=" * 60)
-
-    # SpaceTime expects (B, C, T, H, W)
-    videos_st = videos.permute(0, 2, 1, 3, 4)  # (B, T, C, H, W) -> (B, C, T, H, W)
-    print(f"SpaceTime format: {videos_st.shape}")  # (4, 3, 16, 224, 224)

@@ -2,156 +2,108 @@ import sys
 import os
 from datetime import date
 import argparse
-import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from tqdm import tqdm
-import matplotlib.pyplot as plt
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-
 from src.utils.parse_config import ConfigParser
 from src.utils.support_functions import load_dataset
 from model.multi_vit import MultimodalSpaceTimeTransformer
+from src.trainers.trainer_multimodal import MultimodalTrainer
+
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 
-def train_epoch(model, train_loader, criterion, optimizer, device):
-    model.train()
-    total_loss = 0
 
-    train_loop = tqdm(train_loader, desc="Training", leave=True)
-    for videos, texts, labels in train_loop:
-        videos = videos.to(device)
-        labels = labels.to(device)
+def main(config: ConfigParser):
+    """
+    Main training function.
 
-        optimizer.zero_grad()
-        logits = model(videos, texts)
-        loss = criterion(logits, labels)
-        loss.backward()
-        optimizer.step()
-
-        total_loss += loss.item()
-        train_loop.set_postfix(loss=loss.item())
-
-    avg_loss = total_loss / len(train_loader)
-    return avg_loss
-
-
-def validate(model, val_loader, criterion, device):
-    model.eval()
-    total_loss = 0
-    correct = 0
-    total = 0
-
-    val_loop = tqdm(val_loader, desc="Validation", leave=True)
-    with torch.no_grad():
-        for videos, texts, labels in val_loop:
-            videos = videos.to(device)
-            labels = labels.to(device)
-
-            logits = model(videos, texts)
-            loss = criterion(logits, labels)
-
-            total_loss += loss.item()
-            preds = torch.argmax(logits, dim=1)
-            correct += (preds == labels).sum().item()
-            total += labels.size(0)
-
-    avg_loss = total_loss / len(val_loader)
-    accuracy = correct / total
-    return avg_loss, accuracy
-
-
-def training(config: ConfigParser):
+    Args:
+        config: Configuration object
+    """
     logger = config.get_logger('Train')
-    logger.info(f'Training started: multimodal_{config.exper_name}_{date.today().strftime("%d-%m-%y")}')
+    logger.info(
+        f'Training started: multimodal_{config.exper_name}_'
+        f'{date.today().strftime("%d-%m-%y")}'
+    )
 
     # Load datasets
     logger.info('Loading datasets...')
     train_loader, val_loader, class_weights = load_dataset(config)
+    num_classes = len(class_weights)
+    logger.info(f'Loaded {num_classes} classes')
 
-    # Initialize model
-    logger.info('Loading model...')
+    # Setup model
+    logger.info('Initializing model...')
     model = MultimodalSpaceTimeTransformer(
         num_classes=len(class_weights),
-        text_model='distilbert-base-uncased',
-        fusion_method='concat'
-    ).to(device)
+        video_model_name=config.video_model_name,
+        text_model=config.text_model_name,
+        fusion_method=config.fusion_method,
+        freeze_video_backbone=config.freeze_video_backbone,
+        trainable_layers=config.trainable_layers
+    )
+    logger.info(f'Model loaded on device: {device}')
 
-    # Loss and optimizer
+    # Setup training components
     criterion = nn.CrossEntropyLoss(weight=class_weights)
-    optimizer = optim.AdamW(model.parameters(), lr=config.learning_rate, weight_decay=1e-4)
-    scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=config.num_epochs)
 
-    # Training loop
-    train_losses = []
-    val_losses = []
-    val_accuracies = []
-    best_accuracy = 0
-    best_model_path = 'best_multimodal_model.pth'
+    optimizer = optim.AdamW(
+        model.parameters(),
+        lr=config.learning_rate,
+        weight_decay=1e-4
+    )
 
-    for epoch in range(config.num_epochs):
-        print(f"\nEpoch {epoch + 1}/{config.num_epochs}")
+    scheduler = optim.lr_scheduler.CosineAnnealingLR(
+        optimizer,
+        T_max=config.num_epochs
+    )
 
-        # Train
-        train_loss = train_epoch(model, train_loader, criterion, optimizer, device)
-        train_losses.append(train_loss)
+    # Initialize trainer
+    trainer = MultimodalTrainer(
+        model=model,
+        train_loader=train_loader,
+        val_loader=val_loader,
+        criterion=criterion,
+        optimizer=optimizer,
+        scheduler=scheduler,
+        device=device,
+        num_epochs=config.num_epochs,
+        save_dir=config.save_dir,
+        logger=logger
+    )
 
-        # Validate
-        val_loss, val_accuracy = validate(model, val_loader, criterion, device)
-        val_losses.append(val_loss)
-        val_accuracies.append(val_accuracy)
+    # Train the model
+    trainer.train()
 
-        print(f"Train Loss: {train_loss:.4f} | Val Loss: {val_loss:.4f} | Val Accuracy: {val_accuracy:.4f}")
-
-        # Save best model
-        if val_accuracy > best_accuracy:
-            best_accuracy = val_accuracy
-            torch.save(model.state_dict(), best_model_path)
-            print(f"Saved best model with accuracy: {best_accuracy:.4f}")
-
-        scheduler.step()
-
-    # Save training history
-    np.savez('multimodal_training_history.npz',
-             train_losses=train_losses,
-             val_losses=val_losses,
-             val_accuracies=val_accuracies)
-
-    # Plot results
-    plt.figure(figsize=(12, 4))
-
-    plt.subplot(1, 2, 1)
-    plt.plot(train_losses, label='Train Loss')
-    plt.plot(val_losses, label='Val Loss')
-    plt.xlabel('Epoch')
-    plt.ylabel('Loss')
-    plt.legend()
-    plt.title('Loss Curves')
-
-    plt.subplot(1, 2, 2)
-    plt.plot(val_accuracies, label='Val Accuracy')
-    plt.xlabel('Epoch')
-    plt.ylabel('Accuracy')
-    plt.legend()
-    plt.title('Validation Accuracy')
-
-    plt.tight_layout()
-    plt.savefig('multimodal_training_results.png')
-    print("\nTraining complete! Results saved to multimodal_training_results.png")
+    # Print final results
+    print("\n" + "=" * 60)
+    print("TRAINING COMPLETE")
+    print("=" * 60)
+    print(f"Best Validation Accuracy: {trainer.best_accuracy:.4f}")
+    print(f"Results saved to: {config.save_dir}")
+    print("=" * 60)
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Multimodal training script")
+    parser = argparse.ArgumentParser(description="Multimodal video-text training script")
     parser.add_argument('--name', default='Test', help='Experiment name')
-    parser.add_argument('--config', default='/Users/user/PycharmProjects/frozen-in-time/configs/ucf-cap.json', help='Config file path')
-    parser.add_argument('--save_dir', default='/Users/user/PycharmProjects/frozen-in-time/data', help='Save directory')
-    parser.add_argument('--label_experiments', default='ALL', help='Label type')
-    parser.add_argument('--dataset_samples', default=100, help='Number of samples')
-    args = parser.parse_args()
+    parser.add_argument(
+        '--config',
+        default='/Users/user/PycharmProjects/frozen-in-time/configs/ucf-cap.json',
+        help='Path to config file'
+    )
+    parser.add_argument(
+        '--save_dir',
+        default='/Users/user/PycharmProjects/frozen-in-time/data',
+        help='Directory to save checkpoints and results'
+    )
+    parser.add_argument('--label_experiments', default='ALL', help='Label type for experiments')
+    parser.add_argument('--dataset_samples', default=100, type=int, help='Number of dataset samples')
 
+    args = parser.parse_args()
     config = ConfigParser(args)
-    training(config)
+
+    main(config)
