@@ -1,4 +1,4 @@
-# Frozen in Time
+# UCF-CAP Multimodal Video-Text Classifier
 
 Multimodal video classification for the UCF-CAP dataset. The model combines:
 
