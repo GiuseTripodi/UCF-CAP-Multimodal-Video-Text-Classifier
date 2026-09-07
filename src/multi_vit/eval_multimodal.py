@@ -1,10 +1,12 @@
 import argparse
 import os
 import sys
+from pathlib import Path
 import torch
 from sklearn.metrics import accuracy_score, classification_report
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.append(str(PROJECT_ROOT))
 
 from data_loader.ucf_cap_loader import UCF101Dataset, collate_video_batch
 from model.multi_vit import MultimodalSpaceTimeTransformer
@@ -54,7 +56,7 @@ def evaluate(config: ConfigParser, checkpoint_path: str) -> None:
             all_labels.extend(labels.numpy())
 
     accuracy = accuracy_score(all_labels, all_preds)
-    print(f"Test Accuracy: {accuracy:.4f}")
+    print("Test Accuracy: {:.4f}".format(accuracy))
     print(classification_report(all_labels, all_preds, digits=4))
 
 
@@ -62,18 +64,18 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Evaluate multimodal model on test set')
     parser.add_argument(
         '--config',
-        default='/Users/user/PycharmProjects/frozen-in-time/configs/ucf-cap.json',
+        default=str(PROJECT_ROOT / 'configs' / 'ucf-cap.json'),
         help='Path to config file'
     )
     parser.add_argument(
         '--save_dir',
-        default='/Users/user/PycharmProjects/frozen-in-time/data',
+        default=str(PROJECT_ROOT / 'data'),
         help='Directory containing UcfCap and checkpoints'
     )
     parser.add_argument(
         '--checkpoint',
         required=True,
-        help='Path to checkpoint file (best_model_.pth)'
+        help='Path to checkpoint file (best_model.pth)'
     )
     parser.add_argument('--name', default='Eval', help='Experiment name')
 

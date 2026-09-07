@@ -13,7 +13,9 @@ fi
 echo "Job is using ${NGPUS:-1} GPU(s) with ID(s) ${CUDA_VISIBLE_DEVICES:-unset} and ${NSLOTS:-unset} CPU core(s)"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+PROJECT_ROOT="${SLURM_SUBMIT_DIR:-$(cd "${SCRIPT_DIR}/.." && pwd)}"
+
+cd "${PROJECT_ROOT}" || exit 1
 
 if [ -n "${VENV_PATH:-}" ] && [ -f "${VENV_PATH}/bin/activate" ]; then
     # Optional venv activation for cluster jobs.
@@ -26,7 +28,7 @@ fi
 DEFAULT_CONFIG="${PROJECT_ROOT}/configs/ucf-cap.json"
 DEFAULT_SAVE_DIR="${PROJECT_ROOT}/data"
 DEFAULT_NAME="Eval"
-DEFAULT_CHECKPOINT="${PROJECT_ROOT}/data/models/best_multimodal_model.pth"
+DEFAULT_CHECKPOINT="${PROJECT_ROOT}/data/models/best_model.pth"
 
 # Usage function to display help
 usage() {

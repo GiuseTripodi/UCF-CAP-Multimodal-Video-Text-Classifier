@@ -21,8 +21,12 @@ class ConfigParser:
             self._exper_name = args.name
 
         self._save_dir = os.path.join(save_dir, 'models')
-        self._log_dir = os.path.join(save_dir, 'log')
+        self._log_dir = os.path.join(save_dir, 'logs')
         self.data_dir = os.path.join(save_dir, 'UcfCap')
+
+        os.makedirs(self._save_dir, exist_ok=True)
+        os.makedirs(self._log_dir, exist_ok=True)
+        os.makedirs(self.data_dir, exist_ok=True)
 
         # get model parameters
         self.model_parameters = self.config['trainer']
@@ -49,7 +53,7 @@ class ConfigParser:
                     "class": "logging.handlers.RotatingFileHandler",
                     "level": "INFO",
                     "formatter": "datetime",
-                    "filename": "info.log",
+                    "filename": os.path.join(self._log_dir, "info.log"),
                     "maxBytes": 10485760,
                     "backupCount": 20,
                     "encoding": "utf8",

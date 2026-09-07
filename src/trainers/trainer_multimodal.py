@@ -212,7 +212,7 @@ class MultimodalTrainer:
             # Save best model
             if val_accuracy > self.best_accuracy:
                 self.best_accuracy = val_accuracy
-                self.save_checkpoint(f'best_model_.pth', is_best=True)
+                self.save_checkpoint('best_model.pth', is_best=True)
                 print(f"✓ New best model saved with accuracy: {self.best_accuracy:.4f}")
 
             # Save regular checkpoint

@@ -2,6 +2,7 @@ import sys
 import os
 from datetime import date
 import argparse
+from pathlib import Path
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -12,6 +13,7 @@ from src.utils.support_functions import load_dataset
 from model.multi_vit import MultimodalSpaceTimeTransformer
 from src.trainers.trainer_multimodal import MultimodalTrainer
 
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 
@@ -92,12 +94,12 @@ if __name__ == '__main__':
     parser.add_argument('--name', default='Test', help='Experiment name')
     parser.add_argument(
         '--config',
-        default='/Users/user/PycharmProjects/frozen-in-time/configs/ucf-cap.json',
+        default=str(PROJECT_ROOT / 'configs' / 'ucf-cap.json'),
         help='Path to config file'
     )
     parser.add_argument(
         '--save_dir',
-        default='/Users/user/PycharmProjects/frozen-in-time/data',
+        default=str(PROJECT_ROOT / 'data'),
         help='Directory to save checkpoints and results'
     )
     parser.add_argument('--label_experiments', default='ALL', help='Label type for experiments')

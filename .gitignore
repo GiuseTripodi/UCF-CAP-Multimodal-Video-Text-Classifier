@@ -1,3 +1,13 @@
 .idea/
-.DS_store
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+*.pyo
+*.pth
+*.pt
+*.safetensors
+*.npz
+*.log
 /data/
+/logs/
